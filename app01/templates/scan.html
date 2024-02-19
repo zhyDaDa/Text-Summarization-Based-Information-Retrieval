@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <title>电子病历信息检索系统</title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!-- CSS Files -->
+  {%load static %}
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/paper-dashboard.css' %}" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<style>
+    .header1 {
+        align-items: center;
+        text-align: center;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+    }
+    
+    .header1 h1 {
+        color: #0080FF;
+    }
+    
+    
+    /* 设置病历列表的样式 */
+    
+    .record-list {
+        list-style-type: none;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: auto;
+        padding: 0;
+        width: 80%;
+    }
+    
+    
+    /* 设置每个病历的样式 */
+    
+    .record-item {
+        background-color: #fff;
+        border: 1px solid #007bff;
+        border-radius: 10px;
+        margin: 15px 0;
+        padding: 10px;
+        box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.05)
+    }
+    
+    
+    /* 设置病历编号的样式 */
+    
+    .record-item .record-id {
+        font-weight: bold;
+    }
+    
+    
+    /* 设置病症描述和结果的样式 */
+    
+    .record-item .record-description,
+    .record-item .record-result {
+        color: #777;
+    }
+    
+    
+    /* 设置超出范围的文本使用省略号进行截断 */
+    
+    .record-item .record-description,
+    .record-item .record-result {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+<body >
+<div class="wrapper ">
+  <!-- 侧边导航栏开始-->
+  <div class="sidebar" data-color="white" data-active-color="danger" >
+    <div class="logo" style="background:#bee5eb;">
+      <a href="" class="simple-text logo-mini">
+        <div class="logo-image-small">
+            <img src={% static 'img/logo-small.png' %}>
+        </div>
+        <!-- <p>CT</p> -->
+      </a>
+      <a href="" class="simple-text logo-normal">
+        李华
+        <!-- <div class="logo-image-big">
+          <img src="../assets/img/logo-big.png">
+        </div> -->
+      </a>
+    </div>
+    <div class="sidebar-wrapper" style="background:#bee5eb;" >
+      <ul class="nav">
+        <li >
+          <a href="{% url 'index' %}">
+            <i class="bi bi-house"></i>
+            <p>主页</p>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'upload' %}">
+            <i class="bi bi-cloud-upload"></i>
+            <p>病历上传</p>
+          </a>
+        </li>
+        <li >
+          <a href="{% url 'select' %}">
+            <i class="bi bi-zoom-out"></i>
+            <p>病历检索</p>
+          </a>
+        </li>
+        <li class="active ">
+          <a href="{% url 'scan' %}">
+            <i class="bi bi-journal-medical"></i>
+            <p>病历浏览</p>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'extract' %}">
+            <i class="bi bi-chat-square-dots"></i>
+            <p>病历摘要</p>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'user' %}">
+            <i class="bi bi-person"></i>
+            <p>用户</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- 侧边导航栏结束-->
+
+  <div class="main-panel"  style="background: white">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent" style="border-bottom: solid 1px lightblue">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="javascript:;">基于医疗大数据的电子病历信息检索系统</a>
+          </div>
+        </div>
+      </nav>      
+      
+      <!-- End Navbar -->
+<div class="content">
+  <ul class="record-list">
+      {% for i in scan %}
+      <li class="record-item">
+          <span class="record-id">病历编号：</span>{{i.0}}
+          <br>
+          <span class="record-time">时间：</span> 2023年4月16日
+          <br>
+          <span class="record-description">病症主诉：</span> {{i.1}}
+          <br>
+          <span class="record-result">医生诊断：</span> {{i.2}}
+          <br>
+          <span class="record-result">
+              <a href="#" data-toggle="modal" data-target="#exampleModal{{ forloop.counter }}">收藏</a>
+          </span>
+          <div class="modal fade" id="exampleModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">病历编号：{{i.0}}</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body" id="modalBody{{ forloop.counter }}">
+                          请确认是否收藏此条病历？
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                          <button type="button" class="btn btn-primary" onclick="collectRecord('{{i.0}}', '{{ forloop.counter }}')">收藏</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </li>
+      {% endfor %}
+      <!-- 这里可以继续添加更多的病历信息 -->
+  </ul>
+</div>
+</div>
+
+<!--   Core JS Files   -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script>
+  function collectRecord(recordId, modalId) {
+      // 发送异步请求到后端，将收藏的病历记录到数据库
+      fetch('/collect/', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': '{{ csrf_token }}'  // 用于防止跨站请求伪造（CSRF）攻击
+          },
+          body: JSON.stringify({recordId: recordId})
+      })
+      .then(response => response.json())
+      .then(data => {
+          // 收藏成功后更新模态框的内容
+          const modalBody = document.getElementById('modalBody' + modalId);
+          modalBody.textContent = '收藏成功';
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+  }
+</script>
+
+
+</body>
+</html>

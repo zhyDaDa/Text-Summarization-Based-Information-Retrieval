@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <title>电子病历信息检索系统</title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!-- CSS Files -->
+  {%load static %}
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/paper-dashboard.css' %}" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<style>
+  .table-fixed-layout {
+    table-layout: fixed;
+  }
+
+  .table-fixed-layout thead th,
+  .table-fixed-layout tbody td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+</style>
+<body >
+<div class="wrapper ">
+  <!-- 侧边导航栏开始-->
+  <div class="sidebar" data-color="white" data-active-color="danger" >
+    <div class="logo" style="background:#bee5eb;">
+      <a href="" class="simple-text logo-mini">
+        <div class="logo-image-small">
+            <img src={% static 'img/logo-small.png' %}>
+        </div>
+        <!-- <p>CT</p> -->
+      </a>
+      <a href="" class="simple-text logo-normal">
+        李华
+        <!-- <div class="logo-image-big">
+          <img src="../assets/img/logo-big.png">
+        </div> -->
+      </a>
+    </div>
+    <div class="sidebar-wrapper" style="background:#bee5eb;" >
+      <ul class="nav">
+        <li >
+          <a href="{% url 'index' %}">
+            <i class="bi bi-house"></i>
+            <p>主页</p>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'upload' %}">
+            <i class="bi bi-cloud-upload"></i>
+            <p>病历上传</p>
+          </a>
+        </li>
+        <li >
+          <a href="{% url 'select' %}">
+            <i class="bi bi-zoom-out"></i>
+            <p>病历检索</p>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'scan' %}">
+            <i class="bi bi-journal-medical"></i>
+            <p>病历浏览</p>
+          </a>
+        </li>
+        <li class="active ">
+          <a href="{% url 'extract' %}">
+            <i class="bi bi-chat-square-dots"></i>
+            <p>病历摘要</p>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'user' %}">
+            <i class="bi bi-person"></i>
+            <p>用户</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- 侧边导航栏结束-->
+
+  <div class="main-panel" style="background: white">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent" style="border-bottom: solid 1px lightblue">
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <a class="navbar-brand" href="javascript:;">基于医疗大数据的电子病历信息检索系统</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- End Navbar -->
+    <div class="content">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">病历摘要</h4>
+            </div>
+            <form method="post" action="{% url 'extract' %}">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="inputSentence">输入句子</label>
+                {% csrf_token %}
+                <input type="text" class="form-control" id="inputSentence" name="sentence" placeholder="请输入句子"  value="{{ sentence }}">
+              </div>
+              <button type="submit" class="btn btn-primary" onclick="extractEntities()">开始抽取</button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">摘要生成</h4>
+            </div>
+            <div class="card-body">
+              <ul class="list-group" id="entityList">
+                {% for entity in extracted_entities %}
+                <li class="list-group-item">
+                  {{ entity.type }}:
+                  {% if entity.value %}
+                    {{ entity.value }}
+                  {% else %}
+                    无
+                  {% endif %}
+                </li>
+              {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  <script>
+  function extractEntities() {
+    // 获取输入的句子
+    var sentence = document.getElementById("inputSentence").value;
+
+    // 发送异步请求到后端进行实体抽取
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "{% url 'extract' %}", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        // 解析后端的响应结果
+        var response = JSON.parse(xhr.responseText);
+        var extractedEntities = response.extracted_entities;
+
+        // 清空实体类型列表
+        var entityList = document.getElementById("entityList");
+        entityList.innerHTML = "";
+
+        // 填充实体类型和值到列表中
+        extractedEntities.forEach(function(entity) {
+          var listItem = document.createElement("li");
+          listItem.className = "list-group-item";
+          listItem.innerText = entity.type + ": " + entity.value;
+          entityList.appendChild(listItem);
+        });
+      }
+    };
+
+    // 将句子作为表单参数发送到后端
+    var params = "sentence=" + encodeURIComponent(sentence);
+    xhr.send(params);
+  }
+</script>
+
+</body>
+</html>
