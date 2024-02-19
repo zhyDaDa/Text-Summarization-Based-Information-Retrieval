@@ -1,2 +1,7 @@
+.gitignore
 node_modules/
 app01/checkpoint/model_best/*
+*/__pycache__/*
+*/*/__pycache__/*
+.idea/
+bert-base-chinese/
