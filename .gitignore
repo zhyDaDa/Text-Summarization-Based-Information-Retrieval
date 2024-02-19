@@ -5,3 +5,4 @@ app01/checkpoint/model_best/*
 */*/__pycache__/*
 .idea/
 bert-base-chinese/
+venv/*
