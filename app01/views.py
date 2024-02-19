@@ -6,6 +6,8 @@ import torch
 from transformers import BertTokenizer, BertModel
 from django.http import JsonResponse
 import json
+import re
+from zhipuai import ZhipuAI
 # Create your views here.
 @csrf_exempt
 def login(request):
@@ -25,27 +27,30 @@ def login(request):
             return render(request, "login.html")
 
 def index(request):
+    print("views.py | index >>> Get request: ", request)
     return render(request,"index.html")
 
 @csrf_exempt
 def upload(request):
- if  request.method == "GET":  # 前端如果是get请求
-        return render(request, 'upload.html')  # 返回HTML页面。
- elif request.method == "POST":  # 前端如果是post请求
-        id = request.POST.get("id")     
-        content = request.POST.get("content")     
-        result =request.POST.get("result")
-        date = request.POST.get("date")
-        extract=extract_information(content)
-        username = 1001
-        print(id,date,content,result,extract)
-         # request.POST.get返回的值是字符串，所以下面if中的判断是成立的。
-        conn = connection.cursor()
-        conn.execute("INSERT INTO test2 (id, question_content, answer_content,question_extraction, date,user_id) VALUES (%s, %s, %s, %s,%s,%s)",  (id, content, result,extract, date,username))
-        conn.close()
-        return render(request, "upload.html")
+    print("views.py | upload >>> Get request: ", request)
+    if  request.method == "GET":  # 前端如果是get请求
+            return render(request, 'upload.html')  # 返回HTML页面。
+    elif request.method == "POST":  # 前端如果是post请求
+            id = request.POST.get("id")     
+            content = request.POST.get("content")     
+            result =request.POST.get("result")
+            date = request.POST.get("date")
+            extract=extract_information(content)
+            username = 1001
+            print(id,date,content,result,extract)
+            # request.POST.get返回的值是字符串，所以下面if中的判断是成立的。
+            conn = connection.cursor()
+            conn.execute("INSERT INTO test2 (id, question_content, answer_content,question_extraction, date,user_id) VALUES (%s, %s, %s, %s,%s,%s)",  (id, content, result,extract, date,username))
+            conn.close()
+            return render(request, "upload.html")
 
 def select(request):
+    print("views.py | select >>> Get request: ", request)
     if request.method == 'POST':
             searchText = request.POST.get('select')
             post_list = find_max_similarity_rows(searchText)
@@ -57,6 +62,7 @@ def select(request):
 
 @csrf_exempt
 def extract(request):
+    print("views.py | extract >>> Fetch sentence: ", sentence)
     if request.method == 'POST':
         sentence = request.POST.get('sentence')  # 获取前端页面输入的句子
         extract=extract_information(sentence)
@@ -91,6 +97,7 @@ def user(request):
         return render(request,"user.html",{'scan': scan,'scan1': scan1})
 
 def extract_information(text):
+    print("views.py | extract_information >>> Fetch text: ", text)
     schema = ['年龄', '性别', '身体部位', '症状', '疾病']
     my_ie = Taskflow("information_extraction", schema=schema,)
     data = my_ie(text)
@@ -113,8 +120,52 @@ def extract_information1(sentence):
             entity_value = key_value[1].strip()  # 去除空格
             extracted_entities[entity_type] = entity_value
     return extracted_entities
+def extract_byGLM4(text):
+    client = ZhipuAI(api_key="c198388676d36d397ab90659cfcbe7de.VOh7XShjotaMj1C2")  # 填写您自己的APIKey
+    # 设计prompt
+    prompt = """
+        你是一个信息抽取模型，你需要从句子中抽取出['年龄', '性别', '身体部位', '症状', '疾病']这些信息。
+        特别注意! 如果没有明确信息, 请填写"_"。
+        
+        输入：四岁小孩的头感到十分疼痛，之前患过脑震荡
+        输出: 年龄：四岁；性别：_；身体部位；头，症状：疼痛；疾病：脑震荡
+        输入：50 岁患者抱怨左腿肿胀、红斑，伴有持续发热和剧烈疼痛。她之前曾被诊断为类风湿关节炎。
+        输出：年龄：50岁；性别：女；身体部位：左腿，症状：疼痛、红斑、肿胀、发热；疾病：类风湿关节炎
+        输入：儿子 4 岁检查出右脑室有脑积水
+        输出：年龄：4岁；性别：男；身体部位：右脑室，症状：_；疾病：脑积水
+        输入：
+    """
+    while True:
+        # 调用模型
+        message = [{"role": "user", "content": prompt+text}]
+        response = client.chat.completions.create(
+            model="glm-4",  # 填写需要调用的模型名称
+            messages=message,
+        )
+        response = response.choices[0].message.content
+        
+        regex = r"年龄：(.+?)；性别：(.+?)；身体部位：(.+?)，症状：(.+?)；疾病：(.+)"
+        response = re.findall(regex, response)
+        info_names = ['年龄', '性别', '身体部位', '症状', '疾病']
+        if len(response) < 1:
+            continue
+        ret = {}
+        for i in range(len(info_names)):
+            if response[0][i].strip() == "_":
+                continue
+            ret[info_names[i]] = response[0][i].strip()
+        break
+    return ret
+        
+def mergeGLM4Output(outputObj):
+    mergeString = ""
+    for (k, v) in outputObj.items():
+        mergeString += k + "：" + v + "；"
+    return mergeString[:-1]
+
 
 def calculate_cosine_similarity(text1, text2):
+    print("views.py | calculate_cosine_similarity >>> Fetch text1: %s, text2: %s" % (text1, text2))
     # 加载预训练的BERT模型和tokenizer
     model = BertModel.from_pretrained('bert-base-chinese')
     tokenizer = BertTokenizer.from_pretrained('bert-base-chinese')
@@ -136,9 +187,11 @@ def calculate_cosine_similarity(text1, text2):
     return cosine_similarity.item()
 
 def find_max_similarity_rows(text):
+    print("views.py | find_max_similarity_rows >>> Fetch text: ", text)
     # 连接MySQL数据库
     mycursor = connection.cursor()
-    result = extract_information(text)
+    # result = extract_information(text)
+    result = extract_byGLM4(text)
     # 查询 test 表中的所有数据
     mycursor.execute("SELECT id, question_content, question_extraction,answer_content FROM test1")
     # 定义变量来保存相似度最高的四个问题的数据
@@ -149,7 +202,7 @@ def find_max_similarity_rows(text):
         # 提取问题内容和问题提取字段的文本
         question_extraction = row[2]
         # 计算余弦相似度
-        similarity = calculate_cosine_similarity(result, question_extraction)
+        similarity = calculate_cosine_similarity(mergeGLM4Output(result), question_extraction)
         # 如果相似度比其中的一个元素更大，就更新这个元素和对应的行数据
         for i in range(4):
             if similarity > max_similarity_values[i]:
