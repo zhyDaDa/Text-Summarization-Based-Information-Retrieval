@@ -9,6 +9,12 @@
 npm install
 ```
 
+## python依赖
+在根目录下执行cmd, 输入下面的命令
+```bash
+pip install -r requirements.txt
+```
+
 ## 测试bert-base-chinese
 在`test/bert计算相似度.py`中可以测试模型是否能正常使用  
 模型会从`huggingface`中下载并保存到`cache`中, 所以第一次很慢是正常的(大约300M)  
@@ -48,3 +54,14 @@ tokenizer = BertTokenizer.from_pretrained('./bert-base-chinese')
 ``` 
 就可以直接从本地加载模型了
 > 在业务代码中统一从网络加载模型, 免去不必要的麻烦
+
+# 启动系统
+  1. 连接到数据库(建议使用`Navicat`, 打开数据库即可)
+  2. 运行`py manage.py runserver`启动Django服务器
+  3. 等待终端出现提示: `Starting development server at http://127.0.0.1:8000/`后, 打开浏览器, 访问该网址即可
+
+> 注意, 使用虚拟环境后, 虽然安装了*Django*, 但是直接运行上述指令很可能调用的是全局的*py*  
+> 如果你的全局*py*没有安装*Django*或者安装了不同版本的*Django*, 就会出现形如:"ImportError: Couldn't import Django. Are you sure ..."的报错  
+> 解决方法: 直接填写虚拟环境中的python地址来运行, 例如: `"D:\python\python.exe" manage.py runserver`  
+> > 笔者贴心的为你准备了一个`runserver.bat`, 双击即可运行!
+> (假定你的虚拟环境名称是`venv`)
