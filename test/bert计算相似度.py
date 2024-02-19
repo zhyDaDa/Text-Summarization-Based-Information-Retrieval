@@ -11,11 +11,13 @@ print("import done...")
 
 def calculate_cosine_similarity(text1, text2):
     # 加载预训练的BERT模型和tokenizer
-    model = BertModel.from_pretrained('./bert-base-chinese')
-    tokenizer = BertTokenizer.from_pretrained('./bert-base-chinese')
+    model = BertModel.from_pretrained('bert-base-chinese')
+    tokenizer = BertTokenizer.from_pretrained('bert-base-chinese')
     # 保存
     # model.save_pretrained("./bert-base-chinese")
     # tokenizer.save_pretrained("./bert-base-chinese")
+    # model = BertModel.from_pretrained('./bert-base-chinese')
+    # tokenizer = BertTokenizer.from_pretrained('./bert-base-chinese')
     # 对文本进行tokenize和编码
     encoded_text1 = tokenizer.encode(text1, add_special_tokens=False)
     encoded_text2 = tokenizer.encode(text2, add_special_tokens=False)
