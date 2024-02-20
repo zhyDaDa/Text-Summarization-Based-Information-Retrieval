@@ -62,9 +62,9 @@ def select(request):
 
 @csrf_exempt
 def extract(request):
-    print("views.py | extract >>> Fetch sentence: ", sentence)
     if request.method == 'POST':
         sentence = request.POST.get('sentence')  # 获取前端页面输入的句子
+        #print("views.py | extract >>> Fetch sentence: ", sentence)
         extract=extract_information(sentence)
         extracted_entities = extract_information1(extract)  # 调用实体抽取函数
         # 构造包含实体类型和实体值的对象列表
@@ -253,3 +253,13 @@ def delete1(request):
         mycursor.close()
         # 假设插入成功，返回收藏成功的响应
         return JsonResponse({'message': '删除成功'})
+
+def list(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'list.html')  # 返回HTML页面。
+def selectplus(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'selectplus.html')  # 返回HTML页面。
+def lock(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'lock.html')  # 返回HTML页面。

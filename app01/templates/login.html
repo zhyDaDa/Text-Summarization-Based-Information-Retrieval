@@ -1,24 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    {%load static %}
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
-</head>
-<body>
-<div class="login-box">
-  <h1>用户登录</h1>
-  <form action="" method="post">
-    {% csrf_token %}
-    <label for="username">用户名：</label>
-    <input type="text" id="username" name="username" placeholder="请输入用户名" required>
-    <label for="password">密码：</label>
-    <input type="password" id="password" name="password" placeholder="请输入密码" required>
-    <input type="submit" value="登录">
-  </form>
-</div>
-</body>
-</html>
-</body>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mednalytics</title>
+    {% load static %}
+    <!-- Iconic Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="{% static 'vendors/iconic-fonts/font-awesome/css/all.min.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'vendors/iconic-fonts/flat-icons/flaticon.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/iconic-fonts/cryptocoins/cryptocoins.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/iconic-fonts/cryptocoins/cryptocoins-colors.css' %}" />
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <!-- jQuery UI -->
+    <link href="{% static 'assets/css/jquery-ui.min.css' %}" rel="stylesheet" />
+    <!-- Mednalytics styles -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon.ico' %}" />
+  </head>
+  <body class="ms-body ms-primary-theme ms-logged-out">
+    <!-- Preloader -->
+    <div id="preloader-wrap">
+      <div class="spinner spinner-8">
+        <div class="ms-circle1 ms-child"></div>
+        <div class="ms-circle2 ms-child"></div>
+        <div class="ms-circle3 ms-child"></div>
+        <div class="ms-circle4 ms-child"></div>
+        <div class="ms-circle5 ms-child"></div>
+        <div class="ms-circle6 ms-child"></div>
+        <div class="ms-circle7 ms-child"></div>
+        <div class="ms-circle8 ms-child"></div>
+        <div class="ms-circle9 ms-child"></div>
+        <div class="ms-circle10 ms-child"></div>
+        <div class="ms-circle11 ms-child"></div>
+        <div class="ms-circle12 ms-child"></div>
+      </div>
+    </div>
+    <!-- Overlays -->
+    <div class="ms-aside-overlay ms-overlay-left ms-toggler" data-target="#ms-side-nav" data-toggle="slideLeft"></div>
+    <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"></div>
+    <!-- Sidebar Navigation Left -->
+
+    <!-- Main Content -->
+    <main class="body-content">
+      <!-- Navigation Bar -->
+      <nav class="navbar ms-navbar">
+        <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="logo-sn logo-sm ms-d-block-sm">
+          <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="{% static '../../index.html' %}"><img src="{% static 'assets/img/mednalytics-logo-84x41.png' %}" alt="logo" /></a>
+        </div>
+        <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
+          <li class="ms-nav-item ms-search-form pb-0 py-0">
+            <form class="ms-form" method="post">
+              <div class="ms-form-group my-0 mb-0 has-icon fs-14">
+                <input type="search" class="ms-form-input" name="search" placeholder="搜索" value="" />
+                <i class="flaticon-search text-disabled"></i>
+              </div>
+            </form>
+          </li>
+          <li class="ms-nav-item">
+            <a href="#" class="btn btn-primary mt-0">注册</a>
+          </li>
+        </ul>
+        <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
+          <span class="ms-toggler-bar bg-white"></span>
+          <span class="ms-toggler-bar bg-white"></span>
+          <span class="ms-toggler-bar bg-white"></span>
+        </div>
+      </nav>
+      <!-- Body Content Wrapper -->
+      <div class="ms-content-wrapper ms-auth">
+        <div class="ms-auth-container">
+          <div class="ms-auth-col">
+            <div class="ms-auth-bg"></div>
+          </div>
+          <div class="ms-auth-col">
+            <div class="ms-auth-form">
+              <form class="needs-validation" novalidate="" method="post">
+                {% csrf_token %}
+                <h1>用户登录</h1>
+                <p>请输入您的用户名和密码</p>
+                <div class="mb-3">
+                  <label for="validationCustom08">用户名</label>
+                  <div class="input-group">
+                    <input type="id" class="form-control" id="validationCustom08" title="username" name="username" placeholder="请输入用户名" required />
+                    <div class="invalid-feedback">请输入有效的用户名</div>
+                  </div>
+                </div>
+                <div class="mb-2">
+                  <label for="validationCustom09">密码</label>
+                  <div class="input-group">
+                    <input type="password" class="form-control" id="validationCustom09" title="password" name="password" placeholder="请输入您的密码" required />
+                    <div class="invalid-feedback">请输入密码</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="ms-checkbox-wrap">
+                    <input class="form-check-input" type="checkbox" value="" />
+                    <i class="ms-checkbox-check"></i>
+                  </label>
+                  <span>记住密码</span>
+                  <label class="d-block mt-3"><a href="#" class="btn-link" data-toggle="modal" data-target="#modal-12">忘记密码?</a></label>
+                </div>
+                <button class="btn btn-primary mt-4 d-block w-100" type="submit">登录</button>
+                <span class="d-block text-center my-4">或者</span>
+                <button type="button" class="btn mt-4 d-block w-100 btn-social-login"><img src="{% static 'assets/img/others/facebook.png' %}" alt="image" /> <span>微信登陆</span></button>
+                <button type="button" class="btn mt-4 d-block w-100 btn-social-login"><img src="{% static 'assets/img/others/google.png' %}" alt="image" /> <span>QQ登录</span></button>
+                <p class="mb-0 mt-3 text-center">
+                  没有账户？ <a class="btn-link" href="{% static 'default-register.html' %}">创建账户</a>
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Forgot Password Modal -->
+      <div class="modal fade" id="modal-12" tabindex="-1" role="dialog" aria-labelledby="modal-12">
+        <div class="modal-dialog modal-dialog-centered modal-min" role="document">
+          <div class="modal-content">
+            <div class="modal-body text-center">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <i class="flaticon-secure-shield d-block"></i>
+              <h1>忘记密码?</h1>
+              <p>Enter your email to recover your password</p>
+              <form method="post">
+                <div class="ms-form-group has-icon">
+                  <input type="text" placeholder="Email Address" class="form-control" name="forgot-password" value="" />
+                  <i class="material-icons">email</i>
+                </div>
+                <button type="submit" class="btn btn-primary shadow-none">Reset Password</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- SCRIPTS -->
+    <!-- Global Required Scripts Start -->
+    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/perfect-scrollbar.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-ui.min.js' %}"></script>
+    <!-- Global Required Scripts End -->
+    <!-- Mednalytics core JavaScript -->
+    <script src="{% static 'assets/js/framework.js' %}"></script>
+    <!-- Settings -->
+    <script src="{% static 'assets/js/settings.js' %}"></script>
+  </body>
 </html>

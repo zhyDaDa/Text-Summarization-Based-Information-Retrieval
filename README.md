@@ -65,3 +65,4 @@ tokenizer = BertTokenizer.from_pretrained('./bert-base-chinese')
 > 解决方法: 直接填写虚拟环境中的python地址来运行, 例如: `"D:\python\python.exe" manage.py runserver`  
 > > 笔者贴心的为你准备了一个`runserver.bat`, 双击即可运行!
 > (假定你的虚拟环境名称是`venv`)
+> 

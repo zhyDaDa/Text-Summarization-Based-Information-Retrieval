@@ -20,13 +20,17 @@ from app01 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.login,name='login'),
+    path('login/', views.login,name='login'),
     path('index/', views.index,name='index'),
     path('upload/', views.upload,name='upload'),
     path('select/', views.select,name='select'),
+    path('selectplus/', views.selectplus,name='selectplus'),
     path('extract/', views.extract,name='extract'),
     path('scan/', views.scan,name='scan'),
     path('user/', views.user,name='user'),
     path('collect/', views.collect, name='collect'),
     path('delete/', views.delete, name='delete'),
     path('delete1/', views.delete1, name='delete1'),
+    path('lock', views.lock, name='lock'),
+    
 ]

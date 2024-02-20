@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mednalytics</title>
+    {% load static %}
+    <!-- Iconic Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="{% static 'vendors/iconic-fonts/font-awesome/css/all.min.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'vendors/iconic-fonts/flat-icons/flaticon.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/iconic-fonts/cryptocoins/cryptocoins.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/iconic-fonts/cryptocoins/cryptocoins-colors.css' %}" />
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <!-- jQuery UI -->
+    <link href="{% static 'assets/css/jquery-ui.min.css' %}" rel="stylesheet" />
+    <!-- Mednalytics styles -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon.ico' %}" />
+  </head>
+  <body class="ms-body ms-primary-theme">
+    <!-- Preloader -->
+    <div id="preloader-wrap">
+      <div class="spinner spinner-8">
+        <div class="ms-circle1 ms-child"></div>
+        <div class="ms-circle2 ms-child"></div>
+        <div class="ms-circle3 ms-child"></div>
+        <div class="ms-circle4 ms-child"></div>
+        <div class="ms-circle5 ms-child"></div>
+        <div class="ms-circle6 ms-child"></div>
+        <div class="ms-circle7 ms-child"></div>
+        <div class="ms-circle8 ms-child"></div>
+        <div class="ms-circle9 ms-child"></div>
+        <div class="ms-circle10 ms-child"></div>
+        <div class="ms-circle11 ms-child"></div>
+        <div class="ms-circle12 ms-child"></div>
+      </div>
+    </div>
+    <div class="ms-lock-screen-weather">
+      <p>38&deg;</p>
+      <p>San Francisco, CA</p>
+    </div>
+    <!-- Main Content -->
+    <main class="body-content ms-lock-screen">
+      <!-- Body Content Wrapper -->
+      <div class="ms-content-wrapper">
+        <img class="ms-user-img ms-img-round ms-lock-screen-user" src="{% static 'assets/img/dashboard/doctor-1.jpg' %}" alt="people" />
+        <h1>John Doe</h1>
+        <form method="post">
+          <div class="ms-form-group my-0 mb-0 has-icon fs-14">
+            <input type="password" class="ms-form-input" name="pin" placeholder="Enter Pin" value="" />
+            <i class="material-icons">security</i>
+          </div>
+          <a href="{% url 'index' %}" class="btn btn-success w-100">Unlock</a>
+        </form>
+      </div>
+    </main>
+    <div class="ms-lock-screen-time">
+      <p>04:25</p>
+      <p>Friday, January 9</p>
+    </div>
+    <!-- SCRIPTS -->
+    <!-- Global Required Scripts Start -->
+    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/perfect-scrollbar.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-ui.min.js' %}"></script>
+    <!-- Global Required Scripts End -->
+    <!-- Mednalytics core JavaScript -->
+    <script src="{% static 'assets/js/framework.js' %}"></script>
+    <!-- Settings -->
+    <script src="{% static 'assets/js/settings.js' %}"></script>
+  </body>
+</html>
