@@ -84,21 +84,21 @@
           </div>
           <div class="ms-auth-col">
             <div class="ms-auth-form">
-              <form class="needs-validation" novalidate="" action="" method="post">
+              <form class="needs-validation" novalidate="" method="post">
                 {% csrf_token %}
                 <h1>用户登录</h1>
                 <p>请输入您的用户名和密码</p>
                 <div class="mb-3">
                   <label for="validationCustom08">用户名</label>
                   <div class="input-group">
-                    <input type="email" class="form-control" id="validationCustom08" placeholder="请输入用户名" required />
+                    <input type="id" class="form-control" id="validationCustom08" title="username" name="username" placeholder="请输入用户名" required />
                     <div class="invalid-feedback">请输入有效的用户名</div>
                   </div>
                 </div>
                 <div class="mb-2">
                   <label for="validationCustom09">密码</label>
                   <div class="input-group">
-                    <input type="password" class="form-control" id="validationCustom09" placeholder="请输入您的密码" required />
+                    <input type="password" class="form-control" id="validationCustom09" title="password" name="password" placeholder="请输入您的密码" required />
                     <div class="invalid-feedback">请输入密码</div>
                   </div>
                 </div>
