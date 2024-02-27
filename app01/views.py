@@ -27,12 +27,12 @@ def login(request):
             return render(request, "login.html")
 
 def index(request):
-    print("views.py | index >>> Get request: ", request)
+    print("views.py | \033[0;36;47m index\033[0m >>> Get request: ", request)
     return render(request,"index.html")
 
 @csrf_exempt
 def upload(request):
-    print("views.py | upload >>> Get request: ", request)
+    print("views.py | \033[0;36;47m upload\033[0m >>> Get request: ", request)
     if  request.method == "GET":  # 前端如果是get请求
             return render(request, 'upload.html')  # 返回HTML页面。
     elif request.method == "POST":  # 前端如果是post请求
@@ -50,7 +50,8 @@ def upload(request):
             return render(request, "upload.html")
 
 def select(request):
-    print("views.py | select >>> Get request: ", request)
+    print("views.py | \033[0;36;47m select\033[0m >>> Get request: ", request)
+    # 搜索之后调用该函数
     if request.method == 'POST':
             searchText = request.POST.get('select')
             post_list = find_max_similarity_rows(searchText)
@@ -62,7 +63,7 @@ def select(request):
 
 @csrf_exempt
 def extract(request):
-    print("views.py | extract >>> Fetch sentence: ", sentence)
+    print("views.py | \033[0;36;47m extract\033[0m >>> Fetch sentence: ", sentence)
     if request.method == 'POST':
         sentence = request.POST.get('sentence')  # 获取前端页面输入的句子
         extract=extract_information(sentence)
@@ -97,7 +98,7 @@ def user(request):
         return render(request,"user.html",{'scan': scan,'scan1': scan1})
 
 def extract_information(text):
-    print("views.py | extract_information >>> Fetch text: ", text)
+    print("views.py | \033[0;36;47m extract_information\033[0m >>> Fetch text: ", text)
     schema = ['年龄', '性别', '身体部位', '症状', '疾病']
     my_ie = Taskflow("information_extraction", schema=schema,)
     data = my_ie(text)
@@ -165,7 +166,7 @@ def mergeGLM4Output(outputObj):
 
 
 def calculate_cosine_similarity(text1, text2):
-    print("views.py | calculate_cosine_similarity >>> Fetch text1: %s, text2: %s" % (text1, text2))
+    print("views.py | \033[0;36;47m calculate_cosine_similarity\033[0m >>> Fetch text1: %s, text2: %s" % (text1, text2))
     # 加载预训练的BERT模型和tokenizer
     model = BertModel.from_pretrained('bert-base-chinese')
     tokenizer = BertTokenizer.from_pretrained('bert-base-chinese')
@@ -187,7 +188,7 @@ def calculate_cosine_similarity(text1, text2):
     return cosine_similarity.item()
 
 def find_max_similarity_rows(text):
-    print("views.py | find_max_similarity_rows >>> Fetch text: ", text)
+    print("views.py | \033[0;36;47m find_max_similarity_rows\033[0m >>> Fetch text: ", text)
     # 连接MySQL数据库
     mycursor = connection.cursor()
     # result = extract_information(text)
