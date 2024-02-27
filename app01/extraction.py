@@ -20,7 +20,7 @@ from zhipuai import ZhipuAI
 
 
 def extract_information(text):
-    client = ZhipuAI(api_key="c198388676d36d397ab90659cfcbe7de.VOh7XShjotaMj1C2")  # 填写您自己的APIKey
+    client = ZhipuAI(api_key="e380b61b65e101c22d2f89e7ab8cde34.jlpqhJVQyYIkHtzH")  # 填写您自己的APIKey
     # 设计prompt
     prompt = """
         你是一个信息抽取模型，你需要从句子中抽取出['年龄', '性别', '身体部位', '症状', '疾病']这些信息。
