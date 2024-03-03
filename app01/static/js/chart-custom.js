@@ -1,9 +1,9 @@
-(function(jQuery) {
+(function (jQuery) {
     "use strict";
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
         var rightSideBarMini = false;
         checkRightSideBar(rightSideBarMini);
-        jQuery(document).on('click', '.right-sidebar-toggle', function() {
+        jQuery(document).on('click', '.right-sidebar-toggle', function () {
             if (rightSideBarMini) {
                 rightSideBarMini = false;
             } else {
@@ -63,8 +63,8 @@ var options = {
     series: [{
         name: 'series1',
         data: [60, 15, 50, 30, 70]
-    }, ],
-    colors: ['#009efb'],
+    },],
+    colors: ['#089bab'],
 
     xaxis: {
         type: 'datetime',
@@ -115,7 +115,7 @@ var options = {
     series: [{
         name: 'series1',
         data: [70, 40, 60, 30, 60]
-    }, ],
+    },],
     colors: ['#ffd400'],
 
     xaxis: {
@@ -167,7 +167,7 @@ var options = {
     series: [{
         name: 'series1',
         data: [60, 40, 60, 40, 70]
-    }, ],
+    },],
     colors: ['#e64141'],
 
     xaxis: {
@@ -217,7 +217,7 @@ var options = {
     series: [{
         name: 'series1',
         data: [75, 30, 60, 35, 60]
-    }, ],
+    },],
     colors: ['#e64141'],
 
     xaxis: {
@@ -260,7 +260,7 @@ var options = {
             columnWidth: '50%'
         }
     },
-    colors: ['#e64141', '#009efb'],
+    colors: ['#e64141', '#089bab'],
     series: [{
         name: 'Vine',
         type: 'area',
@@ -295,7 +295,7 @@ var options = {
         shared: true,
         intersect: false,
         y: {
-            formatter: function(y) {
+            formatter: function (y) {
                 if (typeof y !== "undefined") {
                     return y.toFixed(0) + " views";
                 }
@@ -310,13 +310,13 @@ var options = {
         },
         markers: {
             customHTML: [
-                function() {
+                function () {
                     return ''
                 },
-                function() {
+                function () {
                     return ''
                 },
-                function() {
+                function () {
                     return ''
                 }
             ]
@@ -347,7 +347,7 @@ var options = {
             show: false
         },
     },
-    colors: ['#009efb', '#ffd400'],
+    colors: ['#089bab', '#ffd400'],
     plotOptions: {
         bar: {
             horizontal: false,
@@ -379,13 +379,13 @@ var options = {
     },
     tooltip: {
         y: {
-            formatter: function(val) {
+            formatter: function (val) {
                 return "$ " + val + " thousands"
             }
         }
     }
 };
-options.colors = ['#009efb', '#FC9F5B'];
+options.colors = ['#089bab', '#FC9F5B'];
 if (jQuery('#bar-chart-6').length) {
     var chart = new ApexCharts(
         document.querySelector("#bar-chart-6"),
@@ -504,7 +504,7 @@ var options = {
         show: false
     },
 };
-options.colors = ['#009efb'];
+options.colors = ['#089bab'];
 
 if (jQuery('#wave-chart-7').length) {
     options.markers.size = 0;
@@ -584,7 +584,7 @@ if (jQuery('#chart-10').length) {
     chart_10.render();
 }
 if (jQuery('#wave-chart-7').length || jQuery('#wave-chart-8').length || jQuery('#wave-chart-9').length || jQuery('#wave-chart-10').length) {
-    window.setInterval(function() {
+    window.setInterval(function () {
         getNewSeries(lastDate, {
             min: 10,
             max: 90
@@ -664,7 +664,7 @@ var options = {
         show: false
     },
 };
-options.colors = ['#009efb'];
+options.colors = ['#089bab'];
 
 if (jQuery('#chart-9').length) {
     var chart9 = new ApexCharts(
@@ -672,7 +672,7 @@ if (jQuery('#chart-9').length) {
         options
     );
     chart9.render();
-    window.setInterval(function() {
+    window.setInterval(function () {
         getNewSeries(lastDate, {
             min: 10,
             max: 90
@@ -837,19 +837,19 @@ var chart11 = {
     tooltip: {
         y: [{
             title: {
-                formatter: function(val) {
+                formatter: function (val) {
                     return val + " (mins)"
                 }
             }
         }, {
             title: {
-                formatter: function(val) {
+                formatter: function (val) {
                     return val + " per session"
                 }
             }
         }, {
             title: {
-                formatter: function(val) {
+                formatter: function (val) {
                     return val;
                 }
             }
@@ -897,7 +897,7 @@ var options12 = {
     series: [{
         name: 'series1',
         data: [70, 40, 60, 30, 60]
-    }, ],
+    },],
     colors: ['#ffd400'],
 
     xaxis: {
@@ -937,8 +937,8 @@ var barOptions12 = {
     },
     series: [{
         name: 'series1',
-        data: [70, 40, 60, 30, 60, ]
-    }, ],
+        data: [70, 40, 60, 30, 60,]
+    },],
     colors: ['#e3e9ef'],
     xaxis: {
         type: 'datetime',
@@ -958,7 +958,7 @@ if (jQuery('#bar-chart-12').length) {
     );
 
     chart12.render();
-    window.setInterval(function() {
+    window.setInterval(function () {
         getNewSeries(lastDate, {
             min: 10,
             max: 90
@@ -1007,7 +1007,7 @@ var option13 = {
                 total: {
                     show: true,
                     label: 'Total',
-                    formatter: function(w) {
+                    formatter: function (w) {
                         // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
                         return 249
                     }
@@ -1018,7 +1018,7 @@ var option13 = {
     fill: {
         type: 'gradient',
     },
-    colors: ['#009efb', '#e64141', '#ffd400'],
+    colors: ['#089bab', '#e64141', '#ffd400'],
     series: [44, 55, 67],
     stroke: {
         lineCap: 'round'
@@ -1064,7 +1064,7 @@ var option14 = {
                     offsetY: 76,
                     fontSize: '22px',
                     color: undefined,
-                    formatter: function(val) {
+                    formatter: function (val) {
                         return val + "%";
                     }
                 }
@@ -1077,7 +1077,7 @@ var option14 = {
     },
     series: [67],
     labels: ['User traffic'],
-    colors: ['#009efb'],
+    colors: ['#089bab'],
 
 };
 
@@ -1105,7 +1105,7 @@ var option15 = {
     dataLabels: {
         enabled: false
     },
-    colors: ['#e64141', '#009efb', '#e64141'],
+    colors: ['#e64141', '#089bab', '#e64141'],
     series: [{
         name: 'Income',
         type: 'column',
@@ -1175,7 +1175,7 @@ var option16 = {
     series: [{
         name: 'series1',
         data: [3, 30, 15, 25, 35]
-    }, ],
+    },],
     colors: ['#6f32ff'],
 
     xaxis: {
@@ -1215,7 +1215,7 @@ var option17 = {
         },
         group: 'sparklines',
     },
-    colors: ['#009efb', '#e64141', '#ffd400'],
+    colors: ['#089bab', '#e64141', '#ffd400'],
     dataLabels: {
         enabled: false
     },
@@ -1259,19 +1259,19 @@ var option17 = {
     tooltip: {
         y: [{
             title: {
-                formatter: function(val) {
+                formatter: function (val) {
                     return val + " (mins)"
                 }
             }
         }, {
             title: {
-                formatter: function(val) {
+                formatter: function (val) {
                     return val + " per session"
                 }
             }
         }, {
             title: {
-                formatter: function(val) {
+                formatter: function (val) {
                     return val;
                 }
             }
@@ -1307,7 +1307,7 @@ var option18 = {
         }
     },
     series: [44, 55, 41],
-    colors: ['#e64141', '#e64141', '#009efb'],
+    colors: ['#e64141', '#e64141', '#089bab'],
     labels: ['Server1', 'Server2', 'Server3'],
     legend: {
         position: 'bottom'
@@ -1352,7 +1352,7 @@ var option19 = {
     },
     // labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     labels: ['01 Jan 2001', '02 Jan 2001', '03 Jan 2001', '04 Jan 2001', '05 Jan 2001', '06 Jan 2001', '07 Jan 2001', '08 Jan 2001', '09 Jan 2001', '10 Jan 2001', '11 Jan 2001', '12 Jan 2001'],
-    colors: ['#009efb', '#e64141'],
+    colors: ['#089bab', '#e64141'],
     xaxis: {
         labels: {
             show: false,
@@ -1402,7 +1402,7 @@ var option20 = {
             columnWidth: '20%'
         }
     },
-    colors: ['#e64141', '#009efb'],
+    colors: ['#e64141', '#089bab'],
     series: [{
         name: 'Vine',
         type: 'area',
@@ -1441,7 +1441,7 @@ var option20 = {
         shared: true,
         intersect: false,
         y: {
-            formatter: function(y) {
+            formatter: function (y) {
                 if (typeof y !== "undefined") {
                     return y.toFixed(0) + " views";
                 }
@@ -1522,8 +1522,8 @@ if (jQuery('#amChartWorldMap').length) {
 }
 // Web Analytics Chart
 if (jQuery('#chartdiv').length) {
-    jQuery(document).ready(function() {
-        am4core.ready(function() {
+    jQuery(document).ready(function () {
+        am4core.ready(function () {
             // Themes begin
             am4core.useTheme(am4themes_animated);
             // Themes end
@@ -3080,7 +3080,7 @@ if (jQuery('#chartdiv').length) {
             var countrySeries = chart.series.push(new am4maps.MapPolygonSeries());
             countrySeries.useGeodata = true;
             countrySeries.hide();
-            countrySeries.geodataSource.events.on("done", function(ev) {
+            countrySeries.geodataSource.events.on("done", function (ev) {
                 worldSeries.hide();
                 countrySeries.show();
             });
@@ -3095,7 +3095,7 @@ if (jQuery('#chartdiv').length) {
             hs.properties.fill = chart.colors.getIndex(9);
 
             // Set up click events
-            worldPolygon.events.on("hit", function(ev) {
+            worldPolygon.events.on("hit", function (ev) {
                 ev.target.series.chart.zoomToMapObject(ev.target);
                 var map = ev.target.dataItem.dataContext.map;
                 if (map) {
@@ -3125,7 +3125,7 @@ if (jQuery('#chartdiv').length) {
             chart.zoomControl = new am4maps.ZoomControl();
 
             var homeButton = new am4core.Button();
-            homeButton.events.on("hit", function() {
+            homeButton.events.on("hit", function () {
                 worldSeries.show();
                 countrySeries.hide();
                 chart.goHome();
@@ -3146,7 +3146,7 @@ if (jQuery('#chartdiv').length) {
 
 // calender js
 if (jQuery('#calendar').length) {
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
             plugins: ['dayGrid']
@@ -3157,7 +3157,7 @@ if (jQuery('#calendar').length) {
 
 // calender 1 js
 if (jQuery('#calendar1').length) {
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         var calendarEl = document.getElementById('calendar1');
 
         var calendar1 = new FullCalendar.Calendar(calendarEl, {
@@ -3197,7 +3197,7 @@ if (jQuery('#calendar1').length) {
                 title: 'Meeting',
                 start: '2019-12-12T10:30:00',
                 end: '2019-12-12T12:30:00',
-                color: '#009efb'
+                color: '#089bab'
             }, {
                 title: 'Lunch',
                 start: '2019-12-12T12:00:00',
@@ -3205,7 +3205,7 @@ if (jQuery('#calendar1').length) {
             }, {
                 title: 'Meeting',
                 start: '2019-12-12T14:30:00',
-                color: '#009efb'
+                color: '#089bab'
             }, {
                 title: 'Birthday Party',
                 start: '2019-12-28T07:00:00',
@@ -3213,7 +3213,7 @@ if (jQuery('#calendar1').length) {
             }, {
                 title: 'Meeting',
                 start: '2020-01-12T14:30:00',
-                color: '#009efb'
+                color: '#089bab'
             }, {
                 title: 'Birthday Party',
                 start: '2020-01-02T07:00:00',
@@ -3233,7 +3233,7 @@ if (jQuery('#calendar1').length) {
             }, {
                 title: 'Meeting',
                 start: '2020-01-12T14:30:00',
-                color: '#009efb'
+                color: '#089bab'
             }, {
                 title: 'Birthday Party',
                 start: '2020-01-13T07:00:00',
@@ -3279,7 +3279,7 @@ if (jQuery('#apex-basic').length) {
                 enabled: false
             }
         },
-        colors: ['#009efb'],
+        colors: ['#089bab'],
         series: [{
             name: "Desktops",
             data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
@@ -3324,7 +3324,7 @@ if (jQuery('#apex-line-area').length) {
         stroke: {
             curve: 'smooth'
         },
-        colors: ['#009efb', '#FC9F5B'],
+        colors: ['#089bab', '#FC9F5B'],
         series: [{
             name: 'series1',
             data: [31, 40, 28, 51, 42, 109, 100]
@@ -3357,7 +3357,7 @@ if (jQuery('#apex-bar').length) {
             height: 350,
             type: 'bar',
         },
-        colors: ['#009efb'],
+        colors: ['#089bab'],
         plotOptions: {
             bar: {
                 horizontal: true,
@@ -3402,7 +3402,7 @@ if (jQuery('#apex-column').length) {
             width: 2,
             colors: ['transparent']
         },
-        colors: ['#009efb', '#FC9F5B', '#e64141'],
+        colors: ['#089bab', '#FC9F5B', '#e64141'],
         series: [{
             name: 'Net Profit',
             data: [44, 55, 57, 56, 61, 58]
@@ -3427,7 +3427,7 @@ if (jQuery('#apex-column').length) {
         },
         tooltip: {
             y: {
-                formatter: function(val) {
+                formatter: function (val) {
                     return "$ " + val + " thousands"
                 }
             }
@@ -3458,7 +3458,7 @@ if (jQuery('#apex-mixed-chart').length) {
                 columnWidth: '50%'
             }
         },
-        colors: ['#009efb','#e64141' ,'#FC9F5B'],
+        colors: ['#089bab', '#e64141', '#FC9F5B'],
         series: [{
             name: 'Facebook',
             type: 'column',
@@ -3497,7 +3497,7 @@ if (jQuery('#apex-mixed-chart').length) {
             shared: true,
             intersect: false,
             y: {
-                formatter: function(y) {
+                formatter: function (y) {
                     if (typeof y !== "undefined") {
                         return y.toFixed(0) + " views";
                     }
@@ -3512,13 +3512,13 @@ if (jQuery('#apex-mixed-chart').length) {
             },
             markers: {
                 customHTML: [
-                    function() {
+                    function () {
                         return ''
                     },
-                    function() {
+                    function () {
                         return ''
                     },
-                    function() {
+                    function () {
                         return ''
                     }
                 ]
@@ -3706,7 +3706,7 @@ if (jQuery('#apex-candlestick-chart').length) {
             }, {
                 x: new Date(1538875800000),
                 y: [6593.15, 6605, 6592, 6603.06]
-            }, ]
+            },]
         }],
         title: {
             text: 'CandleStick Chart',
@@ -3775,7 +3775,7 @@ if (jQuery('#apex-bubble-chart').length) {
         fill: {
             type: 'gradient',
         },
-        colors: ['#009efb', '#FC9F5B', '#e64141'],
+        colors: ['#089bab', '#FC9F5B', '#e64141'],
         title: {
             text: '3D Bubble Chart'
         },
@@ -3813,7 +3813,7 @@ if (jQuery('#apex-scatter-chart').length) {
                 type: 'xy'
             }
         },
-        colors: ['#009efb', '#e64141', '#FC9F5B'],
+        colors: ['#089bab', '#e64141', '#FC9F5B'],
         series: [{
             name: "SAMPLE A",
             data: [
@@ -3884,7 +3884,7 @@ if (jQuery('#apex-scatter-chart').length) {
         xaxis: {
             tickAmount: 5,
             labels: {
-                formatter: function(val) {
+                formatter: function (val) {
                     return parseFloat(val).toFixed(1)
                 }
             }
@@ -3919,7 +3919,7 @@ if (jQuery('#apex-radialbar-chart').length) {
                     total: {
                         show: true,
                         label: 'Total',
-                        formatter: function(w) {
+                        formatter: function (w) {
                             // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
                             return 249
                         }
@@ -3929,7 +3929,7 @@ if (jQuery('#apex-radialbar-chart').length) {
         },
         series: [44, 55, 67, 83],
         labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],
-        colors: ['#009efb', '#FC9F5B', '#75DDDD', '#ffb57e'],
+        colors: ['#089bab', '#FC9F5B', '#75DDDD', '#ffb57e'],
 
     }
 
@@ -3948,7 +3948,7 @@ if (jQuery('#apex-pie-chart').length) {
         },
         labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
         series: [44, 55, 13, 43, 22],
-        colors: ['#009efb', '#FC9F5B', '#f26361', '#57de53', '#61e2fc'],
+        colors: ['#089bab', '#FC9F5B', '#f26361', '#57de53', '#61e2fc'],
         responsive: [{
             breakpoint: 480,
             options: {
@@ -3973,7 +3973,7 @@ if (jQuery('#apex-pie-chart').length) {
 // Am Charts 
 
 if (jQuery('#am-simple-chart').length) {
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
@@ -3981,7 +3981,7 @@ if (jQuery('#am-simple-chart').length) {
 
         // Create chart instance
         var chart = am4core.create("am-simple-chart", am4charts.XYChart);
-        chart.colors.list = [am4core.color("#009efb"), ];
+        chart.colors.list = [am4core.color("#089bab"),];
 
         // Add data
         chart.data = [{
@@ -4011,7 +4011,7 @@ if (jQuery('#am-simple-chart').length) {
         categoryAxis.renderer.grid.template.location = 0;
         categoryAxis.renderer.minGridDistance = 30;
 
-        categoryAxis.renderer.labels.template.adapter.add("dy", function(dy, target) {
+        categoryAxis.renderer.labels.template.adapter.add("dy", function (dy, target) {
             if (target.dataItem && target.dataItem.index & 2 == 2) {
                 return dy + 25;
             }
@@ -4036,7 +4036,7 @@ if (jQuery('#am-simple-chart').length) {
 }
 
 if (jQuery('#am-columnlinr-chart').length) {
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
@@ -4044,7 +4044,7 @@ if (jQuery('#am-columnlinr-chart').length) {
 
         // Create chart instance
         var chart = am4core.create("am-columnlinr-chart", am4charts.XYChart);
-        chart.colors.list = [am4core.color("#009efb")];
+        chart.colors.list = [am4core.color("#089bab")];
 
         // Export
         chart.exporting.menu = new am4core.ExportMenu();
@@ -4107,7 +4107,7 @@ if (jQuery('#am-columnlinr-chart').length) {
         lineSeries.dataFields.valueY = "expenses";
         lineSeries.dataFields.categoryX = "year";
 
-        lineSeries.stroke = am4core.color("#009efb");
+        lineSeries.stroke = am4core.color("#089bab");
         lineSeries.strokeWidth = 3;
         lineSeries.propertyFields.strokeDasharray = "lineDash";
         lineSeries.tooltip.label.textAlign = "middle";
@@ -4126,7 +4126,7 @@ if (jQuery('#am-columnlinr-chart').length) {
 }
 
 if (jQuery('#am-stackedcolumn-chart').length) {
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
@@ -4134,9 +4134,9 @@ if (jQuery('#am-stackedcolumn-chart').length) {
 
         // Create chart instance
         var chart = am4core.create("am-stackedcolumn-chart", am4charts.XYChart);
-        chart.colors.list = [am4core.color("#009efb"),
-            am4core.color("#FC9F5B"),
-            am4core.color("#e64141")
+        chart.colors.list = [am4core.color("#089bab"),
+        am4core.color("#FC9F5B"),
+        am4core.color("#e64141")
         ];
 
 
@@ -4211,15 +4211,15 @@ if (jQuery('#am-stackedcolumn-chart').length) {
 }
 
 if (jQuery('#am-barline-chart').length) {
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
         // Themes end
 
         var chart = am4core.create("am-barline-chart", am4charts.XYChart);
-        chart.colors.list = [am4core.color("#009efb"),
-            am4core.color("#FC9F5B")
+        chart.colors.list = [am4core.color("#089bab"),
+        am4core.color("#FC9F5B")
         ];
 
         chart.data = [{
@@ -4288,7 +4288,7 @@ if (jQuery('#am-barline-chart').length) {
 }
 
 if (jQuery('#am-datedata-chart').length) {
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
@@ -4296,7 +4296,7 @@ if (jQuery('#am-datedata-chart').length) {
 
         // Create chart instance
         var chart = am4core.create("am-datedata-chart", am4charts.XYChart);
-        chart.colors.list = [am4core.color("#009efb")];
+        chart.colors.list = [am4core.color("#089bab")];
 
         // Add data
         chart.data = [{
@@ -4921,7 +4921,7 @@ if (jQuery('#am-datedata-chart').length) {
     }); // end am4core.ready()
 }
 if (jQuery('#am-linescrollzomm-chart').length) {
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
@@ -4929,7 +4929,7 @@ if (jQuery('#am-linescrollzomm-chart').length) {
 
         // Create chart instance
         var chart = am4core.create("am-linescrollzomm-chart", am4charts.XYChart);
-        chart.colors.list = [am4core.color("#009efb")];
+        chart.colors.list = [am4core.color("#089bab")];
 
         // Add data
         chart.data = generateChartData();
@@ -4984,7 +4984,7 @@ if (jQuery('#am-linescrollzomm-chart').length) {
 }
 
 if (jQuery('#am-zoomable-chart').length) {
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
@@ -4992,7 +4992,7 @@ if (jQuery('#am-zoomable-chart').length) {
 
         // Create chart instance
         var chart = am4core.create("am-zoomable-chart", am4charts.XYChart);
-        chart.colors.list = [am4core.color("#009efb")];
+        chart.colors.list = [am4core.color("#089bab")];
 
         // Add data
         chart.data = [{
@@ -5575,7 +5575,7 @@ if (jQuery('#am-zoomable-chart').length) {
     }); // end am4core.ready()
 }
 if (jQuery('#am-radar-chart').length) {
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
@@ -5583,7 +5583,7 @@ if (jQuery('#am-radar-chart').length) {
 
         /* Create chart instance */
         var chart = am4core.create("am-radar-chart", am4charts.RadarChart);
-        chart.colors.list = [am4core.color("#009efb")];
+        chart.colors.list = [am4core.color("#089bab")];
 
         /* Add data */
         chart.data = [{
@@ -5633,7 +5633,7 @@ if (jQuery('#am-radar-chart').length) {
     }); // end am4core.ready()
 }
 if (jQuery('#am-polar-chart').length) {
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
@@ -5679,7 +5679,7 @@ if (jQuery('#am-polar-chart').length) {
         var range = categoryAxis.axisRanges.create();
         range.category = "NW";
         range.endCategory = "NW";
-        range.axisFill.fill = am4core.color("#009efb");
+        range.axisFill.fill = am4core.color("#089bab");
         range.axisFill.fillOpacity = 0.3;
 
         var range2 = categoryAxis.axisRanges.create();
@@ -5707,7 +5707,7 @@ if (jQuery('#am-polar-chart').length) {
 }
 
 if (jQuery('#am-polarscatter-chart').length) {
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
@@ -5715,7 +5715,7 @@ if (jQuery('#am-polarscatter-chart').length) {
 
         /* Create chart instance */
         var chart = am4core.create("am-polarscatter-chart", am4charts.RadarChart);
-        chart.colors.list = [am4core.color("#009efb"), am4core.color("#FC9F5B"), am4core.color("#e64141")];
+        chart.colors.list = [am4core.color("#089bab"), am4core.color("#FC9F5B"), am4core.color("#e64141")];
 
         /* Add data */
         chart.data = [{
@@ -5981,7 +5981,7 @@ if (jQuery('#am-polarscatter-chart').length) {
     }); // end am4core.ready()
 }
 if (jQuery('#am-3dpie-chart').length) {
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
@@ -6014,8 +6014,8 @@ if (jQuery('#am-3dpie-chart').length) {
         }];
 
         var series = chart.series.push(new am4charts.PieSeries3D());
-        series.colors.list = [am4core.color("#009efb"), am4core.color("#FC9F5B"), am4core.color("#57de53"),
-            am4core.color("#f26361"), am4core.color("#ababab"), am4core.color("#61e2fc")
+        series.colors.list = [am4core.color("#089bab"), am4core.color("#FC9F5B"), am4core.color("#57de53"),
+        am4core.color("#f26361"), am4core.color("#ababab"), am4core.color("#61e2fc")
         ];
         series.dataFields.value = "litres";
         series.dataFields.category = "country";
@@ -6024,7 +6024,7 @@ if (jQuery('#am-3dpie-chart').length) {
 }
 
 if (jQuery('#am-layeredcolumn-chart').length) {
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
@@ -6032,7 +6032,7 @@ if (jQuery('#am-layeredcolumn-chart').length) {
 
         // Create chart instance
         var chart = am4core.create("am-layeredcolumn-chart", am4charts.XYChart);
-        chart.colors.list = [am4core.color("#FC9F5B"), am4core.color("#009efb")];
+        chart.colors.list = [am4core.color("#FC9F5B"), am4core.color("#089bab")];
 
         // Add percent sign to all numbers
         chart.numberFormatter.numberFormat = "#.#'%'";
@@ -6124,7 +6124,7 @@ if (jQuery('#morris-line-chart').length) {
         // Labels for the ykeys -- will be displayed when you hover over the
         // chart.
         labels: ['Value'],
-        lineColors: ['#009efb']
+        lineColors: ['#089bab']
     });
 }
 
@@ -6155,11 +6155,11 @@ if (jQuery('#morris-bar-chart').length) {
         xkey: 'x',
         ykeys: ['y', 'z', 'a'],
         labels: ['Y', 'Z', 'A'],
-        barColors: ['#009efb', '#FC9F5B ', '#e64141'],
-        hoverCallback: function(index, options, content, row) {
+        barColors: ['#089bab', '#FC9F5B ', '#e64141'],
+        hoverCallback: function (index, options, content, row) {
             return '';
         }
-    }).on('click', function(i, row) {
+    }).on('click', function (i, row) {
         console.log(i, row);
     });
 }
@@ -6212,8 +6212,8 @@ if (jQuery('#morris-area-chart').length) {
         xkey: 'y',
         ykeys: ['item1', 'item2'],
         labels: ['Item 1', 'Item 2'],
-        lineColors: ['#009efb', '#FC9F5B '],
-        hoverCallback: function(index, options, content, row) {
+        lineColors: ['#089bab', '#FC9F5B '],
+        hoverCallback: function (index, options, content, row) {
             return '';
         }
     });
@@ -6223,7 +6223,7 @@ if (jQuery('#morris-donut-chart').length) {
     var donut = new Morris.Donut({
         element: 'morris-donut-chart',
         resize: true,
-        colors: ["#009efb", "#FC9F5B", "#f26361"],
+        colors: ["#089bab", "#FC9F5B", "#f26361"],
         data: [{
             label: "Download Sales",
             value: 12
@@ -6273,7 +6273,7 @@ if (jQuery('#high-basicline-chart').length) {
         series: [{
             name: 'Installation',
             data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175],
-            color: '#009efb'
+            color: '#089bab'
         }, {
             name: 'Manufacturing',
             data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434],
@@ -6329,7 +6329,7 @@ if (jQuery('#high-area-chart').length) {
         xAxis: {
             allowDecimals: false,
             labels: {
-                formatter: function() {
+                formatter: function () {
                     return this.value; // clean, unformatted number for year
                 }
             },
@@ -6342,7 +6342,7 @@ if (jQuery('#high-area-chart').length) {
                 text: 'Nuclear weapon states'
             },
             labels: {
-                formatter: function() {
+                formatter: function () {
                     return this.value / 1000 + 'k';
                 }
             }
@@ -6377,7 +6377,7 @@ if (jQuery('#high-area-chart').length) {
                 10577, 10527, 10475, 10421, 10358, 10295, 10104, 9914, 9620, 9326,
                 5113, 5113, 4954, 4804, 4761, 4717, 4368, 4018
             ],
-            color: '#009efb'
+            color: '#089bab'
         }, {
             name: 'USSR/Russia',
             data: [null, null, null, null, null, null, null, null, null, null,
@@ -6448,7 +6448,7 @@ if (jQuery('#high-columnndbar-chart').length) {
         series: [{
             name: 'Year 1900',
             data: [133, 156, 947, 408, 6],
-            color: '#009efb'
+            color: '#089bab'
         }, {
             name: 'Year 2000',
             data: [814, 841, 3714, 727, 31],
@@ -6494,7 +6494,7 @@ if (jQuery('#high-pie-chart').length) {
                 y: 61.41,
                 sliced: true,
                 selected: true,
-                color: '#009efb'
+                color: '#089bab'
             }, {
                 name: 'Internet Explorer',
                 y: 11.84,
@@ -6613,7 +6613,7 @@ if (jQuery('#high-scatterplot-chart').length) {
                 [164.0, 53.8],
                 [160.9, 54.4]
             ],
-            color: '#009efb'
+            color: '#089bab'
 
         }, {
             name: 'Male',
@@ -6705,7 +6705,7 @@ if (jQuery('#high-linendcolumn-chart').length) {
             type: 'column',
             yAxis: 1,
             data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-            color: '#009efb',
+            color: '#089bab',
             tooltip: {
                 valueSuffix: ' mm'
             }
@@ -6729,11 +6729,11 @@ if (jQuery('#high-dynamic-chart').length) {
             animation: Highcharts.svg, // don't animate in old IE
             marginRight: 10,
             events: {
-                load: function() {
+                load: function () {
 
                     // set up the updating of the chart each second
                     var series = this.series[0];
-                    setInterval(function() {
+                    setInterval(function () {
                         var x = (new Date()).getTime(), // current time
                             y = Math.random();
                         series.addPoint([x, y], true, true);
@@ -6754,7 +6754,7 @@ if (jQuery('#high-dynamic-chart').length) {
             announceNewData: {
                 enabled: true,
                 minAnnounceInterval: 15000,
-                announcementFormatter: function(allSeries, newSeries, newPoint) {
+                announcementFormatter: function (allSeries, newSeries, newPoint) {
                     if (newPoint) {
                         return 'New point added. Value: ' + newPoint.y;
                     }
@@ -6794,8 +6794,8 @@ if (jQuery('#high-dynamic-chart').length) {
 
         series: [{
             name: 'Random data',
-            color: '#009efb',
-            data: (function() {
+            color: '#089bab',
+            data: (function () {
                 // generate an array of random data
                 var data = [],
                     time = (new Date()).getTime(),
@@ -6839,7 +6839,7 @@ if (jQuery('#high-3d-chart').length) {
         },
         series: [{
             data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-            color: '#009efb'
+            color: '#089bab'
         }]
     });
 
@@ -6850,7 +6850,7 @@ if (jQuery('#high-3d-chart').length) {
     }
 
     // Activate the sliders
-    $('#sliders input').on('input change', function() {
+    $('#sliders input').on('input change', function () {
         chart.options.chart.options3d[this.id] = parseFloat(this.value);
         showValues();
         chart.redraw(false);
@@ -6862,112 +6862,112 @@ if (jQuery('#high-3d-chart').length) {
 if (jQuery('#high-gauges-chart').length) {
     Highcharts.chart('high-gauges-chart', {
 
-            chart: {
-                type: 'gauge',
-                plotBackgroundColor: null,
-                plotBackgroundImage: null,
-                plotBorderWidth: 0,
-                plotShadow: false
-            },
-
-            title: {
-                text: 'Speedometer'
-            },
-
-            pane: {
-                startAngle: -150,
-                endAngle: 150,
-                background: [{
-                    backgroundColor: {
-                        linearGradient: {
-                            x1: 0,
-                            y1: 0,
-                            x2: 0,
-                            y2: 1
-                        },
-                        stops: [
-                            [0, '#FFF'],
-                            [1, '#333']
-                        ]
-                    },
-                    borderWidth: 0,
-                    outerRadius: '109%'
-                }, {
-                    backgroundColor: {
-                        linearGradient: {
-                            x1: 0,
-                            y1: 0,
-                            x2: 0,
-                            y2: 1
-                        },
-                        stops: [
-                            [0, '#333'],
-                            [1, '#FFF']
-                        ]
-                    },
-                    borderWidth: 1,
-                    outerRadius: '107%'
-                }, {
-
-                }, {
-                    backgroundColor: '#DDD',
-                    borderWidth: 0,
-                    outerRadius: '105%',
-                    innerRadius: '103%'
-                }]
-            },
-
-
-            yAxis: {
-                min: 0,
-                max: 200,
-
-                minorTickInterval: 'auto',
-                minorTickWidth: 1,
-                minorTickLength: 10,
-                minorTickPosition: 'inside',
-                minorTickColor: '#666',
-
-                tickPixelInterval: 30,
-                tickWidth: 2,
-                tickPosition: 'inside',
-                tickLength: 10,
-                tickColor: '#666',
-                labels: {
-                    step: 2,
-                    rotation: 'auto'
-                },
-                title: {
-                    text: 'km/h'
-                },
-                plotBands: [{
-                    from: 0,
-                    to: 120,
-                    color: '#55BF3B'
-                }, {
-                    from: 120,
-                    to: 160,
-                    color: '#DDDF0D'
-                }, {
-                    from: 160,
-                    to: 200,
-                    color: '#DF5353'
-                }]
-            },
-
-            series: [{
-                name: 'Speed',
-                data: [80],
-                tooltip: {
-                    valueSuffix: ' km/h'
-                }
-            }]
-
+        chart: {
+            type: 'gauge',
+            plotBackgroundColor: null,
+            plotBackgroundImage: null,
+            plotBorderWidth: 0,
+            plotShadow: false
         },
 
-        function(chart) {
+        title: {
+            text: 'Speedometer'
+        },
+
+        pane: {
+            startAngle: -150,
+            endAngle: 150,
+            background: [{
+                backgroundColor: {
+                    linearGradient: {
+                        x1: 0,
+                        y1: 0,
+                        x2: 0,
+                        y2: 1
+                    },
+                    stops: [
+                        [0, '#FFF'],
+                        [1, '#333']
+                    ]
+                },
+                borderWidth: 0,
+                outerRadius: '109%'
+            }, {
+                backgroundColor: {
+                    linearGradient: {
+                        x1: 0,
+                        y1: 0,
+                        x2: 0,
+                        y2: 1
+                    },
+                    stops: [
+                        [0, '#333'],
+                        [1, '#FFF']
+                    ]
+                },
+                borderWidth: 1,
+                outerRadius: '107%'
+            }, {
+
+            }, {
+                backgroundColor: '#DDD',
+                borderWidth: 0,
+                outerRadius: '105%',
+                innerRadius: '103%'
+            }]
+        },
+
+
+        yAxis: {
+            min: 0,
+            max: 200,
+
+            minorTickInterval: 'auto',
+            minorTickWidth: 1,
+            minorTickLength: 10,
+            minorTickPosition: 'inside',
+            minorTickColor: '#666',
+
+            tickPixelInterval: 30,
+            tickWidth: 2,
+            tickPosition: 'inside',
+            tickLength: 10,
+            tickColor: '#666',
+            labels: {
+                step: 2,
+                rotation: 'auto'
+            },
+            title: {
+                text: 'km/h'
+            },
+            plotBands: [{
+                from: 0,
+                to: 120,
+                color: '#55BF3B'
+            }, {
+                from: 120,
+                to: 160,
+                color: '#DDDF0D'
+            }, {
+                from: 160,
+                to: 200,
+                color: '#DF5353'
+            }]
+        },
+
+        series: [{
+            name: 'Speed',
+            data: [80],
+            tooltip: {
+                valueSuffix: ' km/h'
+            }
+        }]
+
+    },
+
+        function (chart) {
             if (!chart.renderer.forExport) {
-                setInterval(function() {
+                setInterval(function () {
                     var point = chart.series[0].points[0],
                         newVal,
                         inc = Math.round((Math.random() - 0.5) * 20);
@@ -7005,7 +7005,7 @@ if (jQuery('#high-barwithnagative-chart').length) {
         },
         accessibility: {
             point: {
-                descriptionFormatter: function(point) {
+                descriptionFormatter: function (point) {
                     var index = point.index + 1,
                         category = point.category,
                         val = Math.abs(point.y),
@@ -7041,7 +7041,7 @@ if (jQuery('#high-barwithnagative-chart').length) {
                 text: null
             },
             labels: {
-                formatter: function() {
+                formatter: function () {
                     return Math.abs(this.value) + '%';
                 }
             },
@@ -7058,7 +7058,7 @@ if (jQuery('#high-barwithnagative-chart').length) {
         },
 
         tooltip: {
-            formatter: function() {
+            formatter: function () {
                 return '<b>' + this.series.name + ', age ' + this.point.category + '</b><br/>' +
                     'Population: ' + Highcharts.numberFormat(Math.abs(this.point.y), 1) + '%';
             }
@@ -7075,7 +7075,7 @@ if (jQuery('#high-barwithnagative-chart').length) {
                 2.9, 3.2, 3.1, 2.9, 3.4,
                 0.0
             ],
-            color: '#009efb'
+            color: '#089bab'
         }]
     });
 }
@@ -7089,7 +7089,7 @@ if (jQuery('#home-chart-1').length) {
             name: 'series2',
             data: [11, 32, 45, 32, 34, 52, 41]
         }],
-        colors: ['#009efb', '#e64141'],
+        colors: ['#089bab', '#e64141'],
         chart: {
             height: 350,
             type: 'area'
@@ -7121,7 +7121,7 @@ if (jQuery('#home-pie-chart').length) {
         chart: {
             type: 'donut',
         },
-        colors: ['#009efb', '#e64141'],
+        colors: ['#089bab', '#e64141'],
         responsive: [{
             breakpoint: 480,
             options: {
@@ -7139,7 +7139,7 @@ if (jQuery('#home-pie-chart').length) {
     chart.render();
 }
 if (jQuery('#chart-task').length) {
-    am4core.ready(function() {
+    am4core.ready(function () {
 
 
         am4core.useTheme(am4themes_animated);
@@ -7173,8 +7173,8 @@ if (jQuery('#chart-task').length) {
         chart.endAngle = 360;
 
         var series = chart.series.push(new am4charts.PieSeries());
-        series.colors.list = [am4core.color("#009efb"), am4core.color("#c25a72"), am4core.color("#885e72"),
-            am4core.color("#726071"), am4core.color("#5a6171"), am4core.color("#506271")
+        series.colors.list = [am4core.color("#089bab"), am4core.color("#c25a72"), am4core.color("#885e72"),
+        am4core.color("#726071"), am4core.color("#5a6171"), am4core.color("#506271")
         ];
         series.dataFields.value = "value";
         series.dataFields.category = "country";
@@ -7204,7 +7204,7 @@ if (jQuery('#chart-home3-01').length) {
             name: 'Series 3',
             data: [44, 76, 78, 13, 43, 10],
         }],
-        colors: ['#009efb', '#e64141', '#777D74'],
+        colors: ['#089bab', '#e64141', '#777D74'],
         chart: {
             height: 350,
             type: 'radar',
@@ -7236,405 +7236,405 @@ if (jQuery('#chart-home3-01').length) {
     chart.render();
 }
 if (jQuery("#home-chart-03").length) {
-    am4core.ready(function() {
+    am4core.ready(function () {
 
-    // Themes begin
-    am4core.useTheme(am4themes_animated);
-    // Themes end
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
 
-    var chart = am4core.create("home-chart-03", am4charts.PieChart);
-    chart.hiddenState.properties.opacity = 0; 
+        var chart = am4core.create("home-chart-03", am4charts.PieChart);
+        chart.hiddenState.properties.opacity = 0;
 
-    chart.data = [
-      {
-        country: "USA",
-        value: 401
-      },
-      {
-        country: "India",
-        value: 300
-      },
-      {
-        country: "Australia",
-        value: 200
-      },
-      {
-        country: "Brazil",
-        value: 100
-      }
-    ];
-    chart.radius = am4core.percent(70);
-    chart.innerRadius = am4core.percent(40);
-    chart.startAngle = 180;
-    chart.endAngle = 360;  
+        chart.data = [
+            {
+                country: "USA",
+                value: 401
+            },
+            {
+                country: "India",
+                value: 300
+            },
+            {
+                country: "Australia",
+                value: 200
+            },
+            {
+                country: "Brazil",
+                value: 100
+            }
+        ];
+        chart.radius = am4core.percent(70);
+        chart.innerRadius = am4core.percent(40);
+        chart.startAngle = 180;
+        chart.endAngle = 360;
 
-    var series = chart.series.push(new am4charts.PieSeries());
-    series.dataFields.value = "value";
-    series.dataFields.category = "country";
-    series.colors.list = [am4core.color("#009efb"), am4core.color("#2ca5b2"), am4core.color("#faa264"),
+        var series = chart.series.push(new am4charts.PieSeries());
+        series.dataFields.value = "value";
+        series.dataFields.category = "country";
+        series.colors.list = [am4core.color("#089bab"), am4core.color("#2ca5b2"), am4core.color("#faa264"),
         am4core.color("#fcb07a")];
 
-    series.slices.template.cornerRadius = 0;
-    series.slices.template.innerCornerRadius = 0;
-    series.slices.template.draggable = true;
-    series.slices.template.inert = true;
-    series.alignLabels = false;
+        series.slices.template.cornerRadius = 0;
+        series.slices.template.innerCornerRadius = 0;
+        series.slices.template.draggable = true;
+        series.slices.template.inert = true;
+        series.alignLabels = false;
 
-    series.hiddenState.properties.startAngle = 90;
-    series.hiddenState.properties.endAngle = 90;
+        series.hiddenState.properties.startAngle = 90;
+        series.hiddenState.properties.endAngle = 90;
 
-    chart.legend = new am4charts.Legend();
+        chart.legend = new am4charts.Legend();
 
-    }); 
+    });
 }
- jQuery("#home-chart-05").length && am4core.ready(function() {
+jQuery("#home-chart-05").length && am4core.ready(function () {
     var options = {
-          series: [{
-          name: 'PRODUCT A',
-          data: [44, 55, 41, 67, 22, 43]
+        series: [{
+            name: 'PRODUCT A',
+            data: [44, 55, 41, 67, 22, 43]
         }, {
-          name: 'PRODUCT B',
-          data: [13, 23, 20, 8, 13, 27]
+            name: 'PRODUCT B',
+            data: [13, 23, 20, 8, 13, 27]
         }, {
-          name: 'PRODUCT C',
-          data: [11, 17, 15, 15, 21, 14]
+            name: 'PRODUCT C',
+            data: [11, 17, 15, 15, 21, 14]
         }],
-        colors: ['#009efb','#FC9F5B','#5bc5d1'],
-          chart: {
-          type: 'bar',
-          height: 350,
-          stacked: true,
-          toolbar: {
-            show: true
-          },
-          zoom: {
-            enabled: true
-          }
+        colors: ['#089bab', '#FC9F5B', '#5bc5d1'],
+        chart: {
+            type: 'bar',
+            height: 350,
+            stacked: true,
+            toolbar: {
+                show: true
+            },
+            zoom: {
+                enabled: true
+            }
         },
         responsive: [{
-          breakpoint: 480,
-          options: {
-            legend: {
-              position: 'bottom',
-              offsetX: -10,
-              offsetY: 0
+            breakpoint: 480,
+            options: {
+                legend: {
+                    position: 'bottom',
+                    offsetX: -10,
+                    offsetY: 0
+                }
             }
-          }
         }],
         plotOptions: {
-          bar: {
-            horizontal: false,
-          },
+            bar: {
+                horizontal: false,
+            },
         },
         xaxis: {
-          type: 'datetime',
-          categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT',
-            '01/05/2011 GMT', '01/06/2011 GMT'
-          ],
+            type: 'datetime',
+            categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT',
+                '01/05/2011 GMT', '01/06/2011 GMT'
+            ],
         },
         legend: {
-          position: 'right',
-          offsetY: 40
+            position: 'right',
+            offsetY: 40
         },
         fill: {
-          opacity: 1
+            opacity: 1
         }
-        };
+    };
 
-        var chart = new ApexCharts(document.querySelector("#home-chart-05"), options);
-        chart.render();
+    var chart = new ApexCharts(document.querySelector("#home-chart-05"), options);
+    chart.render();
 })
- jQuery("#home-chart-06").length && am4core.ready(function() {
+jQuery("#home-chart-06").length && am4core.ready(function () {
     var options = {
-          series: [{
-          name: 'series1',
-          data: [31, 40, 28, 51, 42, 109, 100]
+        series: [{
+            name: 'series1',
+            data: [31, 40, 28, 51, 42, 109, 100]
         }],
-          chart: {
-          height: 350,
-          type: 'area'
+        chart: {
+            height: 350,
+            type: 'area'
         },
-        colors: ["#009efb"],
+        colors: ["#089bab"],
         dataLabels: {
-          enabled: false
+            enabled: false
         },
         stroke: {
-          curve: 'smooth'
+            curve: 'smooth'
         },
         xaxis: {
-          type: 'datetime',
-          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+            type: 'datetime',
+            categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
         },
         tooltip: {
-          x: {
-            format: 'dd/MM/yy HH:mm'
-          },
+            x: {
+                format: 'dd/MM/yy HH:mm'
+            },
         },
-        };
+    };
 
-        var chart = new ApexCharts(document.querySelector("#home-chart-06"), options);
-        chart.render();
+    var chart = new ApexCharts(document.querySelector("#home-chart-06"), options);
+    chart.render();
 });
-  jQuery("#home-servey-chart").length && am4core.ready(function() {
-      var options = {
-          series: [{
-          name: 'Cash Flow',
-          data: [1.45, 5.42, 5.9, -0.42, -12.6, -18.1, -18.2, -14.16, -11.1, -6.09, 0.34, 3.88, 13.07,
-            5.8, 2, 7.37, 8.1, 13.57, 15.75, 17.1, 19.8, -27.03, -54.4, -47.2, -43.3, -18.6, -
-            48.6, -41.1, -39.6, -37.6, -29.4, -21.4, -2.4
-          ]
+jQuery("#home-servey-chart").length && am4core.ready(function () {
+    var options = {
+        series: [{
+            name: 'Cash Flow',
+            data: [1.45, 5.42, 5.9, -0.42, -12.6, -18.1, -18.2, -14.16, -11.1, -6.09, 0.34, 3.88, 13.07,
+                5.8, 2, 7.37, 8.1, 13.57, 15.75, 17.1, 19.8, -27.03, -54.4, -47.2, -43.3, -18.6, -
+                48.6, -41.1, -39.6, -37.6, -29.4, -21.4, -2.4
+            ]
         }],
-          chart: {
-          type: 'bar',
-          height: 350
+        chart: {
+            type: 'bar',
+            height: 350
         },
         plotOptions: {
-          bar: {
-            colors: {
-              ranges: [{
-                from: -100,
-                to: -46,
-                color: '#e64141'
-              }, {
-                from: -45,
-                to: 0,
-                color: '#009efb'
-              }, {
-                from: 0,
-                to: 20,
-                color: '#FC9F5B'
-              }]
-            },
-            columnWidth: '80%',
-          }
+            bar: {
+                colors: {
+                    ranges: [{
+                        from: -100,
+                        to: -46,
+                        color: '#e64141'
+                    }, {
+                        from: -45,
+                        to: 0,
+                        color: '#089bab'
+                    }, {
+                        from: 0,
+                        to: 20,
+                        color: '#FC9F5B'
+                    }]
+                },
+                columnWidth: '80%',
+            }
         },
         dataLabels: {
-          enabled: false,
+            enabled: false,
         },
         yaxis: {
-          title: {
-            text: 'Growth',
-          },
-          labels: {
-            formatter: function (y) {
-              return y.toFixed(0) + "%";
+            title: {
+                text: 'Growth',
+            },
+            labels: {
+                formatter: function (y) {
+                    return y.toFixed(0) + "%";
+                }
             }
-          }
         },
         xaxis: {
-          type: 'datetime',
-          categories: [
-            '2011-01-01', '2011-02-01', '2011-03-01', '2011-04-01', '2011-05-01', '2011-06-01',
-            '2011-07-01', '2011-08-01', '2011-09-01', '2011-10-01', '2011-11-01', '2011-12-01',
-            '2012-01-01', '2012-02-01', '2012-03-01', '2012-04-01', '2012-05-01', '2012-06-01',
-            '2012-07-01', '2012-08-01', '2012-09-01', '2012-10-01', '2012-11-01', '2012-12-01',
-            '2013-01-01', '2013-02-01', '2013-03-01', '2013-04-01', '2013-05-01', '2013-06-01',
-            '2013-07-01', '2013-08-01', '2013-09-01'
-          ],
-          labels: {
-            rotate: -90
-          }
-        }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#home-servey-chart"), options);
-        chart.render();
-  });
-   jQuery("#patient-chart-1").length && am4core.ready(function() {
-    var options = {
-          series: [{
-          name: 'Servings',
-          data: [44, 55, 41, 67, 22, 43, 21, 33, 45, 31]
-        }],
-          annotations: {
-          points: [{
-            x: 'Bananas',
-            seriesIndex: 0,
-            label: {
-              borderColor: '#775DD0',
-              offsetY: 0,
-              style: {
-                color: '#fff',
-                background: '#775DD0',
-              },
-              text: 'Bananas are good',
+            type: 'datetime',
+            categories: [
+                '2011-01-01', '2011-02-01', '2011-03-01', '2011-04-01', '2011-05-01', '2011-06-01',
+                '2011-07-01', '2011-08-01', '2011-09-01', '2011-10-01', '2011-11-01', '2011-12-01',
+                '2012-01-01', '2012-02-01', '2012-03-01', '2012-04-01', '2012-05-01', '2012-06-01',
+                '2012-07-01', '2012-08-01', '2012-09-01', '2012-10-01', '2012-11-01', '2012-12-01',
+                '2013-01-01', '2013-02-01', '2013-03-01', '2013-04-01', '2013-05-01', '2013-06-01',
+                '2013-07-01', '2013-08-01', '2013-09-01'
+            ],
+            labels: {
+                rotate: -90
             }
-          }]
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#home-servey-chart"), options);
+    chart.render();
+});
+jQuery("#patient-chart-1").length && am4core.ready(function () {
+    var options = {
+        series: [{
+            name: 'Servings',
+            data: [44, 55, 41, 67, 22, 43, 21, 33, 45, 31]
+        }],
+        annotations: {
+            points: [{
+                x: 'Bananas',
+                seriesIndex: 0,
+                label: {
+                    borderColor: '#775DD0',
+                    offsetY: 0,
+                    style: {
+                        color: '#fff',
+                        background: '#775DD0',
+                    },
+                    text: 'Bananas are good',
+                }
+            }]
         },
         chart: {
-          height: 350,
-          type: 'bar',
+            height: 350,
+            type: 'bar',
         },
-        colors:['#009efb'],
+        colors: ['#089bab'],
         plotOptions: {
-          bar: {
-            columnWidth: '50%',
-            endingShape: 'rounded'  
-          }
+            bar: {
+                columnWidth: '50%',
+                endingShape: 'rounded'
+            }
         },
         dataLabels: {
-          enabled: false
+            enabled: false
         },
         stroke: {
-          width: 2
+            width: 2
         },
-        
+
         grid: {
-          row: {
-            colors: ['#fff', '#f2f2f2']
-          }
+            row: {
+                colors: ['#fff', '#f2f2f2']
+            }
         },
         xaxis: {
-          labels: {
-            rotate: -45
-          },
-          categories: ['A', 'B', 'C', 'D', 'E', 'F',
-            'G', 'H', 'I', 'J'
-          ],
-          tickPlacement: 'on'
+            labels: {
+                rotate: -45
+            },
+            categories: ['A', 'B', 'C', 'D', 'E', 'F',
+                'G', 'H', 'I', 'J'
+            ],
+            tickPlacement: 'on'
         },
         yaxis: {
-          title: {
-            text: 'Servings',
-          },
+            title: {
+                text: 'Servings',
+            },
         },
         fill: {
-          type: 'gradient',
-          gradient: {
-            shade: 'light',
-            type: "horizontal",
-            shadeIntensity: 0.25,
-            gradientToColors: undefined,
-            inverseColors: true,
-            opacityFrom: 0.85,
-            opacityTo: 0.85,
-            stops: [50, 0, 100]
-          },
+            type: 'gradient',
+            gradient: {
+                shade: 'light',
+                type: "horizontal",
+                shadeIntensity: 0.25,
+                gradientToColors: undefined,
+                inverseColors: true,
+                opacityFrom: 0.85,
+                opacityTo: 0.85,
+                stops: [50, 0, 100]
+            },
         }
-        };
+    };
 
-        var chart = new ApexCharts(document.querySelector("#patient-chart-1"), options);
-        chart.render();
-   });
+    var chart = new ApexCharts(document.querySelector("#patient-chart-1"), options);
+    chart.render();
+});
 
-   jQuery("#doc-chart-01").length && am4core.ready(function() {
-    am4core.ready(function() {
+jQuery("#doc-chart-01").length && am4core.ready(function () {
+    am4core.ready(function () {
 
-    // Themes begin
-    am4core.useTheme(am4themes_animated);
-    // Themes end
-
-
-    var chart = am4core.create("doc-chart-01", am4charts.RadarChart);
-
-    chart.data = [{
-     "country": "USA",
-     "visits": 2025
-    }, {
-     "country": "China",
-     "visits": 1882
-    }, {
-     "country": "Japan",
-     "visits": 1809
-    }, {
-     "country": "Germany",
-     "visits": 1322
-    }, {
-     "country": "UK",
-     "visits": 1122
-    }, {
-     "country": "France",
-     "visits": 1114
-    }, {
-     "country": "India",
-     "visits": 984
-    }, {
-     "country": "Spain",
-     "visits": 711
-    }, {
-     "country": "Netherlands",
-     "visits": 665
-    }, {
-     "country": "Russia",
-     "visits": 580
-    }, {
-     "country": "South Korea",
-     "visits": 443
-    }, {
-     "country": "Canada",
-     "visits": 441
-    }];
-
-    chart.innerRadius = am4core.percent(40)
-
-    var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.renderer.grid.template.location = 0;
-    categoryAxis.dataFields.category = "country";
-    categoryAxis.renderer.minGridDistance = 60;
-    categoryAxis.renderer.inversed = true;
-    categoryAxis.renderer.labels.template.location = 0.5;
-    categoryAxis.renderer.grid.template.strokeOpacity = 0.08;
-
-    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.min = 0;
-    valueAxis.extraMax = 0.1;
-    valueAxis.renderer.grid.template.strokeOpacity = 0.08;
-
-    chart.seriesContainer.zIndex = -10;
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
 
 
-    var series = chart.series.push(new am4charts.RadarColumnSeries());
-    series.dataFields.categoryX = "country";
-    series.dataFields.valueY = "visits";
-    series.tooltipText = "{valueY.value}"
-    series.columns.template.strokeOpacity = 0;
-    series.columns.template.radarColumn.cornerRadius = 5;
-    series.columns.template.radarColumn.innerCornerRadius = 0;
-    chart.colors.list = [am4core.color("#279fac"),
-            am4core.color("#ffb57e"),
-            am4core.color("#279fac"),
-            am4core.color("#ffb57e"),
-            am4core.color("#279fac"),
-            am4core.color("#ffb57e"),
-            am4core.color("#279fac"),
-            am4core.color("#ffb57e"),
-            am4core.color("#279fac"),
-            am4core.color("#ffb57e"),
-            am4core.color("#279fac"),
-            am4core.color("#ffb57e")
+        var chart = am4core.create("doc-chart-01", am4charts.RadarChart);
+
+        chart.data = [{
+            "country": "USA",
+            "visits": 2025
+        }, {
+            "country": "China",
+            "visits": 1882
+        }, {
+            "country": "Japan",
+            "visits": 1809
+        }, {
+            "country": "Germany",
+            "visits": 1322
+        }, {
+            "country": "UK",
+            "visits": 1122
+        }, {
+            "country": "France",
+            "visits": 1114
+        }, {
+            "country": "India",
+            "visits": 984
+        }, {
+            "country": "Spain",
+            "visits": 711
+        }, {
+            "country": "Netherlands",
+            "visits": 665
+        }, {
+            "country": "Russia",
+            "visits": 580
+        }, {
+            "country": "South Korea",
+            "visits": 443
+        }, {
+            "country": "Canada",
+            "visits": 441
+        }];
+
+        chart.innerRadius = am4core.percent(40)
+
+        var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.renderer.grid.template.location = 0;
+        categoryAxis.dataFields.category = "country";
+        categoryAxis.renderer.minGridDistance = 60;
+        categoryAxis.renderer.inversed = true;
+        categoryAxis.renderer.labels.template.location = 0.5;
+        categoryAxis.renderer.grid.template.strokeOpacity = 0.08;
+
+        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.min = 0;
+        valueAxis.extraMax = 0.1;
+        valueAxis.renderer.grid.template.strokeOpacity = 0.08;
+
+        chart.seriesContainer.zIndex = -10;
+
+
+        var series = chart.series.push(new am4charts.RadarColumnSeries());
+        series.dataFields.categoryX = "country";
+        series.dataFields.valueY = "visits";
+        series.tooltipText = "{valueY.value}"
+        series.columns.template.strokeOpacity = 0;
+        series.columns.template.radarColumn.cornerRadius = 5;
+        series.columns.template.radarColumn.innerCornerRadius = 0;
+        chart.colors.list = [am4core.color("#279fac"),
+        am4core.color("#ffb57e"),
+        am4core.color("#279fac"),
+        am4core.color("#ffb57e"),
+        am4core.color("#279fac"),
+        am4core.color("#ffb57e"),
+        am4core.color("#279fac"),
+        am4core.color("#ffb57e"),
+        am4core.color("#279fac"),
+        am4core.color("#ffb57e"),
+        am4core.color("#279fac"),
+        am4core.color("#ffb57e")
         ];
 
-    chart.zoomOutButton.disabled = true;
+        chart.zoomOutButton.disabled = true;
 
-    // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
-    series.columns.template.adapter.add("fill", (fill, target) => {
-     return chart.colors.getIndex(target.dataItem.index);
+        // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
+        series.columns.template.adapter.add("fill", (fill, target) => {
+            return chart.colors.getIndex(target.dataItem.index);
+        });
+
+        setInterval(() => {
+            am4core.array.each(chart.data, (item) => {
+                item.visits *= Math.random() * 0.5 + 0.5;
+                item.visits += 10;
+            })
+            chart.invalidateRawData();
+        }, 2000)
+
+        categoryAxis.sortBySeries = series;
+
+        chart.cursor = new am4charts.RadarCursor();
+        chart.cursor.behavior = "none";
+        chart.cursor.lineX.disabled = true;
+        chart.cursor.lineY.disabled = true;
+
     });
-
-    setInterval(()=>{
-     am4core.array.each(chart.data, (item)=>{
-       item.visits *= Math.random() * 0.5 + 0.5;
-       item.visits += 10;
-     })
-     chart.invalidateRawData();
-    }, 2000)
-
-    categoryAxis.sortBySeries = series;
-
-    chart.cursor = new am4charts.RadarCursor();
-    chart.cursor.behavior = "none";
-    chart.cursor.lineX.disabled = true;
-    chart.cursor.lineY.disabled = true;
-
-    });
-   });
+});
 
 /*---------------------------------------------------------------------
    circle progress bar
 -----------------------------------------------------------------------*/
-$(function() {
+$(function () {
 
-    $(".progress-round").each(function() {
+    $(".progress-round").each(function () {
 
         var value = $(this).attr('data-value');
         var left = $(this).find('.progress-left .progress-bar');
@@ -7666,10 +7666,10 @@ Form Validation
 -----------------------------------------------------------------------*/
 
 
-window.addEventListener('load', function() {
+/* window.addEventListener('load', function () {
     var forms = document.getElementsByClassName('needs-validation');
-    var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
+    var validation = Array.prototype.filter.call(forms, function (form) {
+        form.addEventListener('submit', function (event) {
             if (form.checkValidity() === false) {
                 event.preventDefault();
                 event.stopPropagation();
@@ -7677,7 +7677,7 @@ window.addEventListener('load', function() {
             form.classList.add('was-validated');
         }, false);
     });
-}, false);
+}, false); */
 
 
 
@@ -7692,7 +7692,7 @@ var steps = jQuery("fieldset").length;
 
 setProgressBar(current);
 
-$(".next").click(function() {
+$(".next").click(function () {
 
     current_fs = $(this).parent();
     next_fs = $(this).parent().next();
@@ -7706,7 +7706,7 @@ $(".next").click(function() {
     current_fs.animate({
         opacity: 0
     }, {
-        step: function(now) {
+        step: function (now) {
             opacity = 1 - now;
 
             current_fs.css({
@@ -7724,7 +7724,7 @@ $(".next").click(function() {
     setProgressBar(++current);
 });
 
-jQuery(".previous").click(function() {
+jQuery(".previous").click(function () {
 
     current_fs = $(this).parent();
     previous_fs = $(this).parent().prev();
@@ -7739,7 +7739,7 @@ jQuery(".previous").click(function() {
     current_fs.animate({
         opacity: 0
     }, {
-        step: function(now) {
+        step: function (now) {
             opacity = 1 - now;
 
             current_fs.css({
@@ -7762,7 +7762,7 @@ function setProgressBar(curStep) {
         .css("width", percent + "%")
 }
 
-jQuery(".submit").click(function() {
+jQuery(".submit").click(function () {
     return false;
 })
 
@@ -7777,7 +7777,7 @@ var navListItems = jQuery('div.setup-panel div a'),
 
 allWells.hide();
 
-navListItems.click(function(e) {
+navListItems.click(function (e) {
     e.preventDefault();
     var $target = jQuery(jQuery(this).attr('href')),
         $item = jQuery(this);
@@ -7791,11 +7791,11 @@ navListItems.click(function(e) {
     }
 });
 
-allNextBtn.click(function() {
+allNextBtn.click(function () {
     var curStep = jQuery(this).closest(".setup-content"),
         curStepBtn = curStep.attr("id"),
         nextStepWizard = jQuery('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-        curInputs = curStep.find("input[type='text'],input[type='email'],input[type='password'],input[type='url'],textarea"),
+        curInputs = curStep.find("input[type='text'],input[type='text'],input[type='password'],input[type='url'],textarea"),
         isValid = true;
 
     jQuery(".form-group").removeClass("has-error");
@@ -7824,7 +7824,7 @@ var steps = jQuery("fieldset").length;
 
 setProgressBar(current);
 
-$(".next").click(function() {
+$(".next").click(function () {
 
     current_fs = $(this).parent();
     next_fs = $(this).parent().next();
@@ -7837,7 +7837,7 @@ $(".next").click(function() {
     current_fs.animate({
         opacity: 0
     }, {
-        step: function(now) {
+        step: function (now) {
             opacity = 1 - now;
 
             current_fs.css({
@@ -7853,7 +7853,7 @@ $(".next").click(function() {
     setProgressBar(++current);
 });
 
-jQuery(".previous").click(function() {
+jQuery(".previous").click(function () {
 
     current_fs = $(this).parent();
     previous_fs = $(this).parent().prev();
@@ -7865,7 +7865,7 @@ jQuery(".previous").click(function() {
     current_fs.animate({
         opacity: 0
     }, {
-        step: function(now) {
+        step: function (now) {
             opacity = 1 - now;
 
             current_fs.css({
@@ -7888,7 +7888,7 @@ function setProgressBar(curStep) {
         .css("width", percent + "%")
 }
 
-jQuery(".submit").click(function() {
+jQuery(".submit").click(function () {
     return false;
 })
 

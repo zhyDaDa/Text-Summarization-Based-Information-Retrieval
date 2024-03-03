@@ -1,1090 +1,797 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Mednalytics</title>
-    <!-- Iconic Fonts -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>XRay - Responsive Bootstrap 4 Admin Dashboard Template</title>
     {% load static %}
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link href="{% static 'vendors/iconic-fonts/font-awesome/css/all.min.css' %}" rel="stylesheet" />
-    <link rel="stylesheet" href="{% static 'vendors/iconic-fonts/flat-icons/flaticon.css' %}" />
-    <link rel="stylesheet" href="{% static 'vendors/iconic-fonts/cryptocoins/cryptocoins.css' %}" />
-    <link rel="stylesheet" href="{% static 'vendors/iconic-fonts/cryptocoins/cryptocoins-colors.css' %}" />
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" />
-    <!-- jQuery UI -->
-    <link href="{% static 'assets/css/jquery-ui.min.css' %}" rel="stylesheet" />
-    <!-- Mednalytics styles -->
-    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
-
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon.ico' %}" />
+    <link rel="shortcut icon" href="https://www.17sucai.com/2020/2/26/97bcda32f1510d5e85144545bf56b9a1/images/favicon.ico" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <!-- Typography CSS -->
+    <link rel="stylesheet" href="{% static '/css/typography.css' %}" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
   </head>
-  <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
-    <!-- Preloader -->
-    <div id="preloader-wrap">
-      <div class="spinner spinner-8">
-        <div class="ms-circle1 ms-child"></div>
-        <div class="ms-circle2 ms-child"></div>
-        <div class="ms-circle3 ms-child"></div>
-        <div class="ms-circle4 ms-child"></div>
-        <div class="ms-circle5 ms-child"></div>
-        <div class="ms-circle6 ms-child"></div>
-        <div class="ms-circle7 ms-child"></div>
-        <div class="ms-circle8 ms-child"></div>
-        <div class="ms-circle9 ms-child"></div>
-        <div class="ms-circle10 ms-child"></div>
-        <div class="ms-circle11 ms-child"></div>
-        <div class="ms-circle12 ms-child"></div>
-      </div>
+  <body>
+    <!-- loader Start -->
+    <div id="loading">
+      <div id="loading-center"></div>
     </div>
-    <!-- Overlays -->
-    <div class="ms-aside-overlay ms-overlay-left ms-toggler" data-target="#ms-side-nav" data-toggle="slideLeft"></div>
-    <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"></div>
-    <!-- 左侧边栏 -->
-    <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
-      <!-- Logo -->
-      <div class="logo-sn ms-d-block-lg">
-        <a class="pl-0 ml-0 text-center" href="{% static 'index.html' %}"><img src="{% static 'assets/img/mednalytics-logo-216x62.png' %}" alt="logo" /></a>
-        <a href="#" class="text-center ms-logo-img-link"><img src="{% static 'assets/img/dashboard/doctor-3.jpg' %}" alt="logo" /></a>
-        <h5 class="text-center text-white mt-2">Dr.Samuel</h5>
-        <h6 class="text-center text-white mb-3">用户</h6>
-      </div>
-      <!-- 导航 -->
-      <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
-        <!-- 主页 -->
-        <li class="menu-item">
-          <a href="{% url 'index' %}"><span><i class="material-icons fs-16">dashboard</i>主页</span></a>
-        </li>
-        <!-- /主页 -->
-        <!-- 病历上传 -->
-        <li class="menu-item">
-          <a href="{% url 'upload' %}"><span><i class="fas fa-stethoscope"></i>病历上传</span></a>
-        </li>
-        <!-- /病历上传 -->
-        <!-- 病历浏览 -->
-        <li class="menu-item">
-          <a href="{% url 'selectplus' %}"><span><i class="fas fa-sitemap"></i>病历浏览</span></a>
-        </li>
-        <!-- /病历浏览 -->
-        <!-- 病历摘要 -->
-        <li class="menu-item">
-          <a href="{% url 'extract' %}"><span><i class="fas fa-sitemap"></i>病历摘要</span></a>
-        </li>
-        <!-- /病历摘要 -->
-        <!-- 用户 -->
-        <li class="menu-item">
-          <a href="{% url 'user' %}"><span><i class="fas fa-user"></i>用户</span></a>
-        </li>
-      </ul>
-    </aside>
-    <!-- Sidebar Right -->
-    <aside id="ms-recent-activity" class="side-nav fixed ms-aside-right ms-scrollable">
-      <div class="ms-aside-header">
-        <ul class="nav nav-tabs tabs-bordered d-flex nav-justified mb-3" role="tablist">
-          <li role="presentation" class="fs-12">
-            <a href="#activityLog" aria-controls="activityLog" class="active" role="tab" data-toggle="tab">Activity Log</a>
-          </li>
-          <li role="presentation" class="fs-12">
-            <a href="#recentPosts" aria-controls="recentPosts" role="tab" data-toggle="tab">Settings</a>
-          </li>
-          <li>
-            <button type="button" class="close ms-toggler text-center" data-target="#ms-recent-activity" data-toggle="slideRight"><span aria-hidden="true">&times;</span></button>
-          </li>
-        </ul>
-      </div>
-      <div class="ms-aside-body">
-        <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active fade show" id="activityLog">
-            <ul class="ms-activity-log">
-              <li>
-                <div class="ms-btn-icon btn-pill icon btn-light">
-                  <i class="flaticon-gear"></i>
+    <!-- loader END -->
+    <!-- Wrapper Start -->
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="iq-sidebar">
+        <div class="iq-sidebar-logo d-flex justify-content-between">
+          <a href="">
+            <img src="{% static 'picture/logo.png' %}" class="img-fluid" alt="" />
+            <span>XRay</span>
+          </a>
+          <div class="iq-menu-bt-sidebar">
+            <div class="iq-menu-bt align-self-center">
+              <div class="wrapper-menu">
+                <div class="main-circle">
+                  <i class="ri-more-fill"></i>
                 </div>
-                <h6>Update 1.0.0 Pushed</h6>
-                <span><i class="material-icons">event</i>1 January, 2019</span>
-                <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
-              </li>
-              <li>
-                <div class="ms-btn-icon btn-pill icon btn-success">
-                  <i class="flaticon-tick-inside-circle"></i>
+                <div class="hover-circle">
+                  <i class="ri-more-2-fill"></i>
                 </div>
-                <h6>Profile Updated</h6>
-                <span><i class="material-icons">event</i>4 March, 2018</span>
-                <p class="fs-14">Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
-              </li>
-              <li>
-                <div class="ms-btn-icon btn-pill icon btn-warning">
-                  <i class="flaticon-alert-1"></i>
-                </div>
-                <h6>Your payment is due</h6>
-                <span><i class="material-icons">event</i>1 January, 2019</span>
-                <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
-              </li>
-              <li>
-                <div class="ms-btn-icon btn-pill icon btn-danger">
-                  <i class="flaticon-alert"></i>
-                </div>
-                <h6>Database Error</h6>
-                <span><i class="material-icons">event</i>4 March, 2018</span>
-                <p class="fs-14">Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
-              </li>
-              <li>
-                <div class="ms-btn-icon btn-pill icon btn-info">
-                  <i class="flaticon-information"></i>
-                </div>
-                <h6>Checkout what's Trending</h6>
-                <span><i class="material-icons">event</i>1 January, 2019</span>
-                <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
-              </li>
-              <li>
-                <div class="ms-btn-icon btn-pill icon btn-secondary">
-                  <i class="flaticon-diamond"></i>
-                </div>
-                <h6>Your Dashboard is ready</h6>
-                <span><i class="material-icons">event</i>4 March, 2018</span>
-                <p class="fs-14">Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
-              </li>
-            </ul>
-            <a href="#" class="btn btn-primary d-block">View All</a>
-          </div>
-          <div role="tabpanel" class="tab-pane fade" id="recentPosts">
-            <h6>General Settings</h6>
-            <div class="ms-form-group">
-              <span class="ms-option-name fs-14">Location Tracking</span>
-              <label class="ms-switch float-right">
-                <input type="checkbox" />
-                <span class="ms-switch-slider round"></span>
-              </label>
-            </div>
-            <div class="ms-form-group">
-              <span class="ms-option-name fs-14">Allow Notifications</span>
-              <label class="ms-switch float-right">
-                <input type="checkbox" />
-                <span class="ms-switch-slider round"></span>
-              </label>
-            </div>
-            <div class="ms-form-group">
-              <span class="ms-option-name fs-14">Allow Popups</span>
-              <label class="ms-switch float-right">
-                <input type="checkbox" checked />
-                <span class="ms-switch-slider round"></span>
-              </label>
-            </div>
-            <h6>Log Settings</h6>
-            <div class="ms-form-group">
-              <span class="ms-option-name fs-14">Enable Logging</span>
-              <label class="ms-switch float-right">
-                <input type="checkbox" checked />
-                <span class="ms-switch-slider round"></span>
-              </label>
-            </div>
-            <div class="ms-form-group">
-              <span class="ms-option-name fs-14">Audit Logs</span>
-              <label class="ms-switch float-right">
-                <input type="checkbox" />
-                <span class="ms-switch-slider round"></span>
-              </label>
-            </div>
-            <div class="ms-form-group">
-              <span class="ms-option-name fs-14">Error Logs</span>
-              <label class="ms-switch float-right">
-                <input type="checkbox" checked />
-                <span class="ms-switch-slider round"></span>
-              </label>
-            </div>
-            <h6>Advanced Settings</h6>
-            <div class="ms-form-group">
-              <span class="ms-option-name fs-14">Enable Logging</span>
-              <label class="ms-switch float-right">
-                <input type="checkbox" checked />
-                <span class="ms-switch-slider round"></span>
-              </label>
-            </div>
-            <div class="ms-form-group">
-              <span class="ms-option-name fs-14">Audit Logs</span>
-              <label class="ms-switch float-right">
-                <input type="checkbox" />
-                <span class="ms-switch-slider round"></span>
-              </label>
-            </div>
-            <div class="ms-form-group">
-              <span class="ms-option-name fs-14">Error Logs</span>
-              <label class="ms-switch float-right">
-                <input type="checkbox" checked />
-                <span class="ms-switch-slider round"></span>
-              </label>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </aside>
-    <!-- Main Content -->
-    <main class="body-content">
-      <!-- Navigation Bar -->
-      <nav class="navbar ms-navbar">
-        <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft">
-          <span class="ms-toggler-bar bg-white"></span>
-          <span class="ms-toggler-bar bg-white"></span>
-          <span class="ms-toggler-bar bg-white"></span>
-        </div>
-        <div class="logo-sn logo-sm ms-d-block-sm">
-          <a class="pl-0 ml-0 text-center navbar-brand mr-0" href=" ../../index.html"><img src="{% static 'assets/img/mednalytics-logo-84x41.png' %}" alt="logo" /></a>
-        </div>
-        <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
-          <li class="ms-nav-item ms-d-none">
-            <a href="#mymodal" class="text-white" data-toggle="modal"><i class="flaticon-spreadsheet mr-2"></i> Make an appointment</a>
-          </li>
-
-          <li class="ms-nav-item ms-d-none">
-            <a href="#prescription" class="text-white" data-toggle="modal"><i class="flaticon-pencil mr-2"></i> Write a prescription</a>
-          </li>
-
-          <li class="ms-nav-item ms-d-none">
-            <a href="#report1" class="text-white" data-toggle="modal"><i class="flaticon-list mr-2"></i> Generate Report</a>
-          </li>
-
-          <li class="ms-nav-item dropdown">
-            <a href="#" class="text-disabled ms-has-notification" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-bell"></i></a>
-            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
-              <li class="dropdown-menu-header">
-                <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Notifications</span></h6>
-                <span class="badge badge-pill badge-info">4 New</span>
+        <div id="sidebar-scrollbar">
+          <nav class="iq-sidebar-menu">
+            <ul class="iq-menu">
+              <li class="iq-menu-title">
+                <i class="ri-subtract-line"></i><span>主界面</span>
               </li>
-              <li class="dropdown-divider"></li>
-              <li class="ms-scrollable ms-dropdown-list">
-                <a class="media p-2" href="#">
-                  <div class="media-body">
-                    <span>12 ways to improve your crypto dashboard</span>
-                    <p class="fs-10 my-1 text-disabled">
-                      <i class="material-icons">access_time</i> 30 seconds ago
-                    </p>
-                  </div>
-                </a>
-                <a class="media p-2" href="#">
-                  <div class="media-body">
-                    <span>You have newly registered users</span>
-                    <p class="fs-10 my-1 text-disabled">
-                      <i class="material-icons">access_time</i> 45 minutes ago
-                    </p>
-                  </div>
-                </a>
-                <a class="media p-2" href="#">
-                  <div class="media-body">
-                    <span>Your account was logged in from an unauthorized IP</span>
-                    <p class="fs-10 my-1 text-disabled">
-                      <i class="material-icons">access_time</i> 2 hours ago
-                    </p>
-                  </div>
-                </a>
-                <a class="media p-2" href="#">
-                  <div class="media-body">
-                    <span>An application form has been submitted</span>
-                    <p class="fs-10 my-1 text-disabled">
-                      <i class="material-icons">access_time</i> 1 day ago
-                    </p>
-                  </div>
-                </a>
+              <li>
+                <a href="{% url 'index' %}" class="iq-waves-effect"><i class="ri-hospital-fill"></i><span>系统主页</span></a>
               </li>
-              <li class="dropdown-divider"></li>
-              <li class="dropdown-menu-footer text-center">
-                <a href="#">View all Notifications</a>
+              <li class="iq-menu-title">
+                <i class="ri-subtract-line"></i><span>主页</span>
+              </li>
+              <li>
+                <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-mail-open-fill"></i><span>病历</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                <ul class="iq-submenu">
+                  <li>
+                    <a href="{% url 'select' %}"><i class="ri-inbox-fill"></i>病历浏览</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'upload' %}"><i class="ri-edit-2-fill"></i>上传病历</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-user-3-fill"></i><span>论坛</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                <ul class="iq-submenu">
+                  <li>
+                    <a href="doctor-list.html"><i class="ri-file-list-fill"></i>All Doctors</a>
+                  </li>
+                  <li>
+                    <a href="add-doctor.html"><i class="ri-user-add-fill"></i> Add Doctor</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'doctorlist' %}"><i class="ri-profile-fill"></i>医生好友</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'chat' %}"><i class="ri-file-edit-fill"></i>学习聊天</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="{% url 'calendar' %}" class="iq-waves-effect"><i class="ri-calendar-event-fill"></i><span>日程</span></a>
+              </li>
+              <li class="iq-menu-title">
+                <i class="ri-subtract-line"></i><span>其它</span>
+              </li>
+              <li class="active">
+                <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-user-3-fill"></i><span>个人中心</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                <ul class="iq-submenu">
+                  <li class="active">
+                    <a href="{% url 'user' %}"><i class="ri-file-list-fill"></i>个人信息</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'userEdit' %}"><i class="ri-user-add-fill"></i>编辑您的信息</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="{% url 'faqpage' %}" class="iq-waves-effect"><i class="ri-calendar-event-fill"></i><span>帮助中心</span></a>
               </li>
             </ul>
-          </li>
-          <li class="ms-nav-item ms-nav-user dropdown">
-            <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="ms-user-img ms-img-round float-right" src="{% static 'assets/img/dashboard/doctor-3.jpg' %}" alt="people" /></a>
-            <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
-              <li class="dropdown-menu-header">
-                <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Welcome, Dr Samuel Deo</span></h6>
-              </li>
-              <li class="dropdown-divider"></li>
-              <li class="ms-dropdown-list">
-                <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"><span><i class="flaticon-user mr-2"></i> Profile</span></a>
-                <a class="media fs-14 p-2" href="../apps/email.html"><span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span></a>
-                <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"><span><i class="flaticon-gear mr-2"></i> Account Settings</span></a>
-              </li>
-              <li class="dropdown-divider"></li>
-              <li class="dropdown-menu-footer">
-                <a class="media fs-14 p-2" href="{% url 'lock' %}"><span><i class="flaticon-security mr-2"></i> 锁定</span></a>
-              </li>
-              <li class="dropdown-menu-footer">
-                <a class="media fs-14 p-2" href="{% url 'login' %}"><span><i class="flaticon-shut-down mr-2"></i>退出登录</span></a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
-          <span class="ms-toggler-bar bg-white"></span>
-          <span class="ms-toggler-bar bg-white"></span>
-          <span class="ms-toggler-bar bg-white"></span>
-        </div>
-      </nav>
-      <!-- Body Content Wrapper -->
-      <div class="ms-content-wrapper">
-        <div class="col-md-12">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb pl-0">
-              <li class="breadcrumb-item">
-                <a href="{% url 'index' %}"><i class="material-icons">home</i>主页</a>
-              </li>
-              <li class="breadcrumb-item">
-                <a href="{% url 'user' %}">用户</a>
-              </li>
-            </ol>
           </nav>
+          <div class="p-3"></div>
         </div>
-        <div class="ms-profile-overview">
-          <div class="ms-profile-cover">
-            <img class="ms-profile-img" src="{% static 'assets/img/dashboard/doctor-4.jpg' %}" alt="people" />
-            <div class="ms-profile-user-info">
-              <h3 class="ms-profile-username text-white">Chihoo Hwang</h3>
-              <h6 class="ms-profile-role text-white">Professional UX doctor</h6>
+      </div>
+      <!-- Page Content -->
+      <div id="content-page" class="content-page">
+        <!-- TOP Nav Bar -->
+        <div class="iq-top-navbar">
+          <div class="iq-navbar-custom">
+            <div class="iq-sidebar-logo">
+              <div class="top-logo">
+                <a href="index.html" class="logo">
+                  <img src="{% static 'picture/logo.png' %}" class="img-fluid" alt="" />
+                  <span>XRay</span>
+                </a>
+              </div>
             </div>
-            <div class="ms-profile-user-buttons">
-              <a href="#" class="btn btn-primary"><i class="material-icons">person_add</i> Follow</a>
-              <a href="#" class="btn btn-light"><i class="material-icons">file_download</i> Download Resume</a>
-            </div>
-          </div>
-          <ul class="ms-profile-navigation nav nav-tabs tabs-bordered" role="tablist">
-            <li role="presentation">
-              <a href="#tab1" aria-controls="tab1" class="active show" role="tab" data-toggle="tab">Overview</a>
-            </li>
-            <li role="presentation">
-              <a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">Professional Skills</a>
-            </li>
-            <li role="presentation">
-              <a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">Portfolio</a>
-            </li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane" id="tab1"></div>
-            <div class="tab-pane" id="tab2"></div>
-            <div class="tab-pane" id="tab3"></div>
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+              <div class="iq-search-bar">
+                <form action="#" class="searchbox">
+                  <input type="text" class="text search-input" placeholder="Type here to search..." />
+                  <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                </form>
+              </div>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="ri-menu-3-line"></i></button>
+              <div class="iq-menu-bt align-self-center">
+                <div class="wrapper-menu">
+                  <div class="main-circle">
+                    <i class="ri-more-fill"></i>
+                  </div>
+                  <div class="hover-circle">
+                    <i class="ri-more-2-fill"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto navbar-list">
+                  <li class="nav-item">
+                    <a class="search-toggle iq-waves-effect language-title" href="#"><img src="{% static 'picture/flag-01.png' %}" alt="img-flaf" class="img-fluid mr-1" style="height: 16px; width: 16px;" /> English <i class="ri-arrow-down-s-line"></i></a>
+                    <div class="iq-sub-dropdown">
+                      <a class="iq-sub-card" href="#"><img src="{% static 'picture/flag-02.png' %}" alt="img-flaf" class="img-fluid mr-2" />French</a>
+                      <a class="iq-sub-card" href="#"><img src="{% static 'picture/flag-03.png' %}" alt="img-flaf" class="img-fluid mr-2" />Spanish</a>
+                      <a class="iq-sub-card" href="#"><img src="{% static 'picture/flag-04.png' %}" alt="img-flaf" class="img-fluid mr-2" />Italian</a>
+                      <a class="iq-sub-card" href="#"><img src="{% static 'picture/flag-05.png' %}" alt="img-flaf" class="img-fluid mr-2" />German</a>
+                      <a class="iq-sub-card" href="#"><img src="{% static 'picture/flag-06.png' %}" alt="img-flaf" class="img-fluid mr-2" />Japanese</a>
+                    </div>
+                  </li>
+                  <li class="nav-item iq-full-screen">
+                    <a href="#" class="iq-waves-effect" id="btnFullscreen"><i class="ri-fullscreen-line"></i></a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="search-toggle iq-waves-effect">
+                      <i class="ri-notification-3-fill"></i>
+                      <span class="bg-danger dots"></span>
+                    </a>
+                    <div class="iq-sub-dropdown">
+                      <div class="iq-card shadow-none m-0">
+                        <div class="iq-card-body p-0">
+                          <div class="bg-primary p-3">
+                            <h5 class="mb-0 text-white">All Notifications<small class="badge badge-light float-right pt-1">4</small></h5>
+                          </div>
+                          <a href="#" class="iq-sub-card">
+                            <div class="media align-items-center">
+                              <div class="">
+                                <img class="avatar-40 rounded" src="{% static 'picture/01.jpg' %}" alt="" />
+                              </div>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-0">Emma Watson Bini</h6>
+                                <small class="float-right font-size-12">Just Now</small>
+                                <p class="mb-0">95 MB</p>
+                              </div>
+                            </div>
+                          </a>
+                          <a href="#" class="iq-sub-card">
+                            <div class="media align-items-center">
+                              <div class="">
+                                <img class="avatar-40 rounded" src="{% static 'picture/02.jpg' %}" alt="" />
+                              </div>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-0">New customer is join</h6>
+                                <small class="float-right font-size-12">5 days ago</small>
+                                <p class="mb-0">Jond Bini</p>
+                              </div>
+                            </div>
+                          </a>
+                          <a href="#" class="iq-sub-card">
+                            <div class="media align-items-center">
+                              <div class="">
+                                <img class="avatar-40 rounded" src="{% static 'picture/03.jpg' %}" alt="" />
+                              </div>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-0">Two customer is left</h6>
+                                <small class="float-right font-size-12">2 days ago</small>
+                                <p class="mb-0">Jond Bini</p>
+                              </div>
+                            </div>
+                          </a>
+                          <a href="#" class="iq-sub-card">
+                            <div class="media align-items-center">
+                              <div class="">
+                                <img class="avatar-40 rounded" src="{% static 'picture/04.jpg' %}" alt="" />
+                              </div>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-0">New Mail from Fenny</h6>
+                                <small class="float-right font-size-12">3 days ago</small>
+                                <p class="mb-0">Jond Bini</p>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a href="#" class="search-toggle iq-waves-effect">
+                      <i class="ri-mail-open-fill"></i>
+                      <span class="bg-primary count-mail"></span>
+                    </a>
+                    <div class="iq-sub-dropdown">
+                      <div class="iq-card shadow-none m-0">
+                        <div class="iq-card-body p-0">
+                          <div class="bg-primary p-3">
+                            <h5 class="mb-0 text-white">All Messages<small class="badge badge-light float-right pt-1">5</small></h5>
+                          </div>
+                          <a href="#" class="iq-sub-card">
+                            <div class="media align-items-center">
+                              <div class="">
+                                <img class="avatar-40 rounded" src="{% static 'picture/01.jpg' %}" alt="" />
+                              </div>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-0">Bini Emma Watson</h6>
+                                <small class="float-left font-size-12">13 Jun</small>
+                              </div>
+                            </div>
+                          </a>
+                          <a href="#" class="iq-sub-card">
+                            <div class="media align-items-center">
+                              <div class="">
+                                <img class="avatar-40 rounded" src="{% static 'picture/02.jpg' %}" alt="" />
+                              </div>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-0">Lorem Ipsum Watson</h6>
+                                <small class="float-left font-size-12">20 Apr</small>
+                              </div>
+                            </div>
+                          </a>
+                          <a href="#" class="iq-sub-card">
+                            <div class="media align-items-center">
+                              <div class="">
+                                <img class="avatar-40 rounded" src="{% static 'picture/03.jpg' %}" alt="" />
+                              </div>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-0">Why do we use it?</h6>
+                                <small class="float-left font-size-12">30 Jun</small>
+                              </div>
+                            </div>
+                          </a>
+                          <a href="#" class="iq-sub-card">
+                            <div class="media align-items-center">
+                              <div class="">
+                                <img class="avatar-40 rounded" src="{% static 'picture/04.jpg' %}" alt="" />
+                              </div>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-0">Variations Passages</h6>
+                                <small class="float-left font-size-12">12 Sep</small>
+                              </div>
+                            </div>
+                          </a>
+                          <a href="#" class="iq-sub-card">
+                            <div class="media align-items-center">
+                              <div class="">
+                                <img class="avatar-40 rounded" src="{% static 'picture/05.jpg' %}" alt="" />
+                              </div>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-0">Lorem Ipsum generators</h6>
+                                <small class="float-left font-size-12">5 Dec</small>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <ul class="navbar-list">
+                <li>
+                  <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
+                    <img src="{% static 'picture/1.jpg' %}" class="img-fluid rounded mr-3" alt="user" />
+                    <div class="caption">
+                      <h6 class="mb-0 line-height">Bini Jets</h6>
+                      <span class="font-size-12">Available</span>
+                    </div>
+                  </a>
+                  <div class="iq-sub-dropdown iq-user-dropdown">
+                    <div class="iq-card shadow-none m-0">
+                      <div class="iq-card-body p-0">
+                        <div class="bg-primary p-3">
+                          <h5 class="mb-0 text-white line-height">Hello Bini Jets</h5>
+                          <span class="text-white font-size-12">Available</span>
+                        </div>
+                        <a href="" class="iq-sub-card iq-bg-primary-hover">
+                          <div class="media align-items-center">
+                            <div class="rounded iq-card-icon iq-bg-primary">
+                              <i class="ri-file-user-line"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                              <h6 class="mb-0">My Profile</h6>
+                              <p class="mb-0 font-size-12">View personal profile details.</p>
+                            </div>
+                          </div>
+                        </a>
+                        <a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
+                          <div class="media align-items-center">
+                            <div class="rounded iq-card-icon iq-bg-primary">
+                              <i class="ri-profile-line"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                              <h6 class="mb-0">Edit Profile</h6>
+                              <p class="mb-0 font-size-12">Modify your personal details.</p>
+                            </div>
+                          </div>
+                        </a>
+                        <a href="javascript:;" class="iq-sub-card iq-bg-primary-hover">
+                          <div class="media align-items-center">
+                            <div class="rounded iq-card-icon iq-bg-primary">
+                              <i class="ri-account-box-line"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                              <h6 class="mb-0">Account settings</h6>
+                              <p class="mb-0 font-size-12">Manage your account parameters.</p>
+                            </div>
+                          </div>
+                        </a>
+                        <a href="{% url 'lock' %}" class="iq-sub-card iq-bg-primary-hover">
+                          <div class="media align-items-center">
+                            <div class="rounded iq-card-icon iq-bg-primary">
+                              <i class="ri-lock-line"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                              <h6 class="mb-0">锁定账户</h6>
+                              <p class="mb-0 font-size-12">暂时锁定您的账户，重新输入密码即可再次登录</p>
+                            </div>
+                          </div>
+                        </a>
+                        <div class="d-inline-block w-100 text-center p-3">
+                          <a class="bg-primary iq-sign-btn" href="{% url 'login' %}" role="button">退出账户<i class="ri-login-box-line ml-2"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xl-7 col-md-12">
-            <div class="ms-panel ms-panel-fh">
-              <div class="ms-panel-body">
-                <h2 class="section-title">About Me</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non elit nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean luctus, justo id pellentesque imperdiet, augue metus ornare quam, in pulvinar massa erat nec dui. Nam at facilisis nulla.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non elit nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean luctus, justo id pellentesque imperdiet, augue metus ornare quam, in pulvinar massa erat nec dui. Nam at facilisis nulla.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non elit nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean luctus, justo id pellentesque imperdiet, augue metus ornare quam, in pulvinar massa erat nec dui. Nam at facilisis nulla.</p>
-                <div class="ms-profile-skills">
-                  <h2 class="section-title">Professional Skills</h2>
-                  <ul class="ms-skill-list">
-                    <li class="ms-skill">Web Design</li>
-                    <li class="ms-skill">Development</li>
-                    <li class="ms-skill">Interface Design</li>
-                    <li class="ms-skill">Illustration</li>
-                    <li class="ms-skill">Brand Design</li>
-                    <li class="ms-skill">Adobe</li>
+        <!-- TOP Nav Bar END -->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="iq-card">
+                <div class="iq-card-body pl-0 pr-0 pt-0">
+                  <div class="docter-details-block">
+                    <div class="doc-profile-bg bg-primary" style="height:150px;"></div>
+                    <div class="docter-profile text-center">
+                      <img src="{% static 'picture/11.png' %}" alt="profile-img" class="avatar-130 img-fluid" />
+                    </div>
+                    <div class="text-center mt-3 pl-3 pr-3">
+                      <h4><b>Bini Jets</b></h4>
+                      <p>Doctor</p>
+                      <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus repudiandae eveniet harum.</p>
+                    </div>
+                    <hr />
+                    <ul class="doctoe-sedual d-flex align-items-center justify-content-between p-0 m-0">
+                      <li class="text-center">
+                        <h3 class="counter">4500</h3>
+                        <span>Operations</span>
+                      </li>
+                      <li class="text-center">
+                        <h3 class="counter">100</h3>
+                        <span>Hospital</span>
+                      </li>
+                      <li class="text-center">
+                        <h3 class="counter">10000</h3>
+                        <span>Patients</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="iq-card">
+                <div class="iq-card-header d-flex justify-content-between">
+                  <div class="iq-header-title">
+                    <h4 class="card-title">Personal Information</h4>
+                  </div>
+                </div>
+                <div class="iq-card-body">
+                  <div class="about-info m-0 p-0">
+                    <div class="row">
+                      <div class="col-4">First Name:</div>
+                      <div class="col-8">Bini</div>
+                      <div class="col-4">Last Name:</div>
+                      <div class="col-8">Jets</div>
+                      <div class="col-4">Age:</div>
+                      <div class="col-8">27</div>
+                      <div class="col-4">Position:</div>
+                      <div class="col-8">Senior Docter</div>
+                      <div class="col-4">Email:</div>
+                      <div class="col-8">
+                        <a href="javascript:;"><span class="__cf_email__" data-cfemail="debcb7b0b794bbaaadecea9ebabbb3b1f0bdb1b3">[email&#160;protected]</span></a>
+                      </div>
+                      <div class="col-4">Phone:</div>
+                      <div class="col-8">
+                        <a href="tel:001-2351-25612">001 2351 256 12</a>
+                      </div>
+                      <div class="col-4">Location:</div>
+                      <div class="col-8">USA</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="iq-card">
+                <div class="iq-card-header d-flex justify-content-between">
+                  <div class="iq-header-title">
+                    <h4 class="card-title">Photos</h4>
+                  </div>
+                </div>
+                <div class="iq-card-body">
+                  <ul class="profile-img-gallary d-flex flex-wrap p-0 m-0">
+                    <li class="col-md-4 col-6 pb-3">
+                      <a href="javascript:void();"><img src="{% static 'picture/g1.jpg' %}" alt="gallary-image" class="img-fluid" /></a>
+                    </li>
+                    <li class="col-md-4 col-6 pb-3">
+                      <a href="javascript:void();"><img src="{% static 'picture/g2.jpg' %}" alt="gallary-image" class="img-fluid" /></a>
+                    </li>
+                    <li class="col-md-4 col-6 pb-3">
+                      <a href="javascript:void();"><img src="{% static 'picture/g3.jpg' %}" alt="gallary-image" class="img-fluid" /></a>
+                    </li>
+                    <li class="col-md-4 col-6 pb-3">
+                      <a href="javascript:void();"><img src="{% static 'picture/g4.jpg' %}" alt="gallary-image" class="img-fluid" /></a>
+                    </li>
+                    <li class="col-md-4 col-6 pb-3">
+                      <a href="javascript:void();"><img src="{% static 'picture/g5.jpg' %}" alt="gallary-image" class="img-fluid" /></a>
+                    </li>
+                    <li class="col-md-4 col-6 pb-3">
+                      <a href="javascript:void();"><img src="{% static 'picture/g6.jpg' %}" alt="gallary-image" class="img-fluid" /></a>
+                    </li>
+                    <li class="col-md-4 col-6 pb-0">
+                      <a href="javascript:void();"><img src="{% static 'picture/g7.jpg' %}" alt="gallary-image" class="img-fluid" /></a>
+                    </li>
+                    <li class="col-md-4 col-6 pb-0">
+                      <a href="javascript:void();"><img src="{% static 'picture/g8.jpg' %}" alt="gallary-image" class="img-fluid" /></a>
+                    </li>
+                    <li class="col-md-4 col-6 pb-0">
+                      <a href="javascript:void();"><img src="{% static 'picture/g9.jpg' %}" alt="gallary-image" class="img-fluid" /></a>
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-xl-5 col-md-12">
-            <div class="ms-panel ms-panel-fh">
-              <div class="ms-panel-body">
-                <ul class="ms-profile-stats">
-                  <li>
-                    <h3 class="ms-count">5790</h3>
-                    <span>Followers</span>
-                  </li>
-                  <li>
-                    <h3 class="ms-count">4.8</h3>
-                    <span>User Rating</span>
-                  </li>
-                </ul>
-                <h2 class="section-title">Basic Information</h2>
-                <table class="table ms-profile-information">
-                  <tbody>
-                    <tr>
-                      <th scope="row">Full Name</th>
-                      <td>Chihoo Hwang</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Birthday</th>
-                      <td>January 25th, 1996</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Language</th>
-                      <td>English (US)</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Website</th>
-                      <td>www.example.com</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Phone Number</th>
-                      <td>+123 456 789</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Email Address</th>
-                      <td>example@mail.com</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Location</th>
-                      <td>New York, USA</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="ms-panel">
-              <div class="ms-panel-body">
-                <h2 class="section-title">Work Experience</h2>
-                <div class="row">
-                  <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="media ms-profile-experience">
-                      <div class="mr-2 align-self-center">
-                        <img src="{% static 'assets/img/dashboard/doctor-1.jpg' %}" class="ms-img-round ms-img-small" alt="people" />
-                      </div>
-                      <div class="media-body">
-                        <h4>User Research Hub</h4>
-                        <p>January 2013 to Present</p>
-                        <p>UX doctor</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="media ms-profile-experience">
-                      <div class="mr-2 align-self-center">
-                        <img src="{% static 'assets/img/dashboard/doctor-2.jpg' %}" class="ms-img-round ms-img-small" alt="people" />
-                      </div>
-                      <div class="media-body">
-                        <h4>User Research Hub</h4>
-                        <p>January 2013 to Present</p>
-                        <p>UX doctor</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="media ms-profile-experience">
-                      <div class="mr-2 align-self-center">
-                        <img src="{% static '/assets/img/dashboard/doctor-3.jpg' %}" class="ms-img-round ms-img-small" alt="people" />
-                      </div>
-                      <div class="media-body">
-                        <h4>User Research Hub</h4>
-                        <p>January 2013 to Present</p>
-                        <p>UX doctor</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="media ms-profile-experience">
-                      <div class="mr-2 align-self-center">
-                        <img src="{% static 'assets/img/dashboard/doctor-4.jpg' %}" class="ms-img-round ms-img-small" alt="people" />
-                      </div>
-                      <div class="media-body">
-                        <h4>User Research Hub</h4>
-                        <p>January 2013 to Present</p>
-                        <p>UX doctor</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="media ms-profile-experience">
-                      <div class="mr-2 align-self-center">
-                        <img src="{% static 'assets/img/dashboard/doctor-5.jpg' %}" class="ms-img-round ms-img-small" alt="people" />
-                      </div>
-                      <div class="media-body">
-                        <h4>User Research Hub</h4>
-                        <p>January 2013 to Present</p>
-                        <p>UX doctor</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="media ms-profile-experience">
-                      <div class="mr-2 align-self-center">
-                        <img src="{% static 'assets/img/dashboard/doctor-1.jpg' %}" class="ms-img-round ms-img-small" alt="people" />
-                      </div>
-                      <div class="media-body">
-                        <h4>User Research Hub</h4>
-                        <p>January 2013 to Present</p>
-                        <p>UX doctor</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-6 col-md-12">
-            <div class="ms-panel ms-panel-fh">
-              <div class="ms-panel-body">
-                <h2 class="section-title">Skill level</h2>
-                <span class="progress-label">Web Design</span><span class="progress-status">83%</span>
-                <div class="progress progress-tiny">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 83%" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="progress-label">Development</span><span class="progress-status">50%</span>
-                <div class="progress progress-tiny">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="progress-label">Interface Design</span><span class="progress-status">75%</span>
-                <div class="progress progress-tiny">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="progress-label">Illustration</span><span class="progress-status">92%</span>
-                <div class="progress progress-tiny">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="progress-label">Brand Design</span><span class="progress-status">97%</span>
-                <div class="progress progress-tiny">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 97%" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="progress-label">Adobe</span><span class="progress-status">90%</span>
-                <div class="progress progress-tiny">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-6 col-md-12">
-            <div class="ms-panel">
-              <div class="ms-panel-body">
-                <h2 class="section-title">My Timeline</h2>
-                <ul class="ms-activity-log">
-                  <li>
-                    <div class="ms-btn-icon btn-pill icon btn-success">
-                      <i class="flaticon-tick-inside-circle"></i>
-                    </div>
-                    <h6>Computer Science Degree</h6>
-                    <span><i class="material-icons">event</i>1 January, 2018</span>
-                    <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
-                  </li>
-                  <li>
-                    <div class="ms-btn-icon btn-pill icon btn-info">
-                      <i class="flaticon-information"></i>
-                    </div>
-                    <h6>Landed first Job</h6>
-                    <span><i class="material-icons">event</i>4 March, 2018</span>
-                    <p class="fs-14">Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
-                  </li>
-                  <li>
-                    <div class="ms-btn-icon btn-pill icon btn-success">
-                      <i class="flaticon-tick-inside-circle"></i>
-                    </div>
-                    <h6>Started my own Company</h6>
-                    <span><i class="material-icons">event</i>1 March, 2020</span>
-                    <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="ms-panel">
-              <div class="ms-panel-body">
-                <h2 class="section-title">Your Latest Posts</h2>
-                <div class="row">
-                  <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ms-card">
-                      <div class="ms-card-body">
-                        <div class="media fs-14">
-                          <div class="mr-2 align-self-center">
-                            <img src="{% static 'assets/img/dashboard/doctor-1.jpg' %}" class="ms-img-round" alt="people" />
-                          </div>
-                          <div class="media-body">
-                            <h6>John Doe</h6>
-                            <div class="dropdown float-right">
-                              <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                              <ul class="dropdown-menu dropdown-menu-right">
-                                <li class="ms-dropdown-list">
-                                  <a class="media p-2" href="#">
-                                    <div class="media-body">
-                                      <span>Comment</span>
-                                    </div>
-                                  </a>
-                                  <a class="media p-2" href="#">
-                                    <div class="media-body">
-                                      <span>Share</span>
-                                    </div>
-                                  </a>
-                                  <a class="media p-2" href="#">
-                                    <div class="media-body">
-                                      <span>Favorite</span>
-                                    </div>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                            <p class="fs-12 my-1 text-disabled">30 seconds ago</p>
-                          </div>
-                        </div>
-                        <h6>This is a card Title</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
-                      </div>
-                      <div class="ms-card-img">
-                        <img src="{% static 'assets/img/basic/card-1.jpg' %}" alt="card_img" />
-                      </div>
-                      <div class="ms-card-footer text-disabled d-flex">
-                        <div class="ms-card-options">
-                          <i class="material-icons">favorite</i> 982
-                        </div>
-                        <div class="ms-card-options">
-                          <i class="material-icons">comment</i> 785
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ms-card">
-                      <div class="ms-card-body">
-                        <div class="media fs-14">
-                          <div class="mr-2 align-self-center">
-                            <img src="{% static 'assets/img/dashboard/doctor-3.jpg' %}" class="ms-img-round" alt="people" />
-                          </div>
-                          <div class="media-body">
-                            <h6>John Doe</h6>
-                            <div class="dropdown float-right">
-                              <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                              <ul class="dropdown-menu dropdown-menu-right">
-                                <li class="ms-dropdown-list">
-                                  <a class="media p-2" href="#">
-                                    <div class="media-body">
-                                      <span>Comment</span>
-                                    </div>
-                                  </a>
-                                  <a class="media p-2" href="#">
-                                    <div class="media-body">
-                                      <span>Share</span>
-                                    </div>
-                                  </a>
-                                  <a class="media p-2" href="#">
-                                    <div class="media-body">
-                                      <span>Favorite</span>
-                                    </div>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                            <p class="fs-12 my-1 text-disabled">30 seconds ago</p>
-                          </div>
-                        </div>
-                        <h6>This is a card Title</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
-                      </div>
-                      <div class="ms-card-img">
-                        <img src="{% static 'assets/img/basic/card-2.jpg' %}" alt="card_img" />
-                      </div>
-                      <div class="ms-card-footer text-disabled d-flex">
-                        <div class="ms-card-options">
-                          <i class="material-icons">favorite</i> 982
-                        </div>
-                        <div class="ms-card-options">
-                          <i class="material-icons">comment</i> 785
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="ms-card">
-                      <div class="ms-card-body">
-                        <div class="media fs-14">
-                          <div class="mr-2 align-self-center">
-                            <img src="{% static 'assets/img/dashboard/doctor-5.jpg' %}" class="ms-img-round" alt="people" />
-                          </div>
-                          <div class="media-body">
-                            <h6>John Doe</h6>
-                            <div class="dropdown float-right">
-                              <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                              <ul class="dropdown-menu dropdown-menu-right">
-                                <li class="ms-dropdown-list">
-                                  <a class="media p-2" href="#">
-                                    <div class="media-body">
-                                      <span>Comment</span>
-                                    </div>
-                                  </a>
-                                  <a class="media p-2" href="#">
-                                    <div class="media-body">
-                                      <span>Share</span>
-                                    </div>
-                                  </a>
-                                  <a class="media p-2" href="#">
-                                    <div class="media-body">
-                                      <span>Favorite</span>
-                                    </div>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                            <p class="fs-12 my-1 text-disabled">30 seconds ago</p>
-                          </div>
-                        </div>
-                        <h6>This is a card Title</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
-                      </div>
-                      <div class="ms-card-img">
-                        <img src="{% static 'assets/img/basic/card-3.jpg' %}" alt="card_img" />
-                      </div>
-                      <div class="ms-card-footer text-disabled d-flex">
-                        <div class="ms-card-options">
-                          <i class="material-icons">favorite</i> 982
-                        </div>
-                        <div class="ms-card-options">
-                          <i class="material-icons">comment</i> 785
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-    <!-- Reminder Modal -->
-    <div class="modal fade" id="reminder-modal" tabindex="-1" role="dialog" aria-labelledby="reminder-modal">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-secondary">
-            <h5 class="modal-title has-icon text-white">New Reminder</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <form>
-            <div class="modal-body">
-              <div class="ms-form-group">
-                <label>Remind me about</label>
-                <textarea class="form-control" name="reminder"></textarea>
-              </div>
-              <div class="ms-form-group">
-                <span class="ms-option-name fs-14">Repeat Daily</span>
-                <label class="ms-switch float-right">
-                  <input type="checkbox" />
-                  <span class="ms-switch-slider round"></span>
-                </label>
-              </div>
+            <div class="col-lg-8">
               <div class="row">
                 <div class="col-md-6">
-                  <div class="ms-form-group">
-                    <input type="text" class="form-control datepicker" name="reminder-date" value="" />
+                  <div class="iq-card">
+                    <div class="iq-card-header d-flex justify-content-between">
+                      <div class="iq-header-title">
+                        <h4 class="card-title">Speciality</h4>
+                      </div>
+                    </div>
+                    <div class="iq-card-body">
+                      <ul class="speciality-list m-0 p-0">
+                        <li class="d-flex mb-4 align-items-center">
+                          <div class="user-img img-fluid">
+                            <a href="#" class="iq-bg-primary"><i class="ri-award-fill"></i></a>
+                          </div>
+                          <div class="media-support-info ml-3">
+                            <h6>professional</h6>
+                            <p class="mb-0">Certified Skin Treatment</p>
+                          </div>
+                        </li>
+                        <li class="d-flex mb-4 align-items-center">
+                          <div class="user-img img-fluid">
+                            <a href="#" class="iq-bg-warning"><i class="ri-award-fill"></i></a>
+                          </div>
+                          <div class="media-support-info ml-3">
+                            <h6>Certified</h6>
+                            <p class="mb-0">Cold Laser Operation</p>
+                          </div>
+                        </li>
+                        <li class="d-flex mb-4 align-items-center">
+                          <div class="user-img img-fluid">
+                            <a href="#" class="iq-bg-info"><i class="ri-award-fill"></i></a>
+                          </div>
+                          <div class="media-support-info ml-3">
+                            <h6>Medication Laser</h6>
+                            <p class="mb-0">Hair Lose Product</p>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="ms-form-group">
-                    <select class="form-control" name="reminder-time">
-                      <option value="">12:00 pm</option>
-                      <option value="">1:00 pm</option>
-                      <option value="">2:00 pm</option>
-                      <option value="">3:00 pm</option>
-                      <option value="">4:00 pm</option>
-                    </select>
+                  <div class="iq-card">
+                    <div class="iq-card-header d-flex justify-content-between">
+                      <div class="iq-header-title">
+                        <h4 class="card-title">Notifications</h4>
+                      </div>
+                    </div>
+                    <div class="iq-card-body">
+                      <ul class="iq-timeline">
+                        <li>
+                          <div class="timeline-dots border-success"></div>
+                          <h6 class="">Dr. Joy Send you Photo</h6>
+                          <small class="mt-1">23 November 2019</small>
+                        </li>
+                        <li>
+                          <div class="timeline-dots border-danger"></div>
+                          <h6 class="">Reminder : Opertion Time!</h6>
+                          <small class="mt-1">20 November 2019</small>
+                        </li>
+                        <li>
+                          <div class="timeline-dots border-primary"></div>
+                          <h6 class="mb-1">Patient Call</h6>
+                          <small class="mt-1">19 November 2019</small>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="iq-card">
+                    <div class="iq-card-header d-flex justify-content-between">
+                      <div class="iq-header-title">
+                        <h4 class="card-title">Schedule</h4>
+                      </div>
+                    </div>
+                    <div class="iq-card-body">
+                      <ul class="list-inline m-0 p-0">
+                        <li>
+                          <h6 class="float-left mb-1">Ruby saul (Blood Check)</h6>
+                          <small class="float-right mt-1">Today</small>
+                          <div class="d-inline-block w-100">
+                            <p class="badge badge-primary">09:00 AM</p>
+                          </div>
+                        </li>
+                        <li>
+                          <h6 class="float-left mb-1">Anna Mull (Fever)</h6>
+                          <small class="float-right mt-1">Today</small>
+                          <div class="d-inline-block w-100">
+                            <p class="badge badge-danger">09:15 AM</p>
+                          </div>
+                        </li>
+                        <li>
+                          <h6 class="float-left mb-1">Petey Cruiser (X-ray)</h6>
+                          <small class="float-right mt-1">Today</small>
+                          <div class="d-inline-block w-100">
+                            <p class="badge badge-warning">10:00 AM</p>
+                          </div>
+                        </li>
+                        <li>
+                          <h6 class="float-left mb-1">Anna Sthesia (Full body Check up)</h6>
+                          <small class="float-right mt-1">Today</small>
+                          <div class="d-inline-block w-100">
+                            <p class="badge badge-info">01:00 PM</p>
+                          </div>
+                        </li>
+                        <li>
+                          <h6 class="float-left mb-1">Paul Molive (Operation)</h6>
+                          <small class="float-right mt-1">Tomorrow</small>
+                          <div class="d-inline-block w-100">
+                            <p class="badge badge-success">09:00 AM</p>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="iq-card">
+                    <div class="iq-card-header d-flex justify-content-between">
+                      <div class="iq-header-title">
+                        <h4 class="card-title">Patients Notes</h4>
+                      </div>
+                    </div>
+                    <div class="iq-card-body">
+                      <ul class="list-inline m-0 p-0">
+                        <li class="d-flex align-items-center justify-content-between mb-3">
+                          <div>
+                            <h6>Treatment was good!</h6>
+                            <p class="mb-0">Eye Test</p>
+                          </div>
+                          <div>
+                            <a href="#" class="btn iq-bg-primary">Open</a>
+                          </div>
+                        </li>
+                        <li class="d-flex align-items-center justify-content-between mb-3">
+                          <div>
+                            <h6>My Helth in better Now</h6>
+                            <p class="mb-0">Fever Test</p>
+                          </div>
+                          <div>
+                            <a href="#" class="btn iq-bg-primary">Open</a>
+                          </div>
+                        </li>
+                        <li class="d-flex align-items-center justify-content-between mb-3">
+                          <div>
+                            <h6>No Effacted</h6>
+                            <p class="mb-0">Thyroid Test</p>
+                          </div>
+                          <div>
+                            <a href="#" class="btn iq-bg-danger">Close</a>
+                          </div>
+                        </li>
+                        <li class="d-flex align-items-center justify-content-between mb-3">
+                          <div>
+                            <h6>Operation Successfull</h6>
+                            <p class="mb-0">Orthopaedic</p>
+                          </div>
+                          <div>
+                            <a href="#" class="btn iq-bg-primary">Open</a>
+                          </div>
+                        </li>
+                        <li class="d-flex align-items-center justify-content-between mb-3">
+                          <div>
+                            <h6>Mediacal Care is just a click away</h6>
+                            <p class="mb-0">Join Pain</p>
+                          </div>
+                          <div>
+                            <a href="#" class="btn iq-bg-danger">Close</a>
+                          </div>
+                        </li>
+                        <li class="d-flex align-items-center justify-content-between">
+                          <div>
+                            <h6>Treatment is good</h6>
+                            <p class="mb-0">Skin Treatment</p>
+                          </div>
+                          <div>
+                            <a href="#" class="btn iq-bg-primary">Open</a>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="iq-card">
+                    <div class="iq-card-header d-flex justify-content-between">
+                      <div class="iq-header-title">
+                        <h4 class="card-title">Education</h4>
+                      </div>
+                    </div>
+                    <div class="iq-card-body">
+                      <table class="table mb-0 table-borderless">
+                        <thead>
+                          <tr>
+                            <th scope="col">Year</th>
+                            <th scope="col">Degree</th>
+                            <th scope="col">Institute</th>
+                            <th scope="col">Result</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>2010</td>
+                            <td>MBBS, M.D</td>
+                            <td>University of Wyoming</td>
+                            <td>
+                              <span class="badge badge-success">Distinction</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>2014</td>
+                            <td>M.D. of Medicine</td>
+                            <td>Netherland Medical College</td>
+                            <td>
+                              <span class="badge badge-success">Distinction</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="iq-card">
+                    <div class="iq-card-header d-flex justify-content-between">
+                      <div class="iq-header-title">
+                        <h4 class="card-title">Experience</h4>
+                      </div>
+                    </div>
+                    <div class="iq-card-body">
+                      <table class="table mb-0 table-borderless">
+                        <thead>
+                          <tr>
+                            <th scope="col">Year</th>
+                            <th scope="col">Department</th>
+                            <th scope="col">Position</th>
+                            <th scope="col">Hospital</th>
+                            <th scope="col">Feedback</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>2014 - 2018</td>
+                            <td>MBBS, M.D</td>
+                            <td>Senior Docter</td>
+                            <td>Midtown Medical Clinic</td>
+                            <td>
+                              <span class="badge badge-primary">Good</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>2018 - 2020</td>
+                            <td>M.D. of Medicine</td>
+                            <td>Associate Prof.</td>
+                            <td>Netherland Medical College</td>
+                            <td>
+                              <span class="badge badge-success">excellence</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-secondary shadow-none" data-dismiss="modal">Add Reminder</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <!-- Notes Modal -->
-    <div class="modal fade" id="notes-modal" tabindex="-1" role="dialog" aria-labelledby="notes-modal">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-secondary">
-            <h5 class="modal-title has-icon text-white" id="NoteModal">New Note</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
-          <form>
-            <div class="modal-body">
-              <div class="ms-form-group">
-                <label>Note Title</label>
-                <input type="text" class="form-control" name="note-title" value="" />
-              </div>
-              <div class="ms-form-group">
-                <label>Note Description</label>
-                <textarea class="form-control" name="note-description"></textarea>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-secondary shadow-none" data-dismiss="modal">Add Note</button>
-            </div>
-          </form>
         </div>
-      </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog ms-modal-dialog-width">
-        <div class="modal-content ms-modal-content-width">
-          <div class="modal-header ms-modal-header-radius-0">
-            <h4 class="modal-title text-white">Make An Appointment</h4>
-            <button type="button" class="close text-white" data-dismiss="modal" aria-hidden="true">x</button>
-          </div>
-          <div class="modal-body p-0 text-left">
-            <div class="col-xl-12 col-md-12">
-              <div class="ms-panel ms-panel-bshadow-none">
-                <div class="ms-panel-header">
-                  <h6>Patient Information</h6>
-                </div>
-                <div class="ms-panel-body">
-                  <form class="needs-validation" novalidate>
-                    <div class="form-row">
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom01">Patient Name</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom01" placeholder="Enter Name" required />
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom02">Date Of Birth</label>
-                        <div class="input-group">
-                          <input type="number" class="form-control" id="validationCustom02" required />
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom03">Disease</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom03" placeholder="Disease" required />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="col-md-4 mb-2">
-                        <label for="validationCustom04">Address</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom04" placeholder="Add Address" required />
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom05">Phone no.</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom05" placeholder="Enter Phone No." required />
-                        </div>
-                      </div>
-
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom06">Department Name</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom06" placeholder="Enter Department Name" required />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="form-row">
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom07">Appointment With</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom07" placeholder="Enter Doctor Name" required />
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom08">Appointment Date</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom08" placeholder="Enter Appointment Date" required />
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label>Sex</label>
-                        <ul class="ms-list d-flex">
-                          <li class="ms-list-item pl-0">
-                            <label class="ms-checkbox-wrap">
-                              <input type="radio" name="radioExample" value="" />
-                              <i class="ms-checkbox-check"></i>
-                            </label>
-                            <span>Male</span>
-                          </li>
-                          <li class="ms-list-item">
-                            <label class="ms-checkbox-wrap">
-                              <input type="radio" name="radioExample" value="" checked="" />
-                              <i class="ms-checkbox-check"></i>
-                            </label>
-                            <span>Female</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <button class="btn btn-warning mt-4 d-inline w-20" type="submit">Reset</button>
-                    <button class="btn btn-primary mt-4 d-inline w-20" type="submit">Add Appointment</button>
-                  </form>
-                </div>
+        <!-- Footer -->
+        <footer class="bg-white iq-footer">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-6">
+                <ul class="list-inline mb-0">
+                  <li class="list-inline-item">
+                    <a href="javascript:;">Privacy Policy</a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="javascript:;">Terms of Use</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6 text-right">
+                Copyright 2020 <a href="#">XRay</a> All Rights Reserved.
               </div>
             </div>
           </div>
-        </div>
+        </footer>
+        <!-- Footer END -->
       </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="prescription" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog ms-modal-dialog-width">
-        <div class="modal-content ms-modal-content-width">
-          <div class="modal-header ms-modal-header-radius-0">
-            <h4 class="modal-title text-white">Make a prescription</h4>
-            <button type="button" class="close text-white" data-dismiss="modal" aria-hidden="true">x</button>
-          </div>
-          <div class="modal-body p-0 text-left">
-            <div class="col-xl-12 col-md-12">
-              <div class="ms-panel ms-panel-bshadow-none">
-                <div class="ms-panel-header">
-                  <h6>Patient Information</h6>
-                </div>
-                <div class="ms-panel-body">
-                  <form class="needs-validation" novalidate>
-                    <div class="form-row">
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom09">Patient Name</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom09" placeholder="Enter Name" required />
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom10">Date Of Birth</label>
-                        <div class="input-group">
-                          <input type="number" class="form-control" id="validationCustom10" required />
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-2">
-                        <label for="validationCustom11">Address</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom11" placeholder="Add Address" required />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom12">Phone no.</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom12" placeholder="Enter Phone No." required />
-                        </div>
-                      </div>
-
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom13">Medication</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom13" placeholder="Acetaminophen" required />
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom14">Period Of medication</label>
-                        <div class="input-group">
-                          <input type="number" class="form-control" id="validationCustom14" placeholder="" required />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="form-row">
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom15">Appointment With</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom15" placeholder="Enter Doctor Name" required />
-                        </div>
-                      </div>
-                    </div>
-                    <button class="btn btn-warning mt-4 d-inline w-20" type="submit">Save Prescription</button>
-                    <button class="btn btn-primary mt-4 d-inline w-20" type="submit">Save & Print</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="report1" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog ms-modal-dialog-width">
-        <div class="modal-content ms-modal-content-width">
-          <div class="modal-header ms-modal-header-radius-0">
-            <h4 class="modal-title text-white">Generate report</h4>
-            <button type="button" class="close text-white" data-dismiss="modal" aria-hidden="true">x</button>
-          </div>
-          <div class="modal-body p-0 text-left">
-            <div class="col-xl-12 col-md-12">
-              <div class="ms-panel ms-panel-bshadow-none">
-                <div class="ms-panel-header">
-                  <h6>Patient Information</h6>
-                </div>
-                <div class="ms-panel-body">
-                  <form class="needs-validation" novalidate>
-                    <div class="form-row">
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom16">Patient Name</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom16" placeholder="Enter Name" required />
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom17">Date Of Birth</label>
-                        <div class="input-group">
-                          <input type="number" class="form-control" id="validationCustom17" required />
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-2">
-                        <label for="validationCustom22">Address</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom22" placeholder="Add Address" required />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom18">Phone no.</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom18" placeholder="Enter Phone No." required />
-                        </div>
-                      </div>
-
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom19">Report Type</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom19" placeholder="Diseases Report" required />
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom23">Report Period</label>
-                        <div class="input-group">
-                          <input type="number" class="form-control" id="validationCustom23" placeholder="" required />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="form-row">
-                      <div class="col-md-4 mb-3">
-                        <label for="validationCustom20">Appointment With</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="validationCustom20" placeholder="Enter Doctor Name" required />
-                        </div>
-                      </div>
-                    </div>
-                    <button class="btn btn-warning mt-4 d-inline w-20" type="submit">Generate Report</button>
-                    <button class="btn btn-primary mt-4 d-inline w-20" type="submit">Generate & Print</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- SCRIPTS -->
-    <!-- Global Required Scripts Start -->
-    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'assets/js/popper.min.js' %}"></script>
-    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
-    <script src="{% static '/assets/js/perfect-scrollbar.js' %}"></script>
-    <script src="{% static 'assets/js/jquery-ui.min.js' %}"></script>
-    <!-- Global Required Scripts End -->
-    <!-- Mednalytics core JavaScript -->
-    <script src="{% static '/assets/js/framework.js' %}"></script>
-    <!-- Settings -->
-    <script src="{% static 'assets/js/settings.js' %}"></script>
+    <!-- Wrapper END -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Appear JavaScript -->
+    <script src="{% static 'js/jquery.appear.js' %}"></script>
+    <!-- Countdown JavaScript -->
+    <script src="{% static 'js/countdown.min.js' %}"></script>
+    <!-- Counterup JavaScript -->
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <!-- Wow JavaScript -->
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <!-- Apexcharts JavaScript -->
+    <script src="{% static 'js/apexcharts.js' %}"></script>
+    <!-- Slick JavaScript -->
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <!-- Select2 JavaScript -->
+    <script src="{% static 'js/select2.min.js' %}"></script>
+    <!-- Owl Carousel JavaScript -->
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <!-- Magnific Popup JavaScript -->
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <!-- Smooth Scrollbar JavaScript -->
+    <script src="{% static 'js/smooth-scrollbar.js' %}"></script>
+    <!-- lottie JavaScript -->
+    <script src="{% static 'js/lottie.js' %}"></script>
+    <!-- Chart Custom JavaScript -->
+    <script src="{% static 'js/chart-custom.js' %}"></script>
+    <!-- Custom JavaScript -->
+    <script src="{% static 'js/custom.js' %}"></script>
   </body>
 </html>

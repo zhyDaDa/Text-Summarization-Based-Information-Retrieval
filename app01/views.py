@@ -254,12 +254,27 @@ def delete1(request):
         # 假设插入成功，返回收藏成功的响应
         return JsonResponse({'message': '删除成功'})
 
-def list(request):
+def faqpage(request):
     if  request.method == "GET":  # 前端如果是get请求
-        return render(request, 'list.html')  # 返回HTML页面。
-def selectplus(request):
-    if  request.method == "GET":  # 前端如果是get请求
-        return render(request, 'selectplus.html')  # 返回HTML页面。
+        return render(request, 'faqpage.html')  # 返回HTML页面。。
 def lock(request):
     if  request.method == "GET":  # 前端如果是get请求
         return render(request, 'lock.html')  # 返回HTML页面。
+def userEdit(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'userEdit.html')  # 返回HTML页面。    
+def calendar(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'calendar.html')  # 返回HTML页面。      
+def recoverpw(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'recoverpw.html')  # 返回HTML页面。     
+def pagesconfirmmail(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'pagesconfirmmail.html') 
+def chat(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'chat.html')       # 返回HTML页面。       
+def doctorlist(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'doctorlist.html')       # 返回HTML页面。        

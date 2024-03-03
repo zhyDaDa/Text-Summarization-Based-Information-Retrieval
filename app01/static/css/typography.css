@@ -57,19 +57,19 @@ import Css
 General
 -----------------------------------------------------------------------*/
 *::-moz-selection {
-  background: #009efb;
+  background: #089bab;
   color: #ffffff;
   text-shadow: none;
 }
 
 ::-moz-selection {
-  background: #009efb;
+  background: #089bab;
   color: #ffffff;
   text-shadow: none;
 }
 
 ::selection {
-  background: #009efb;
+  background: #089bab;
   color: #ffffff;
   text-shadow: none;
 }
@@ -103,7 +103,7 @@ btn {
 }
 
 a {
-  color: #009efb;
+  color: #089bab;
 }
 
 .uppercase {
@@ -179,7 +179,7 @@ label {
 
 .form-control:focus {
   color: #3f414d;
-  border-color: #009efb;
+  border-color: #089bab;
   box-shadow: none;
 }
 
@@ -813,7 +813,7 @@ Background Color
   background: -o-linear-gradient(left, rgba(8, 155, 171, 1) 0%, rgba(13, 181, 200, 1) 100%);
   background: -ms-linear-gradient(left, rgba(8, 155, 171, 1) 0%, rgba(13, 181, 200, 1) 100%);
   background: linear-gradient(to right, rgba(8, 155, 171, 1) 0%, rgba(13, 181, 200, 1) 100%) !important;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#009efb', endColorstr='#0db5c8', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#089bab', endColorstr='#0db5c8', GradientType=1);
 }
 
 .bg-secondary,
@@ -910,7 +910,7 @@ Background Color Opacity
 ------------------------------------------------*/
 .iq-bg-primary {
   background: #ceebee !important;
-  color: #009efb !important;
+  color: #089bab !important;
 }
 
 .iq-bg-secondary {
@@ -976,7 +976,7 @@ Background Color Opacity
 Text Color
 ------------------------------------------------*/
 .text-primary {
-  color: #009efb !important;
+  color: #089bab !important;
 }
 
 .text-secondary {
@@ -1163,6 +1163,9 @@ Card
 ------------------------------------------------*/
 .iq-card {
   background: #ffffff;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
   margin-bottom: 30px;
   border: none;
   -webkit-box-shadow: 0px 4px 5px 1px rgba(175, 175, 175, 0.1);
@@ -1225,12 +1228,12 @@ Card
 
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
-  color: #009efb;
+  color: #089bab;
   background: #ceebee;
 }
 
 .nav-pills .nav-link:hover {
-  color: #009efb;
+  color: #089bab;
 }
 
 /*--------------*/
@@ -1248,31 +1251,32 @@ Card
   font-family: 'Poppins', sans-serif;
   border: none;
   border-bottom: 2px solid transparent;
+  font-size: 19px;
 }
 
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
-  border-bottom: 2px solid #009efb;
-  color: #009efb;
+  border-bottom: 3px solid #089bab;
+  color: #089bab;
 }
 
 .page-item.disabled .page-link {
-  border-color: #009efb;
+  border-color: #089bab;
 }
 
 .page-link {
-  color: #009efb;
-  border-color: #009efb;
+  color: #089bab;
+  border-color: #089bab;
 }
 
 .page-item.active .page-link {
-  background-color: #009efb;
-  border-color: #009efb;
+  background-color: #089bab;
+  border-color: #089bab;
 }
 
 .page-link:hover {
-  color: #009efb;
-  border-color: #009efb;
+  color: #089bab;
+  border-color: #089bab;
 }
 
 /*---------------------------------------------------------------------
@@ -1442,8 +1446,8 @@ Buttons
   background: -o-linear-gradient(left, rgba(8, 155, 171, 1) 0%, rgba(13, 181, 200, 1) 100%);
   background: -ms-linear-gradient(left, rgba(8, 155, 171, 1) 0%, rgba(13, 181, 200, 1) 100%);
   background: linear-gradient(to right, rgba(8, 155, 171, 1) 0%, rgba(13, 181, 200, 1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#009efb', endColorstr='#0db5c8', GradientType=1);
-  border-color: #009efb;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#089bab', endColorstr='#0db5c8', GradientType=1);
+  border-color: #089bab;
 }
 
 .btn-secondary {
@@ -1540,7 +1544,7 @@ Buttons
   background: -o-linear-gradient(left, rgba(13, 181, 200, 1) 0%, rgba(8, 155, 171, 1) 100%);
   background: -ms-linear-gradient(left, rgba(13, 181, 200, 1) 0%, rgba(8, 155, 171, 1) 100%);
   background: linear-gradient(to right, rgba(13, 181, 200, 1) 0%, rgba(8, 155, 171, 1) 100%) !important;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0db5c8', endColorstr='#009efb', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0db5c8', endColorstr='#089bab', GradientType=1);
   border-color: #0db5c8;
 }
 
@@ -1555,13 +1559,13 @@ button.bg-primary:hover {
   background: -o-linear-gradient(left, rgba(13, 181, 200, 1) 0%, rgba(8, 155, 171, 1) 100%);
   background: -ms-linear-gradient(left, rgba(13, 181, 200, 1) 0%, rgba(8, 155, 171, 1) 100%);
   background: linear-gradient(to right, rgba(13, 181, 200, 1) 0%, rgba(8, 155, 171, 1) 100%) !important;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0db5c8', endColorstr='#009efb', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0db5c8', endColorstr='#089bab', GradientType=1);
 }
 
 /*--------------*/
 .btn-outline-primary {
-  color: #009efb;
-  border-color: #009efb;
+  color: #089bab;
+  border-color: #089bab;
 }
 
 .btn-outline-secondary {
@@ -1603,8 +1607,8 @@ button.bg-primary:hover {
 Alert
 ------------------------------------------------*/
 .alert-primary {
-  color: #009efb;
-  border-color: #009efb;
+  color: #089bab;
+  border-color: #089bab;
   background-color: #eff7f8;
 }
 
@@ -1703,7 +1707,7 @@ list Group
 ------------------------------------------------*/
 .list-group-item-primary {
   background-color: #eff7f8;
-  color: #009efb;
+  color: #089bab;
 }
 
 .list-group-item-secondary {
@@ -1746,15 +1750,15 @@ list Group
 }
 
 .list-group-item.active {
-  background-color: #009efb;
-  border-color: #009efb;
+  background-color: #089bab;
+  border-color: #089bab;
 }
 
 /*----------------------------------------------
 Border Color
 ------------------------------------------------*/
 .border-primary {
-  border-color: #009efb !important;
+  border-color: #089bab !important;
 }
 
 .border-secondary {
