@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'GraduateSystem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'graduate',
+        'NAME': 'mysql',
         'USER': 'root',
         # 'PASSWORD':'2814058178Lyh',
-        'PASSWORD': 'Aabc909090897',
+        'PASSWORD': '00000000',
         'HOST': 'localhost',
         'PORT': '3306',
 
