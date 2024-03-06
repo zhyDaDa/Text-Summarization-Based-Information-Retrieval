@@ -371,34 +371,57 @@
                 <div class="iq-card-body">
                   <div class="">
                     <div class="iq-email-list">
-                      <button class="btn btn-primary btn-lg btn-block mb-3 font-size-16 p-3" data-target="#compose-email-popup" data-toggle="modal"><i class="ri-send-plane-line mr-2"></i>New Message</button>
-                      <div class="iq-email-ui nav flex-column nav-pills">
-                        <li class="nav-link active" role="tab" data-toggle="pill" href="#mail-inbox">
-                          <a href=""><i class="ri-mail-line"></i>Inbox<span class="badge badge-primary ml-2">4</span></a>
-                        </li>
-                        <li class="nav-link" role="tab" data-toggle="pill" href="#mail-starred">
-                          <a href="#"><i class="ri-star-line"></i>Starred</a>
-                        </li>
-                        <li class="nav-link" role="tab" data-toggle="pill" href="#mail-snoozed">
-                          <a href="#"><i class="ri-time-line"></i>Snoozed</a>
-                        </li>
-                        <li class="nav-link" role="tab" data-toggle="pill" href="#mail-draft">
-                          <a href="#"><i class="ri-file-list-2-line"></i>Draft</a>
-                        </li>
-                        <li class="nav-link" role="tab" data-toggle="pill" href="#mail-sent">
-                          <a href="#"><i class="ri-mail-send-line"></i>Sent Mail</a>
-                        </li>
-                        <li class="nav-link" role="tab" data-toggle="pill" href="#mail-trash">
-                          <a href="#"><i class="ri-delete-bin-line"></i>Trash</a>
-                        </li>
-                        <li class="nav-link" role="tab" data-toggle="pill" href="#mail-important">
-                          <a href="#"><i class="ri-bookmark-line"></i>Important</a>
-                        </li>
-                        <li class="nav-link" role="tab" data-toggle="pill" href="#mail-spam">
-                          <a href="#"><i class="ri-spam-line"></i>Spam</a>
-                        </li>
+                      <button class="btn btn-primary btn-lg btn-block mb-3 font-size-16 p-3" data-target="#compose-email-popup" data-toggle="modal">
+                        <i class="ri-search-2-line mr-2"></i>搜索</button>
+                      
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">智能搜索</label>
+                        <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="2" placeholder="请输入病症主述"></textarea>
                       </div>
-                      <h6 class="mt-4 mb-3">Labels</h6>
+                      <hr>
+                      <form>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">性别</label>
+                          <select class="form-control" id="exampleFormControlSelect1">
+                             <option selected="" disabled="">选择性别</option>
+                             <option>全部</option>
+                             <option>男</option>
+                             <option>女</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPlaceholder">年龄范围</label>
+                          <input type="number" class="form-control" id="exampleInputPlaceholder" placeholder="最小年龄">
+                          <input type="number" class="form-control" id="exampleInputPlaceholder" placeholder="最大年龄">
+                        </div>
+                        {% comment %} <div class="form-group">
+                          <label for="exampleFormControlSelect2">身体部位</label>
+                          <select multiple="" class="form-control" id="exampleFormControlSelect2">
+                             <option></option>
+                             <option>select-2</option>
+                             <option>select-3</option>
+                             <option>select-4</option>
+                             <option>select-5</option>
+                             <option>select-6</option>
+                             <option>select-7</option>
+                             <option>select-8</option>
+                          </select>
+                        </div> {% endcomment %}
+                       
+                        <div class="form-group">
+                          <label for="exampleInputPlaceholder">身体部位</label>
+                          <input type="text" class="form-control" id="exampleInputPlaceholder" placeholder="身体部位">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPlaceholder">症状</label>
+                          <input type="text" class="form-control" id="exampleInputPlaceholder" placeholder="症状">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPlaceholder">疾病</label>
+                          <input type="text" class="form-control" id="exampleInputPlaceholder" placeholder="疾病">
+                        </div>
+                      </form>
+                      <h6 class="mt-4 mb-3">标签</h6>
                       <ul class="iq-email-ui iq-email-label">
                         <li>
                           <a href="#"><i class="ri-focus-fill text-primary"></i>Personal</a>
@@ -419,13 +442,6 @@
                           <a href="#"><i class="ri-add-circle-line"></i>Add New Labels</a>
                         </li>
                       </ul>
-                      <div class="iq-progress-bar-linear d-inline-block w-100">
-                        <h6 class="mt-4 mb-3">Storage</h6>
-                        <div class="iq-progress-bar">
-                          <span class="bg-danger" data-percent="90"></span>
-                        </div>
-                        <span class="mt-1 d-inline-block w-100">7.02 GB (46%) of 15 GB used</span>
-                      </div>
                     </div>
                   </div>
                 </div>
