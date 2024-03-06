@@ -69,7 +69,7 @@ def upload(request):
             mediacal=request.POST.get("mediacal")
             notes=request.POST.get("notes")
             gender=request.POST.get("gender")
-            extract=extract_information(content)
+            extract=extract_byGLM4(content)
             username = 1001
             print(id,date,content,result,extract)
             # request.POST.get返回的值是字符串，所以下面if中的判断是成立的。
