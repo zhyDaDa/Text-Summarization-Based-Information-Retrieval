@@ -54,6 +54,7 @@ def index(request):
 def upload(request):
     print("views.py | \033[0;36;47m upload\033[0m >>> Get request: ", request)
     if request.method == "GET":  # 前端如果是get请求
+        print("nm")
         return render(request, "upload.html")  # 返回HTML页面。
     elif request.method == "POST":  # 前端如果是post请求
         id = request.POST.get("id")     
@@ -66,7 +67,7 @@ def upload(request):
         mediacal=request.POST.get("mediacal")
         notes=request.POST.get("notes")
         gender=request.POST.get("gender")
-        extract=extract_byGLM4(content)
+        # extract=extract_byGLM4(content)
         username = 1001
         print(id,date,content,result,extract)
         # request.POST.get返回的值是字符串，所以下面if中的判断是成立的。
@@ -74,7 +75,7 @@ def upload(request):
         conn.execute("INSERT INTO test3 (id,question_content,patient_history,patient_allergy,patient_examination,patient_medical,patient_gender,notes,answer_content,question_extraction,date,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",  (id,content,history,allergy,examination,mediacal,gender,notes,result,extract,date,username))
         conn.close()
         return render(request, "upload.html")
-        return render(request, "upload.html")
+
             
 
 
