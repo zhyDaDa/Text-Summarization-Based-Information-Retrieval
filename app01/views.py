@@ -79,9 +79,17 @@ def upload(request):
             return render(request, "upload.html")
 
 def select(request):
-    print("views.py | select >>> Get request: ", request)
+    print("\033[0;36;47mselect\033[0m >>> Get request: ", request)
     if request.method == 'POST':
             searchText = request.POST.get('select')
+            print("\033[0;36;47mselect\033[0m >>> Fetch searchText: ", searchText)  
+            # TODO: 后续要在这里接受前端的筛选条件并写出相应的SQL语句
+            conn = connection.cursor()
+            conn.execute("SELECT  id ,question_content ,answer_content, user_id  FROM  test  ORDER BY RAND(); ")
+            select = conn.fetchall()
+            conn.close()
+            return render(request,"select.html",{'select': select})
+        
             post_list = find_max_similarity_rows(searchText)
             print(post_list)
             return render(request, 'select.html', {'post_list': post_list,'searchText':searchText})
