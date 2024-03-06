@@ -11,11 +11,14 @@ from zhipuai import ZhipuAI
 # Create your views here.
 @csrf_exempt
 def login(request):
+    print("views.py | \033[0;36;47mlogin\033[0m >>> Get request: ", request)
     if request.method == "GET":  # 前端如果是get请求
         return render(request, 'login.html')  # 返回HTML页面。
     elif request.method == "POST":  # 前端如果是post请求
         username = request.POST.get("username")     # 获取POST请求中的username值,字符串username要和前端form表单中的对应起来。
         password = request.POST.get("password")     # 获取POST请求中的password值，字符串password要和前端form表单中的对应起来。
+        print("\033[0;36;47m用户名:\033[0m", username)
+        print("\033[0;36;47m密码:\033[0m", password)
          # request.POST.get返回的值是字符串，所以下面if中的判断是成立的。
         conn = connection.cursor()
         conn.execute("SELECT * FROM user WHERE user_id = %s AND user_password = %s", [username, password])
@@ -27,7 +30,7 @@ def login(request):
             return render(request, "login.html")
 
 def index(request):
-    print("views.py | index >>> Get request: ", request)
+    print("views.py | \033[0;36;47mindex\033[0m >>> Get request: ", request)
     return render(request,"index.html")
 
 @csrf_exempt
