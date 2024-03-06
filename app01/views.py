@@ -56,40 +56,26 @@ def upload(request):
     if request.method == "GET":  # 前端如果是get请求
         return render(request, "upload.html")  # 返回HTML页面。
     elif request.method == "POST":  # 前端如果是post请求
-        id = request.POST.get("id")
-        content = request.POST.get("content")
-        result = request.POST.get("result")
+        id = request.POST.get("id")     
+        content = request.POST.get("content")     
+        result =request.POST.get("result")
         date = request.POST.get("date")
-        extract = extract_byGLM4(content)
-        extract = mergeGLM4Output(extract)
+        history=request.POST.get("history")
+        allergy=request.POST.get("allergy")
+        examination=request.POST.get("examination")
+        mediacal=request.POST.get("mediacal")
+        notes=request.POST.get("notes")
+        gender=request.POST.get("gender")
+        extract=extract_byGLM4(content)
         username = 1001
-        print(id, date, content, result, extract)
+        print(id,date,content,result,extract)
         # request.POST.get返回的值是字符串，所以下面if中的判断是成立的。
         conn = connection.cursor()
-        conn.execute(
-            "INSERT INTO test2 (id, question_content, answer_content,question_extraction, date,user_id) VALUES (%s, %s, %s, %s,%s,%s)",
-            (id, content, result, extract, date, username),
-        )
+        conn.execute("INSERT INTO test3 (id,question_content,patient_history,patient_allergy,patient_examination,patient_medical,patient_gender,notes,answer_content,question_extraction,date,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",  (id,content,history,allergy,examination,mediacal,gender,notes,result,extract,date,username))
         conn.close()
         return render(request, "upload.html")
-            id = request.POST.get("id")     
-            content = request.POST.get("content")     
-            result =request.POST.get("result")
-            date = request.POST.get("date")
-            history=request.POST.get("history")
-            allergy=request.POST.get("allergy")
-            examination=request.POST.get("examination")
-            mediacal=request.POST.get("mediacal")
-            notes=request.POST.get("notes")
-            gender=request.POST.get("gender")
-            extract=extract_byGLM4(content)
-            username = 1001
-            print(id,date,content,result,extract)
-            # request.POST.get返回的值是字符串，所以下面if中的判断是成立的。
-            conn = connection.cursor()
-            conn.execute("INSERT INTO test3 (id,question_content,patient_history,patient_allergy,patient_examination,patient_medical,patient_gender,notes,answer_content,question_extraction,date,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",  (id,content,history,allergy,examination,mediacal,gender,notes,result,extract,date,username))
-            conn.close()
-            return render(request, "upload.html")
+        return render(request, "upload.html")
+            
 
 
 def select(request):
@@ -314,3 +300,30 @@ def delete1(request):
         mycursor.close()
         # 假设插入成功，返回收藏成功的响应
         return JsonResponse({"message": "删除成功"})
+def faqpage(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'faqpage.html')  # 返回HTML页面。。
+def lock(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'lock.html')  # 返回HTML页面。
+def userEdit(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'userEdit.html')  # 返回HTML页面。    
+def calendar(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'calendar.html')  # 返回HTML页面。      
+def recoverpw(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'recoverpw.html')  # 返回HTML页面。     
+def pagesconfirmmail(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'pagesconfirmmail.html') 
+def chat(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'chat.html')       # 返回HTML页面。       
+def doctorlist(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'doctorlist.html')       # 返回HTML页面。      
+def forum(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'forum.html')       # 返回HTML页面。          
