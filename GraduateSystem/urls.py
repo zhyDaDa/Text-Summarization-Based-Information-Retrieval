@@ -38,5 +38,6 @@ urlpatterns = [
     path('pagesconfirmmail/', views.pagesconfirmmail, name='pagesconfirmmail'),
     path('chat/', views.chat, name='chat'),
     path('doctorlist/', views.doctorlist, name='doctorlist'),
+    path('forum/', views.forum, name='forum'),
     
 ]

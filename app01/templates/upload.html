@@ -73,7 +73,7 @@
                 <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-user-3-fill"></i><span>论坛</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                 <ul class="iq-submenu">
                   <li>
-                    <a href="doctor-list.html"><i class="ri-file-list-fill"></i>All Doctors</a>
+                    <a href="{% url 'forum' %}"><i class="ri-file-list-fill"></i>论坛</a>
                   </li>
                   <li>
                     <a href="add-doctor.html"><i class="ri-user-add-fill"></i> Add Doctor</a>
@@ -428,85 +428,67 @@
               <div class="iq-card">
                 <div class="iq-card-header d-flex justify-content-between">
                   <div class="iq-header-title">
-                    <h4 class="card-title">New User Information</h4>
+                    <h4 class="card-title">添加新病历</h4>
                   </div>
                 </div>
                 <div class="iq-card-body">
                   <div class="new-user-info">
-                    <form>
+                    <form method="post">
+                      {% csrf_token %}
                       <div class="row">
                         <div class="form-group col-md-6">
-                          <label for="fname">First Name:</label>
-                          <input type="text" class="form-control" id="fname" placeholder="First Name" />
+                          <label for="name">姓名</label>
+                          <input type="text" name="" class="form-control" id="name" placeholder="姓名" />
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="lname">Last Name:</label>
-                          <input type="text" class="form-control" id="lname" placeholder="Last Name" />
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="add1">Street Address 1:</label>
-                          <input type="text" class="form-control" id="add1" placeholder="Street Address 1" />
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="add2">Street Address 2:</label>
-                          <input type="text" class="form-control" id="add2" placeholder="Street Address 2" />
-                        </div>
-                        <div class="form-group col-md-12">
-                          <label for="cname">Department Name:</label>
-                          <input type="text" class="form-control" id="cname" placeholder="Department Name" />
-                        </div>
-                        <div class="form-group col-sm-12">
-                          <label>Country:</label>
-                          <select class="form-control" id="selectcountry">
-                            <option>Select Country</option>
-                            <option>Caneda</option>
-                            <option>Noida</option>
-                            <option>USA</option>
-                            <option>India</option>
-                            <option>Africa</option>
+                          <label>性别</label>
+                          <select class="form-control" id="gender">
+                            <option>男性</option>
+                            <option>女性</option>
                           </select>
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="mobno">Mobile Number:</label>
-                          <input type="text" class="form-control" id="mobno" placeholder="Mobile Number" />
+                          <label for="id">病历编号</label>
+                          <input type="text" class="form-control" id="id" placeholder="例如..." />
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="altconno">Alternate Contact:</label>
-                          <input type="text" class="form-control" id="altconno" placeholder="Alternate Contact" />
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="email">Email:</label>
-                          <input type="email" class="form-control" id="email" placeholder="Email" />
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="pno">Pin Code:</label>
-                          <input type="text" class="form-control" id="pno" placeholder="Pin Code" />
+                          <label for="date">上传时间</label>
+                          <input type="text" class="form-control" id="date" placeholder="病历上传时间" />
                         </div>
                         <div class="form-group col-md-12">
-                          <label for="city">Town/City:</label>
-                          <input type="text" class="form-control" id="city" placeholder="Town/City" />
+                          <label for="history">既往史</label>
+                          <input type="text" class="form-control" id="history" placeholder="例如：有糖尿病..." />
+                        </div>
+                        <div class="form-group col-md-12">
+                          <label for="content">病症主述</label>
+                          <input type="text" class="form-control" id="content" placeholder="病症主述" />
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="allergy">药物过敏史</label>
+                          <input type="text" class="form-control" id="allergy" placeholder="" />
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="examination">辅助检查</label>
+                          <input type="text" class="form-control" id="examination" placeholder="辅助检查结果" />
+                        </div>
+                        <div class="form-group col-md-12">
+                          <label for="result">初步诊断</label>
+                          <input type="text" class="form-control" id="result" placeholder="医生初步诊断" />
+                        </div>
+                        <div class="form-group col-md-12">
+                          <label for="mediacal">用药处理</label>
+                          <input type="text" class="form-control" id="mediacal" placeholder="诊断后建议用药" />
+                        </div>
+                        <div class="form-group col-md-12">
+                          <label for="notes">备注</label>
+                          <input type="text" class="form-control" id="notes" placeholder="备注" />
                         </div>
                       </div>
                       <hr />
-                      <h5 class="mb-3">Security</h5>
-                      <div class="row">
-                        <div class="form-group col-md-12">
-                          <label for="uname">User Name:</label>
-                          <input type="text" class="form-control" id="uname" placeholder="User Name" />
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="pass">Password:</label>
-                          <input type="password" class="form-control" id="pass" placeholder="Password" />
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="rpass">Repeat Password:</label>
-                          <input type="password" class="form-control" id="rpass" placeholder="Repeat Password " />
-                        </div>
-                      </div>
                       <div class="checkbox">
                         <label><input class="mr-2" type="checkbox" />Enable Two-Factor-Authentication</label>
                       </div>
-                      <button type="submit" class="btn btn-primary">Add New User</button>
+                      <button type="submit" class="btn btn-primary">上传病历</button>
                     </form>
                   </div>
                 </div>

@@ -1,6 +1,8 @@
 from django.shortcuts import render,HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.db import connection
+from django.db import connections
+from django.db.utils import OperationalError
 from paddlenlp import Taskflow
 import torch
 from transformers import BertTokenizer, BertModel
@@ -8,6 +10,24 @@ from django.http import JsonResponse
 import json
 import re
 from zhipuai import ZhipuAI
+
+
+def check_database_connection():
+    try:
+        # 尝试获取默认数据库的连接
+        conn = connections['default']
+        # 尝试获取光标（这将确保我们实际上尝试了连接）
+        conn.cursor()
+        return True
+    except OperationalError:
+        return False
+# 使用这个函数来检查连接
+if check_database_connection():
+    print("数据库连接成功")
+else:
+    print("数据库连接失败")
+
+
 # Create your views here.
 @csrf_exempt
 def login(request):
@@ -40,12 +60,18 @@ def upload(request):
             content = request.POST.get("content")     
             result =request.POST.get("result")
             date = request.POST.get("date")
+            history=request.POST.get("history")
+            allergy=request.POST.get("allergy")
+            examination=request.POST.get("examination")
+            mediacal=request.POST.get("mediacal")
+            notes=request.POST.get("notes")
+            gender=request.POST.get("gender")
             extract=extract_information(content)
             username = 1001
             print(id,date,content,result,extract)
             # request.POST.get返回的值是字符串，所以下面if中的判断是成立的。
             conn = connection.cursor()
-            conn.execute("INSERT INTO test2 (id, question_content, answer_content,question_extraction, date,user_id) VALUES (%s, %s, %s, %s,%s,%s)",  (id, content, result,extract, date,username))
+            conn.execute("INSERT INTO test3 (id,question_content,patient_history,patient_allergy,patient_examination,patient_medical,patient_gender,notes,answer_content,question_extraction,date,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",  (id,content,history,allergy,examination,mediacal,gender,notes,result,extract,date,username))
             conn.close()
             return render(request, "upload.html")
 
@@ -277,4 +303,7 @@ def chat(request):
         return render(request, 'chat.html')       # 返回HTML页面。       
 def doctorlist(request):
     if  request.method == "GET":  # 前端如果是get请求
-        return render(request, 'doctorlist.html')       # 返回HTML页面。        
+        return render(request, 'doctorlist.html')       # 返回HTML页面。      
+def forum(request):
+    if  request.method == "GET":  # 前端如果是get请求
+        return render(request, 'forum.html')       # 返回HTML页面。          
