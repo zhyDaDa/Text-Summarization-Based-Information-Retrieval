@@ -536,7 +536,7 @@
                                 <div class="iq-email-content">
                                   {% comment %} 内容预览 {% endcomment %}
                                   <a href="javascript: void(0);" class="iq-email-subject">
-                                    {{ i.4 }}
+                                    {{ i.1 }}
                                   </a>
                                   {% comment %} 上传用户ID {% endcomment %}
                                   <div class="iq-email-date">{{ i.3 }}</div>
@@ -577,26 +577,17 @@
                                                 <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Transfer"><a href="#"><i class="ri-folder-transfer-line"></i></a></li>
                                                 <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Bookmark"><a href="#"><i class="ri-bookmark-line"></i></a></li>
                                              </ul>
-                                             <div class="iq-email-search d-flex">
-                                                <ul>
-                                                   <li class="mr-3">
-                                                      <a class="font-size-14" href="#">1 of 505</a>
-                                                   </li>
-                                                   <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Previous"><a href="#"><i class="ri-arrow-left-s-line"></i></a></li>
-                                                   <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Next"><a href="#"><i class="ri-arrow-right-s-line"></i></a></li>
-                                                </ul>
-                                             </div>
                                           </div>
                                        </div>
                                        <hr class="mt-0">
                                        <div class="iq-inbox-subject p-3">
-                                          <h5 class="mt-0">Your elite author Graphic Optimization reward is ready!</h5>
+                                          <h5 class="mt-0">病例 No.{{ i.0 }}</h5>
                                           <div class="iq-inbox-subject-info">
                                              <div class="iq-subject-info">
                                                 <img src="static/picture/06.jpg" class="img-fluid rounded-circle" alt="#">
                                                 <div class="iq-subject-status align-self-center">
-                                                   <h6 class="mb-0">XRay team <a href="javascript:;"><dummy@xray.com></dummy@xray.com></a></h6>
-                                                   <div class="dropdown">
+                                                   <h6 class="mb-0">上传者: {{ i.3 }} <a href="javascript:;"><dummy@xray.com></dummy@xray.com></a></h6>
+                                                   {% comment %} <div class="dropdown">
                                                       <a class="dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                       to Me
                                                       </a>
@@ -630,18 +621,20 @@
                                                             </tbody>
                                                          </table>
                                                       </div>
-                                                   </div>
+                                                   </div> {% endcomment %}
                                                 </div>
+                                                {% comment %} TODO: 病例的其他信息包括时间... {% endcomment %}
                                                 <span class="float-right align-self-center">Jan 15, 2029, 10:20AM</span>
                                              </div>
                                              <div class="iq-inbox-body mt-5">
-                                                <p>Hi Deray Billings,</p>
-                                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. </p>
-                                                <p>Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-                                                <p class="mt-5 mb-0">Regards,<span class="d-inline-block w-100">John Deo</span></p>
+                                               <h6 class="mb-2">病例主述</h6>
+                                               <p>{{ i.1 }}</p>
+                                               <hr>
+                                               <h6 class="mb-2">医生建议</h6>
+                                               <p>{{ i.2 }}</p>
                                              </div>
                                              <hr>
-                                             <div class="attegement">
+                                             {% comment %} <div class="attegement">
                                                 <h6 class="mb-2">ATTACHED FILES:</h6>
                                                 <ul>
                                                    <li class="icon icon-attegment">
@@ -651,7 +644,7 @@
                                                       <i class="fa fa-file-text-o" aria-hidden="true"></i> <span class="ml-1">mydoc.pdf</span>
                                                    </li>
                                                 </ul>
-                                             </div>
+                                             </div> {% endcomment %}
                                           </div>
                                        </div>
                                     </div>

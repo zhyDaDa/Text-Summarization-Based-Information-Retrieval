@@ -98,7 +98,8 @@ def upload(request):
 def select(request):
     print("views.py | \033[0;36;47m select\033[0m >>> Get request: ", request)
     # 搜索之后调用该函数
-    if request.method == "POST":
+    # if request.method == "POST":
+    if True:
         searchText = request.POST.get("select")
         print("\033[0;36;47mselect\033[0m >>> Fetch searchText: ", searchText)  
         # TODO: 后续要在这里接受前端的筛选条件并写出相应的SQL语句
