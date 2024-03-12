@@ -370,7 +370,7 @@
               <div class="iq-card">
                 <div class="iq-card-header d-flex justify-content-between">
                   <div class="iq-header-title">
-                    <h4 class="card-title">Add New User</h4>
+                    <h4 class="card-title">批量添加病历</h4>
                   </div>
                 </div>
                 <div class="iq-card-body">
@@ -379,8 +379,9 @@
                       <div class="add-img-user profile-img-edit">
                         <img class="profile-pic img-fluid" src="{% static 'picture/11.png' %}" alt="profile-pic" />
                         <div class="p-image">
-                          <a href="javascript:void();" class="upload-button btn iq-bg-primary">File Upload</a>
-                          <input class="file-upload" type="file" accept="image/*" />
+                          <a href="javascript:void();" class="upload-button btn iq-bg-primary">上传文件</a>
+                          <input class="file-upload" type="file" accept="" />
+                          {% comment %}// todo: 上传文件完善{% endcomment %}
                         </div>
                       </div>
                       <div class="img-extension mt-3">
@@ -403,22 +404,6 @@
                         <option>Orthopaedic surgeon</option>
                         <option>Cardiologist</option>
                       </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="furl">Facebook Url:</label>
-                      <input type="text" class="form-control" id="furl" placeholder="Facebook Url" />
-                    </div>
-                    <div class="form-group">
-                      <label for="turl">Twitter Url:</label>
-                      <input type="text" class="form-control" id="turl" placeholder="Twitter Url" />
-                    </div>
-                    <div class="form-group">
-                      <label for="instaurl">Instagram Url:</label>
-                      <input type="text" class="form-control" id="instaurl" placeholder="Instagram Url" />
-                    </div>
-                    <div class="form-group">
-                      <label for="lurl">Linkedin Url:</label>
-                      <input type="text" class="form-control" id="lurl" placeholder="Linkedin Url" />
                     </div>
                   </form>
                 </div>
@@ -452,8 +437,8 @@
                           <input type="text" class="form-control" name="id" id="id" placeholder="例如..." />
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="date">上传时间</label>
-                          <input type="text" class="form-control" name="date" id="date" placeholder="病历上传时间" />
+                          <label for="date">上传日期</label>
+                          <input type="datetime-local" class="form-control" name="date" id="date" placeholder="病历上传时间" />
                         </div>
                         <div class="form-group col-md-12">
                           <label for="history">既往史</label>
