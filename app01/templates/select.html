@@ -371,18 +371,20 @@
                 <div class="iq-card-body">
                   <div class="">
                     <div class="iq-email-list">
-                      <button class="btn btn-primary btn-lg btn-block mb-3 font-size-16 p-3" data-target="#compose-email-popup" data-toggle="modal">
-                        <i class="ri-search-2-line mr-2"></i>搜索</button>
-                      
-                      <div class="form-group">
-                        <label for="exampleFormControlTextarea1">智能搜索</label>
-                        <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="2" placeholder="请输入病症主述"></textarea>
-                      </div>
-                      <hr>
-                      <form>
+                      <form id="smartSearchForm" method="post">
                         <div class="form-group">
-                          <label for="exampleFormControlSelect1">性别</label>
-                          <select class="form-control" id="exampleFormControlSelect1">
+                          <label for="smartSearch">智能搜索</label>
+                          <textarea id="smartSearch" class="form-control form-control-lg" rows="2" name="smartSearchQuestion" placeholder="请输入病症主述"></textarea>
+                        </div>
+                        <input type="hidden" name="isSmartSearch" value="1">
+                        <button id="smartSearchBTN" class="btn btn-primary btn-lg btn-block mb-3 font-size-16 p-3" style="height:4vh ! important;display: flex;align-items: center;justify-content: center;">
+                          <i class="ri-search-2-line mr-2"></i>搜索</button>
+                      </form>
+                      <hr>
+                      <form id="mainSearchForm" method="post">
+                        <div class="form-group">
+                          <label for="gender">性别</label>
+                          <select class="form-control" name="gender">
                              <option selected="" disabled="">选择性别</option>
                              <option>全部</option>
                              <option>男</option>
@@ -390,9 +392,12 @@
                           </select>
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputPlaceholder">年龄范围</label>
-                          <input type="number" class="form-control" id="exampleInputPlaceholder" placeholder="最小年龄">
-                          <input type="number" class="form-control" id="exampleInputPlaceholder" placeholder="最大年龄">
+                          <label for="age">年龄范围</label>
+                          <div style="display: flex; align-items: center;">
+                            <input type="number" class="form-control" name="ageMin" placeholder="最小年龄">
+                            &nbsp;~&nbsp;
+                            <input type="number" class="form-control" name="ageMax" placeholder="最大年龄">
+                          </div>
                         </div>
                         {% comment %} <div class="form-group">
                           <label for="exampleFormControlSelect2">身体部位</label>
@@ -409,19 +414,22 @@
                         </div> {% endcomment %}
                        
                         <div class="form-group">
-                          <label for="exampleInputPlaceholder">身体部位</label>
-                          <input type="text" class="form-control" id="exampleInputPlaceholder" placeholder="身体部位">
+                          <label for="bodyPart">身体部位</label>
+                          <input type="text" class="form-control" name="bodyPart" placeholder="身体部位">
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputPlaceholder">症状</label>
-                          <input type="text" class="form-control" id="exampleInputPlaceholder" placeholder="症状">
+                          <label for="symptom">症状</label>
+                          <input type="text" class="form-control" name="symptom" placeholder="症状">
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputPlaceholder">疾病</label>
-                          <input type="text" class="form-control" id="exampleInputPlaceholder" placeholder="疾病">
+                          <label for="illness">疾病</label>
+                          <input type="text" class="form-control" name="illness" placeholder="疾病">
                         </div>
+                        <input type="hidden" name="isNormalSearch" value="1">
+                        <button id="mainSearchBTN" class="btn btn-primary btn-lg btn-block mb-3 font-size-16 p-3" style="height:4vh ! important;display: flex;align-items: center;justify-content: center;">
+                          <i class="ri-search-2-line mr-2"></i>搜索</button>
                       </form>
-                      <h6 class="mt-4 mb-3">标签</h6>
+                      {% comment %} <h6 class="mt-4 mb-3">标签</h6>
                       <ul class="iq-email-ui iq-email-label">
                         <li>
                           <a href="#"><i class="ri-focus-fill text-primary"></i>Personal</a>
@@ -441,7 +449,7 @@
                         <li>
                           <a href="#"><i class="ri-add-circle-line"></i>Add New Labels</a>
                         </li>
-                      </ul>
+                      </ul> {% endcomment %}
                     </div>
                   </div>
                 </div>
@@ -520,7 +528,7 @@
                       <div class="tab-content">
                         <div class="tab-pane fade show active" id="mail-inbox" role="tabpanel">
                           <ul class="iq-email-sender-list">
-                            {% for i in select%}
+                            {% for d in select%}
                             <li>
                               <div class="d-flex align-self-center">
                                 <div class="iq-email-sender-info">
@@ -531,15 +539,15 @@
                                     </div>
                                   </div>
                                   <span class="ri-star-line iq-star-toggle"></span>
-                                  <a href="javascript: void(0);" class="iq-email-title">{{ i.0 }}</a>
+                                  <a href="javascript: void(0);" class="iq-email-title">{{ d.id }}</a>
                                 </div>
                                 <div class="iq-email-content">
                                   {% comment %} 内容预览 {% endcomment %}
                                   <a href="javascript: void(0);" class="iq-email-subject">
-                                    {{ i.1 }}
+                                    {{ d.question_content }}
                                   </a>
                                   {% comment %} 上传用户ID {% endcomment %}
-                                  <div class="iq-email-date">{{ i.3 }}</div>
+                                  <div class="iq-email-date">{{ d.source }}</div>
                                 </div>
                                 <ul class="iq-social-media">
                                   <li>
@@ -581,12 +589,17 @@
                                        </div>
                                        <hr class="mt-0">
                                        <div class="iq-inbox-subject p-3">
-                                          <h5 class="mt-0">病例 No.{{ i.0 }}</h5>
+                                          <h5 class="mt-0">病例 No.{{ d.id }}</h5>
+                                          <hr>
                                           <div class="iq-inbox-subject-info">
                                              <div class="iq-subject-info">
-                                                <img src="static/picture/06.jpg" class="img-fluid rounded-circle" alt="#">
                                                 <div class="iq-subject-status align-self-center">
-                                                   <h6 class="mb-0">上传者: {{ i.3 }} <a href="javascript:;"><dummy@xray.com></dummy@xray.com></a></h6>
+                                                   <h6 class="mb-0">性别: {{ d.gender }} </h6>
+                                                   <h6 class="mb-0">年龄: {{ d.age }} </h6>
+                                                   <h6 class="mb-0">身体部位: {{ d.bodyPart }} </h6>
+                                                   <h6 class="mb-0">症状: {{ d.symptom }} </h6>
+                                                   <h6 class="mb-0">疾病: {{ d.illness }} </h6>
+                                                   {% comment %} <h6 class="mb-0">上传来源: {{ d.source }} <a href="javascript:;"><dummy@xray.com></dummy@xray.com></a></h6> {% endcomment %}
                                                    {% comment %} <div class="dropdown">
                                                       <a class="dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                       to Me
@@ -624,14 +637,15 @@
                                                    </div> {% endcomment %}
                                                 </div>
                                                 {% comment %} TODO: 病例的其他信息包括时间... {% endcomment %}
-                                                <span class="float-right align-self-center">Jan 15, 2029, 10:20AM</span>
+                                                <span class="float-right align-self-center">上传时间: {{ d.update_date_time }}</span><br>
+                                                <span class="float-right align-self-center">上传来源: {{ d.source }}</span><br>
                                              </div>
                                              <div class="iq-inbox-body mt-5">
                                                <h6 class="mb-2">病例主述</h6>
-                                               <p>{{ i.1 }}</p>
+                                               <p>{{ d.question_content }}</p>
                                                <hr>
                                                <h6 class="mb-2">医生建议</h6>
-                                               <p>{{ i.2 }}</p>
+                                               <p>{{ d.answer_content }}</p>
                                              </div>
                                              <hr>
                                              {% comment %} <div class="attegement">
@@ -657,74 +671,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div id="compose-email-popup" class="compose-popup modal modal-sticky-bottom-right modal-sticky-lg">
-              <div class="iq-card iq-border-radius-20 mb-0">
-                <div class="iq-card-body">
-                  <div class="row align-items-center">
-                    <div class="col-md-12 mb-3">
-                      <h5 class="text-primary float-left"><i class="ri-pencil-fill"></i> Compose Message</h5>
-                      <button type="submit" class="float-right close-popup" data-dismiss="modal"><i class="ri-close-fill"></i></button>
-                    </div>
-                  </div>
-                  <form class="email-form">
-                    <div class="form-group row">
-                      <label for="inputEmail3" class="col-sm-2 col-form-label">To:</label>
-                      <div class="col-sm-10">
-                        <select id="inputEmail3" class="select2jsMultiSelect form-control" multiple="multiple">
-                          <option value="Petey Cruiser">Petey Cruiser</option>
-                          <option value="Bob Frapples">Bob Frapples</option>
-                          <option value="Barb Ackue">Barb Ackue</option>
-                          <option value="Greta Life">Greta Life</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="cc" class="col-sm-2 col-form-label">Cc:</label>
-                      <div class="col-sm-10">
-                        <select id="cc" class="select2jsMultiSelect form-control" multiple="multiple">
-                          <option value="Brock Lee">Brock Lee</option>
-                          <option value="Rick O'Shea">Rick O'Shea</option>
-                          <option value="Cliff Hanger">Cliff Hanger</option>
-                          <option value="Barb Dwyer">Barb Dwyer</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="subject" class="col-sm-2 col-form-label">Subject:</label>
-                      <div class="col-sm-10">
-                        <input type="text" id="subject" class="form-control" />
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="subject" class="col-sm-2 col-form-label">Your Message:</label>
-                      <div class="col-md-10">
-                        <textarea class="textarea form-control" rows="5">Next, use our Get Started docs to setup Tiny!</textarea>
-                      </div>
-                    </div>
-                    <div class="form-group row align-items-center compose-bottom pt-3 m-0">
-                      <div class="d-flex flex-grow-1 align-items-center">
-                        <div class="send-btn">
-                          <button type="submit" class="btn btn-primary">Send</button>
-                        </div>
-                        <div class="send-panel">
-                          <label class="ml-2 mb-0 iq-bg-primary rounded" for="file"><input type="file" id="file" style="display: none" /> <a><i class="ri-attachment-line"></i></a></label>
-                          <label class="ml-2 mb-0 iq-bg-primary rounded"><a href="javascript:void();"><i class="ri-map-pin-user-line text-primary"></i></a></label>
-                          <label class="ml-2 mb-0 iq-bg-primary rounded"><a href="javascript:void();"><i class="ri-drive-line text-primary"></i></a></label>
-                          <label class="ml-2 mb-0 iq-bg-primary rounded"><a href="javascript:void();"><i class="ri-camera-line text-primary"></i></a></label>
-                          <label class="ml-2 mb-0 iq-bg-primary rounded"><a href="javascript:void();"><i class="ri-user-smile-line text-primary"></i></a></label>
-                        </div>
-                      </div>
-                      <div class="d-flex align-items-center">
-                        <div class="send-panel float-right">
-                          <label class="ml-2 mb-0 iq-bg-primary rounded"><a href="javascript:void();"><i class="ri-settings-2-line text-primary"></i></a></label>
-                          <label class="ml-2 mb-0 iq-bg-primary rounded"><a href="javascript:void();"><i class="ri-delete-bin-line text-primary"></i></a></label>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
                 </div>
               </div>
             </div>
@@ -785,6 +731,7 @@
       <script src="{% static 'js/chart-custom.js' %}"></script>
       <!-- Custom JavaScript -->
       <script src="{% static 'js/custom.js' %}"></script>
+      <script src="{% static 'js/select_custom.js' %}"></script>
     </div>
   </body>
 </html>

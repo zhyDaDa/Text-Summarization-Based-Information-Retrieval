@@ -61,12 +61,12 @@ def upload(request):
         content = request.POST.get("content")
         result = request.POST.get("result")
         date = request.POST.get("date")
-        history=request.POST.get("history")
-        allergy=request.POST.get("allergy")
-        examination=request.POST.get("examination")
-        mediacal=request.POST.get("mediacal")
-        notes=request.POST.get("notes")
-        gender=request.POST.get("gender")
+        history = request.POST.get("history")
+        allergy = request.POST.get("allergy")
+        examination = request.POST.get("examination")
+        mediacal = request.POST.get("mediacal")
+        notes = request.POST.get("notes")
+        gender = request.POST.get("gender")
         # extract=extract_byGLM4(content)
         username = 1001
         print(id, date, content, result, extract)
@@ -92,22 +92,43 @@ def upload(request):
         conn.close()
         return render(request, "upload.html")
         return render(request, "upload.html")
-            
 
 
 def select(request):
     print("views.py | \033[0;36;47m select\033[0m >>> Get request: ", request)
     # 搜索之后调用该函数
-    # if request.method == "POST":
-    if True:
-        searchText = request.POST.get("select")
-        print("\033[0;36;47mselect\033[0m >>> Fetch searchText: ", searchText)  
-        # TODO: 后续要在这里接受前端的筛选条件并写出相应的SQL语句
+    if request.method == "POST":
+        # if request.body:
+        # data = json.loads(request.body.decode('utf-8'))
         conn = connection.cursor()
-        conn.execute("SELECT  id ,question_content ,answer_content, user_id  FROM  test  ORDER BY RAND(); ")
-        select = conn.fetchall()
+        isSmartSearch = request.POST.get("isSmartSearch")
+        isNormalSearch = request.POST.get("isNormalSearch")
+        if isSmartSearch == "1":
+            # TODO: 信息提取后相似度搜索, 要按相似度高低输出
+            smartSearchQuestion = request.POST.get("smartSearchQuestion")
+            print("\033[0;36;47m SmartSearch\033[0m", smartSearchQuestion)
+            conn.execute(
+                "SELECT  id, question_content, answer_content, age, gender, patient_history, patient_allergy, patient_examination, patient_medical, notes, source, extra, bodyPart, symptom, illness, update_date_time  FROM  test3  ORDER BY RAND(); "
+            )
+        elif isNormalSearch == "1":
+            gender = request.POST.get("gender")
+            ageMin = request.POST.get("ageMin")
+            ageMax = request.POST.get("ageMax")
+            bodyPart = request.POST.get("bodyPart")
+            symptom = request.POST.get("symptom")
+            illness = request.POST.get("illness")
+            print("\033[0;36;47m NormalSearch\033[0m", gender, ageMin, ageMax, bodyPart, symptom, illness)
+            conn.execute(
+                "SELECT  id, question_content, answer_content, age, gender, patient_history, patient_allergy, patient_examination, patient_medical, notes, source, extra, bodyPart, symptom, illness, update_date_time  FROM  test3  ORDER BY RAND(); "
+            )
+        else:
+            conn.execute(
+                "SELECT  id, question_content, answer_content, age, gender, patient_history, patient_allergy, patient_examination, patient_medical, notes, source, extra, bodyPart, symptom, illness, update_date_time  FROM  test3  ORDER BY RAND(); "
+            )
+        column_names = [desc[0] for desc in conn.description]
+        select = [dict(zip(column_names, row)) for row in conn.fetchall()]
         conn.close()
-        return render(request,"select.html",{'select': select})
+        return render(request, "select.html", {"select": select})
         post_list = find_max_similarity_rows(searchText)
         # print(post_list)
         return render(
