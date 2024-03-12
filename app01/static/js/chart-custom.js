@@ -7247,32 +7247,58 @@ if (jQuery("#home-chart-03").length) {
 
         chart.data = [
             {
-                country: "USA",
+                type: "呼吸",
                 value: 401
             },
             {
-                country: "India",
+                type: "循环",
                 value: 300
             },
             {
-                country: "Australia",
+                type: "消化",
                 value: 200
             },
             {
-                country: "Brazil",
+                type: "神经",
                 value: 100
+            },
+            {
+                type: "泌尿",
+                value: 200
+            }, {
+                type: "生殖",
+                value: 200
+            }, {
+                type: "骨骼肌肉",
+                value: 200
+            }, {
+                type: "皮肤",
+                value: 200
+            },
+            {
+                type: "内分泌",
+                value: 200
+            },
+            {
+                type: "血液",
+                value: 200
+            },
+            {
+                type: "眼耳鼻喉",
+                value: 200
             }
         ];
-        chart.radius = am4core.percent(70);
+        chart.radius = am4core.percent(80);
         chart.innerRadius = am4core.percent(40);
-        chart.startAngle = 180;
+        chart.startAngle = 0;
         chart.endAngle = 360;
 
         var series = chart.series.push(new am4charts.PieSeries());
         series.dataFields.value = "value";
-        series.dataFields.category = "country";
+        series.dataFields.category = "type";
         series.colors.list = [am4core.color("#089bab"), am4core.color("#2ca5b2"), am4core.color("#faa264"),
-        am4core.color("#fcb07a")];
+        am4core.color("#fcb07a"), am4core.color("#fcd77a"), am4core.color("#fafc7a"), am4core.color("#d3fc7a"),
+        am4core.color("#acfc7a"), am4core.color("#85fc7a"), am4core.color("#7afc96"), am4core.color("#7afcbd")];
 
         series.slices.template.cornerRadius = 0;
         series.slices.template.innerCornerRadius = 0;
@@ -7290,16 +7316,43 @@ if (jQuery("#home-chart-03").length) {
 jQuery("#home-chart-05").length && am4core.ready(function () {
     var options = {
         series: [{
-            name: 'PRODUCT A',
+            name: '呼吸',
             data: [44, 55, 41, 67, 22, 43]
         }, {
-            name: 'PRODUCT B',
+            name: '循环',
             data: [13, 23, 20, 8, 13, 27]
         }, {
-            name: 'PRODUCT C',
+            name: '消化',
+            data: [11, 17, 15, 15, 21, 14]
+        }, {
+            name: '神经',
+            data: [11, 17, 15, 15, 21, 14]
+        }, {
+            name: '泌尿',
+            data: [11, 17, 15, 15, 21, 14]
+        }, {
+            name: '生殖',
+            data: [11, 17, 15, 15, 21, 14]
+        }, {
+            name: '骨骼肌肉',
+            data: [11, 17, 15, 15, 21, 14]
+        }, {
+            name: '皮肤',
+            data: [11, 17, 15, 15, 21, 14]
+        }, {
+            name: '内分泌',
+            data: [11, 17, 15, 15, 21, 14]
+        }, {
+            name: '血液',
+            data: [11, 17, 15, 15, 21, 14]
+        }, {
+            name: '眼儿鼻喉',
             data: [11, 17, 15, 15, 21, 14]
         }],
-        colors: ['#089bab', '#FC9F5B', '#5bc5d1'],
+        // am4core.color("#089bab"), am4core.color("#2ca5b2"), am4core.color("#faa264"),
+        // am4core.color("#fcb07a"), am4core.color("#fcd77a"), am4core.color("#fafc7a"), am4core.color("#d3fc7a"),
+        // am4core.color("#acfc7a"), am4core.color("#85fc7a"), am4core.color("#7afc96"), am4core.color("#7afcbd")
+        colors: ['#089bab', '#2ca5b2', '#faa264', '#fcb07a', '#fcd77a', '#fafc7a', '#d3fc7a', '#acfc7a', '#85fc7a', '#7afc96', '#7afcbd'],
         chart: {
             type: 'bar',
             height: 350,
@@ -7344,6 +7397,7 @@ jQuery("#home-chart-05").length && am4core.ready(function () {
     var chart = new ApexCharts(document.querySelector("#home-chart-05"), options);
     chart.render();
 })
+// todo: 修改
 jQuery("#home-chart-06").length && am4core.ready(function () {
     var options = {
         series: [{
