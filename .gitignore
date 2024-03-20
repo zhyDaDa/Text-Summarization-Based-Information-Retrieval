@@ -6,3 +6,4 @@ app01/checkpoint/model_best/*
 .idea/
 bert-base-chinese/
 venv/*
+test/*
