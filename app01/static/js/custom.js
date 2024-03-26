@@ -39,12 +39,12 @@ Index Of Script
 Index Of Script
 ----------------------------------------------*/
 
-(function(jQuery) {
+(function (jQuery) {
 
 
     "use strict";
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         /*---------------------------------------------------------------------
         Page Loader
@@ -71,7 +71,7 @@ Index Of Script
         /*---------------------------------------------------------------------
         Page Menu
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', '.wrapper-menu', function() {
+        jQuery(document).on('click', '.wrapper-menu', function () {
             jQuery(this).toggleClass('open');
             jQuery("body").toggleClass("sidebar-main");
         });
@@ -82,7 +82,7 @@ Index Of Script
          Header fixed
          -----------------------------------------------------------------------*/
 
-        jQuery(window).scroll(function() {
+        jQuery(window).scroll(function () {
             if (jQuery(window).scrollTop() >= 75) {
                 jQuery('.iq-top-navbar').addClass('fixed-header');
             } else {
@@ -120,11 +120,11 @@ Index Of Script
                     break;
             }
         }
-        jQuery('.iq-sidebar-menu .active').each(function(ele, index) {
+        jQuery('.iq-sidebar-menu .active').each(function (ele, index) {
             jQuery(this).find('.iq-submenu').parent().addClass('menu-open');
             jQuery(this).find('.iq-submenu').addClass('menu-open');
         })
-        jQuery(document).on('click', '.iq-sidebar-menu li', function() {
+        jQuery(document).on('click', '.iq-sidebar-menu li', function () {
 
             if (jQuery(this).hasClass('menu-open')) {
                 jQuery(this).find('.iq-submenu').slideUp('slow');
@@ -157,7 +157,7 @@ Index Of Script
             },
             image: {
                 tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-                titleSrc: function(item) {
+                titleSrc: function (item) {
                     return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
                 }
             }
@@ -175,7 +175,7 @@ Index Of Script
         /*---------------------------------------------------------------------
         Ripple Effect
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', ".iq-waves-effect", function(e) {
+        jQuery(document).on('click', ".iq-waves-effect", function (e) {
             // Remove any old one
             jQuery('.ripple').remove();
             // Setup
@@ -212,7 +212,7 @@ Index Of Script
         /*---------------------------------------------------------------------
         FullScreen
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', '.iq-full-screen', function() {
+        jQuery(document).on('click', '.iq-full-screen', function () {
             let elem = jQuery(this);
             if (!document.fullscreenElement &&
                 !document.mozFullScreenElement && // Mozilla
@@ -247,7 +247,7 @@ Index Of Script
         -----------------------------------------------------------------------*/
         jQuery('.iq-accordion .iq-accordion-block .accordion-details').hide();
         jQuery('.iq-accordion .iq-accordion-block:first').addClass('accordion-active').children().slideDown('slow');
-        jQuery(document).on("click", '.iq-accordion .iq-accordion-block', function() {
+        jQuery(document).on("click", '.iq-accordion .iq-accordion-block', function () {
             if (jQuery(this).children('div.accordion-details ').is(':hidden')) {
                 jQuery('.iq-accordion .iq-accordion-block').removeClass('accordion-active').children('div.accordion-details ').slideUp('slow');
                 jQuery(this).toggleClass('accordion-active').children('div.accordion-details ').slideDown('slow');
@@ -258,7 +258,7 @@ Index Of Script
         /*---------------------------------------------------------------------
        Owl Carousel
        -----------------------------------------------------------------------*/
-        jQuery('.owl-carousel').each(function() {
+        jQuery('.owl-carousel').each(function () {
             let jQuerycarousel = jQuery(this);
             jQuerycarousel.owlCarousel({
                 items: jQuerycarousel.data("items"),
@@ -308,7 +308,7 @@ Index Of Script
         /*---------------------------------------------------------------------
         Search input
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', function(e) {
+        jQuery(document).on('click', function (e) {
             let myTargetElement = e.target;
             let selector, mainElement;
             if (jQuery(myTargetElement).hasClass('search-toggle') || jQuery(myTargetElement).parent().hasClass('search-toggle') || jQuery(myTargetElement).parent().parent().hasClass('search-toggle')) {
@@ -331,7 +331,7 @@ Index Of Script
                 mainElement.toggleClass('active');
 
                 e.preventDefault();
-            } else if (jQuery(myTargetElement).is('.search-input')) {} else {
+            } else if (jQuery(myTargetElement).is('.search-input')) { } else {
                 jQuery('.navbar-list li').removeClass('iq-show');
                 jQuery('.navbar-list li .search-toggle').removeClass('active');
             }
@@ -429,33 +429,33 @@ Index Of Script
             nextArrow: '<a href="#" class="ri-arrow-left-s-line left"></a>',
             prevArrow: '<a href="#" class="ri-arrow-right-s-line right"></a>',
         });
-        
+
         /*---------------------------------------------------------------------
         Progress Bar
         -----------------------------------------------------------------------*/
-        jQuery('.iq-progress-bar > span').each(function() {
+        jQuery('.iq-progress-bar > span').each(function () {
             let progressBar = jQuery(this);
             let width = jQuery(this).data('percent');
             progressBar.css({
                 'transition': 'width 2s'
             });
 
-            setTimeout(function() {
-                progressBar.appear(function() {
+            setTimeout(function () {
+                progressBar.appear(function () {
                     progressBar.css('width', width + '%');
                 });
             }, 100);
         });
 
-        jQuery('.progress-bar-vertical > span').each(function() {
+        jQuery('.progress-bar-vertical > span').each(function () {
             let progressBar = jQuery(this);
             let height = jQuery(this).data('percent');
             progressBar.css({
                 'transition': 'height 2s'
             });
 
-            setTimeout(function() {
-                progressBar.appear(function() {
+            setTimeout(function () {
+                progressBar.appear(function () {
                     progressBar.css('height', height + '%');
                 });
             }, 100);
@@ -478,11 +478,11 @@ Index Of Script
         /*---------------------------------------------------------------------
         Mailbox
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', 'ul.iq-email-sender-list li', function() {
+        jQuery(document).on('click', 'ul.iq-email-sender-list li', function () {
             jQuery(this).next().addClass('show');
         });
 
-        jQuery(document).on('click', '.email-app-details li h4', function() {
+        jQuery(document).on('click', '.email-app-details li h4', function () {
             jQuery('.email-app-details').removeClass('show');
         });
 
@@ -498,49 +498,49 @@ Index Of Script
         /*---------------------------------------------------------------------
         chatuser
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', '.chat-head .chat-user-profile', function() {
+        jQuery(document).on('click', '.chat-head .chat-user-profile', function () {
             jQuery(this).parent().next().toggleClass('show');
         });
-        jQuery(document).on('click', '.user-profile .close-popup', function() {
+        jQuery(document).on('click', '.user-profile .close-popup', function () {
             jQuery(this).parent().parent().removeClass('show');
         });
 
         /*---------------------------------------------------------------------
         chatuser main
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', '.chat-search .chat-profile', function() {
+        jQuery(document).on('click', '.chat-search .chat-profile', function () {
             jQuery(this).parent().next().toggleClass('show');
         });
-        jQuery(document).on('click', '.user-profile .close-popup', function() {
+        jQuery(document).on('click', '.user-profile .close-popup', function () {
             jQuery(this).parent().parent().removeClass('show');
         });
 
         /*---------------------------------------------------------------------
         Chat 
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', '#chat-start', function() {
+        jQuery(document).on('click', '#chat-start', function () {
             jQuery('.chat-data-left').toggleClass('show');
         });
-        jQuery(document).on('click', '.close-btn-res', function() {
+        jQuery(document).on('click', '.close-btn-res', function () {
             jQuery('.chat-data-left').removeClass('show');
         });
-        jQuery(document).on('click', '.iq-chat-ui li', function() {
+        jQuery(document).on('click', '.iq-chat-ui li', function () {
             jQuery('.chat-data-left').removeClass('show');
         });
-        jQuery(document).on('click', '.sidebar-toggle', function() {
+        jQuery(document).on('click', '.sidebar-toggle', function () {
             jQuery('.chat-data-left').addClass('show');
         });
 
         /*---------------------------------------------------------------------
         todo Page
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', '.todo-task-list > li > a', function() {
+        jQuery(document).on('click', '.todo-task-list > li > a', function () {
             jQuery('.todo-task-list li').removeClass('active');
             jQuery('.todo-task-list .sub-task').removeClass('show');
             jQuery(this).parent().toggleClass('active');
             jQuery(this).next().toggleClass('show');
         });
-        jQuery(document).on('click', '.todo-task-list > li li > a', function() {
+        jQuery(document).on('click', '.todo-task-list > li li > a', function () {
             jQuery('.todo-task-list li li').removeClass('active');
             jQuery(this).parent().toggleClass('active');
         });
@@ -548,8 +548,8 @@ Index Of Script
         /*---------------------------------------------------------------------
         Sidebar Widget
         -----------------------------------------------------------------------*/
-        jQuery(document).ready(function() {
-            jQuery().on('click', '.todo-task-lists li', function() {
+        jQuery(document).ready(function () {
+            jQuery().on('click', '.todo-task-lists li', function () {
                 if (jQuery(this).find('input:checkbox[name=todo-check]').is(":checked")) {
 
                     jQuery(this).find('input:checkbox[name=todo-check]').attr("checked", false);
@@ -560,6 +560,14 @@ Index Of Script
                 }
             });
         });
+
+        jQuery('.table tbody tr > td:nth-child(4), .table tbody tr > td:nth-child(5), .table tbody tr > td:nth-child(6), .table tbody tr > td:nth-child(7)').each(function () {
+            var maxLength = 20; // 最大字符数
+            if (jQuery(this).text().length > maxLength) {
+                jQuery(this).text(jQuery(this).text().substr(0, maxLength) + '...');
+            }
+        });
+
 
     });
 
