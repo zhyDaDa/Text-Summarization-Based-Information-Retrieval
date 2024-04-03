@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+    <!-- hsycmsAlert -->
+    <link rel="stylesheet" href="{% static 'css/hsycmsAlert.min.css' %}" />
   </head>
   <body>
     <!-- loader Start -->
@@ -460,66 +462,27 @@
                           <th>症状</th>
                           <th>疾病</th>
                           <th>主述关键字</th>
-                          <th>操作</th>
+                          <th Style="min-width: 170px;">操作</th>
                         </tr>
                       </thead>
                       <tbody>
+                        {% comment %} div: 逐个数据 {% endcomment %}
+                        {% for item in data %}
                         <tr>
-                          <td contenteditable="true">1</td>
-                          <td contenteditable="true">25</td>
-                          <td contenteditable="true">男</td>
-                          <td contenteditable="true">口腔</td>
-                          <td contenteditable="true">疼痛</td>
-                          <td contenteditable="true">口腔溃疡</td>
-                          <td contenteditable="true">我感觉到嘴里面非常的疼aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
+                          <td contenteditable="true">{{ item.id }}</td>
+                          <td contenteditable="true">{{ item.age }}</td>
+                          <td contenteditable="true">{{ item.gender }}</td>
+                          <td contenteditable="true">{{ item.bodyPart }}</td>
+                          <td contenteditable="true">{{ item.symptom }}</td>
+                          <td contenteditable="true">{{ item.illness }}</td>
+                          <td contenteditable="true">{{ item.question_content }}</td>
                           <td>
-                            <button type="button" class="btn btn-primary mb-0"><i class="ri-radio-button-fill pr-0"></i></button>
-                            <button type="button" class="btn btn-secondary mb-0"><i class="ri-star-fill pr-0"></i></button>
+                            <button type="button" class="btn btn-primary mb-0" onclick="(e)=>{}"><i class="ri-radio-button-fill pr-0"></i></button>
+                            <button type="button" class="btn btn-secondary mb-0" onclick="alert_success('已收藏{{ item.id }}号病历');"}><i class="ri-star-fill pr-0" onclick="alert_success('已收藏{{ item.id }}号病历');"></i></button>
                             <button type="button" class="btn btn-warning mb-0"><i class="ri-delete-bin-2-fill pr-0"></i></button>
                           </td>
                         </tr>
-                        <tr>
-                          <td contenteditable="true">1</td>
-                          <td contenteditable="true">25</td>
-                          <td contenteditable="true">男</td>
-                          <td contenteditable="true">口腔</td>
-                          <td contenteditable="true">疼痛</td>
-                          <td contenteditable="true">口腔溃疡</td>
-                          <td contenteditable="true">我感觉到嘴里面非常的疼a</td>
-                          <td>
-                            <button type="button" class="btn btn-primary mb-0"><i class="ri-radio-button-fill pr-0"></i></button>
-                            <button type="button" class="btn btn-secondary mb-0"><i class="ri-star-fill pr-0"></i></button>
-                            <button type="button" class="btn btn-warning mb-0"><i class="ri-delete-bin-2-fill pr-0"></i></button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td contenteditable="true">1</td>
-                          <td contenteditable="true">25</td>
-                          <td contenteditable="true">男</td>
-                          <td contenteditable="true">口腔</td>
-                          <td contenteditable="true">疼痛</td>
-                          <td contenteditable="true">口腔溃疡</td>
-                          <td contenteditable="true">我感觉到嘴里面非常的疼</td>
-                          <td>
-                            <button type="button" class="btn btn-primary mb-0"><i class="ri-radio-button-fill pr-0"></i></button>
-                            <button type="button" class="btn btn-secondary mb-0"><i class="ri-star-fill pr-0"></i></button>
-                            <button type="button" class="btn btn-warning mb-0"><i class="ri-delete-bin-2-fill pr-0"></i></button>
-                          </td>
-                        </tr>
-                        <tr class="">
-                          <td contenteditable="true">1</td>
-                          <td contenteditable="true">25</td>
-                          <td contenteditable="true">男</td>
-                          <td contenteditable="true">口腔</td>
-                          <td contenteditable="true">疼痛</td>
-                          <td contenteditable="true">口腔溃疡</td>
-                          <td contenteditable="true">我感觉到嘴里面非常的疼</td>
-                          <td>
-                            <button type="button" class="btn btn-primary mb-0"><i class="ri-radio-button-fill pr-0"></i></button>
-                            <button type="button" class="btn btn-secondary mb-0"><i class="ri-star-fill pr-0"></i></button>
-                            <button type="button" class="btn btn-warning mb-0"><i class="ri-delete-bin-2-fill pr-0"></i></button>
-                          </td>
-                        </tr>
+                        {% endfor %}
                       </tbody>
                     </table>
                   </div>
@@ -564,6 +527,13 @@
       <!-- Custom JavaScript -->
       <script src="{% static 'js/custom.js' %}"></script>
       <script src="{% static 'js/select_custom.js' %}"></script>
+      <!-- hsycmsAlert -->
+      <script src="{% static 'js/hsycmsAlert.min.js' %}"></script>
+      <script>
+        function alert_success(msg){
+          hsycms.success(msg,()=>{  console.log('操作成功关闭后');  },1800)
+        }
+      </script>
     </div>
   </body>
 </html>

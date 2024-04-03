@@ -7,3 +7,4 @@ app01/checkpoint/model_best/*
 bert-base-chinese/
 venv/*
 test/*
+progress.txt
