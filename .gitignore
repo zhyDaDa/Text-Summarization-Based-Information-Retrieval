@@ -8,3 +8,5 @@ bert-base-chinese/
 venv/*
 test/*
 progress.txt
+.htaccess
+static/*
