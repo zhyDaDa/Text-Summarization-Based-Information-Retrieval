@@ -103,41 +103,33 @@ def select(request):
         # if request.body:
         # data = json.loads(request.body.decode('utf-8'))
         conn = connection.cursor()
-        isSmartSearch = request.POST.get("isSmartSearch")
-        isNormalSearch = request.POST.get("isNormalSearch")
-        if isSmartSearch == "1":
-            # TODO: 信息提取后相似度搜索, 要按相似度高低输出
-            smartSearchQuestion = request.POST.get("smartSearchQuestion")
-            print("\033[0;36;47m SmartSearch\033[0m", smartSearchQuestion)
-            conn.execute(
-                "SELECT  id, question_content, answer_content, age, gender, patient_history, patient_allergy, patient_examination, patient_medical, notes, source, extra, bodyPart, symptom, illness, update_date_time  FROM  test3  ORDER BY RAND(); "
-            )
-        elif isNormalSearch == "1":
-            gender = request.POST.get("gender")
-            ageMin = request.POST.get("ageMin")
-            ageMax = request.POST.get("ageMax")
-            bodyPart = request.POST.get("bodyPart")
-            symptom = request.POST.get("symptom")
-            illness = request.POST.get("illness")
-            print("\033[0;36;47m NormalSearch\033[0m", gender, ageMin, ageMax, bodyPart, symptom, illness)
-            conn.execute(
-                "SELECT  id, question_content, answer_content, age, gender, patient_history, patient_allergy, patient_examination, patient_medical, notes, source, extra, bodyPart, symptom, illness, update_date_time  FROM  test3  ORDER BY RAND(); "
-            )
-        else:
-            conn.execute(
-                "SELECT  id, question_content, answer_content, age, gender, patient_history, patient_allergy, patient_examination, patient_medical, notes, source, extra, bodyPart, symptom, illness, update_date_time  FROM  test3  ORDER BY RAND(); "
-            )
+        # TODO: 信息提取后相似度搜索, 要按相似度高低输出
+        smartSearchQuestion = request.POST.get("smartSearchQuestion")
+        print("\033[0;36;47m SmartSearch\033[0m", smartSearchQuestion)
+        conn.execute(
+            "SELECT  id, question_content, answer_content, age, gender, patient_history, patient_allergy, patient_examination, patient_medical, notes, source, extra, bodyPart, symptom, illness, update_date_time, extraction  FROM  current_data  ORDER BY RAND(); "
+        )
         column_names = [desc[0] for desc in conn.description]
         select = [dict(zip(column_names, row)) for row in conn.fetchall()]
         conn.close()
-        return render(request, "select.html", {"select": select})
+        return render(request, "select.html", {"data": select})
         post_list = find_max_similarity_rows(searchText)
         # print(post_list)
         return render(
             request, "select.html", {"post_list": post_list, "searchText": searchText}
         )
     else:
-        return render(request, "select.html")
+        print("\033[0;36;47m 未使用post方法浏览\033[0m, 相当于直接打开了界面, 渲染所有数据")
+        conn = connection.cursor()
+        conn.execute(
+            "SELECT  id, question_content, answer_content, age, gender, patient_history, patient_allergy, patient_examination, patient_medical, notes, source, extra, bodyPart, symptom, illness, update_date_time, extraction  FROM  current_data  ORDER BY RAND(); "
+        )
+        column_names = [desc[0] for desc in conn.description]
+        select = [dict(zip(column_names, row)) for row in conn.fetchall()]
+        # illness 为"_"的数据不显示
+        select = [item for item in select if item["illness"] != "_" and item["illness"] != ""]
+        conn.close()
+        return render(request, "select.html", {"data": select})
 
 
 @csrf_exempt
