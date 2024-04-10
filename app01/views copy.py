@@ -118,7 +118,7 @@ def scan(request):
 
 def user(request):
         conn = connection.cursor()
-        conn.execute("SELECT  id ,question_content ,answer_content  FROM  test2")
+        conn.execute("SELECT  id ,question_content ,answer_content  FROM  current_data")
         scan = conn.fetchall()
         conn.execute("SELECT  test.id ,question_content ,answer_content  FROM  test,collect where test.id=collect.medical_id")
         scan1 = conn.fetchall()
@@ -222,7 +222,7 @@ def find_max_similarity_rows(text):
     # result = extract_information(text)
     result = extract_byGLM4(text)
     # 查询 test 表中的所有数据
-    mycursor.execute("SELECT id, question_content, question_extraction,answer_content FROM test1")
+    mycursor.execute("SELECT id, question_content, question_extraction,answer_content FROM current_data")
     # 定义变量来保存相似度最高的四个问题的数据
     max_similarity_rows = []
     max_similarity_values = [0.0] * 4
@@ -278,7 +278,7 @@ def delete1(request):
         record_id = data.get('recordId')
         mycursor = connection.cursor()
         # 查询 test 表中的所有数据
-        mycursor.execute("delete from test2 where id=%s", [record_id])
+        mycursor.execute("delete from current_data where id=%s", [record_id])
         mycursor.close()
         # 假设插入成功，返回收藏成功的响应
         return JsonResponse({'message': '删除成功'})
