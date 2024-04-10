@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>学习Cytoscape.js和neo4j</title>
+    {% load static %}
+    <link href="{% static 'css/neo4jStyle.css' %}" rel="stylesheet" />
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.0/jquery.qtip.css" />
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/hierarchy.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.0/jquery.qtip.js"></script>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://www.17sucai.com/2020/2/26/97bcda32f1510d5e85144545bf56b9a1/images/favicon.ico" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <!-- Typography CSS -->
+    <link rel="stylesheet" href="{% static 'css/typography.css' %}" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+
+    <script src="{% static 'js/cytoscape-qtip.js' %}"></script>
+  </head>
+
+  <body style="overflow: hidden;">
+    <div class="">
+      <form id="searchForm">
+        <div class="input__box">
+          <input type="text" id="searchInput" placeholder="Enter a term (e.g., '银行')" />
+        </div>
+
+        <div class="input__box">
+          <input type="submit" value="Search" />
+        </div>
+      </form>
+      <div id="chartdiv"></div>
+    </div>
+
+    <script src="{% static 'js/amchart.js' %}"></script>
+  </body>
+</html>

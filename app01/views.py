@@ -1,6 +1,7 @@
 print("\033[3;37;44mLoading imports...\033[0m", end="")
 from django.shortcuts import render, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseRedirect
 from django.db import connection
 from paddlenlp import Taskflow
 import torch
@@ -9,6 +10,7 @@ from django.http import JsonResponse
 import json
 import re
 from zhipuai import ZhipuAI
+from langchain_community.llms import Ollama
 
 print("\033[1;33;40mDone!\033[0m\n")
 
@@ -24,25 +26,25 @@ print("\033[1;33;40mDone!\033[0m\n")
 def login(request):
     if request.method == "GET":  # 前端如果是get请求
         return render(request, "login.html")  # 返回HTML页面。
-    elif request.method == "POST":  # 前端如果是post请求
-        username = request.POST.get(
-            "username"
-        )  # 获取POST请求中的username值,字符串username要和前端form表单中的对应起来。
-        password = request.POST.get(
-            "password"
-        )  # 获取POST请求中的password值，字符串password要和前端form表单中的对应起来。
-        # request.POST.get返回的值是字符串，所以下面if中的判断是成立的。
-        conn = connection.cursor()
-        conn.execute(
-            "SELECT * FROM user WHERE user_id = %s AND user_password = %s",
-            [username, password],
-        )
-        row = conn.fetchone()
-        conn.close()
-        if row:
-            return render(request, "index.html")
-        else:  # 如果用户名或者密码错误，返回登录页面
-            return render(request, "login.html")
+    
+    username = request.POST.get(
+    "username"
+    )  # 获取POST请求中的username值,字符串username要和前端form表单中的对应起来。
+    password = request.POST.get(
+        "password"
+    )  # 获取POST请求中的password值，字符串password要和前端form表单中的对应起来。
+    # request.POST.get返回的值是字符串，所以下面if中的判断是成立的。
+    conn = connection.cursor()
+    conn.execute(
+        "SELECT * FROM user WHERE user_id = %s AND user_password = %s",
+        [username, password],
+    )
+    row = conn.fetchone()
+    conn.close()
+    if row:
+        return render(request, "index.html")
+    else:  # 如果用户名或者密码错误，返回登录页面
+        return render(request, "login.html",{"error_msg":"用户名或密码错误"})
 
 
 def index(request):
@@ -389,5 +391,16 @@ def doctorlist(request):
 
 
 def forum(request):
-    if request.method == "GET":  # 前端如果是get请求
-        return render(request, "forum.html")  # 返回HTML页面。
+    if request.method == "GET": 
+        return HttpResponseRedirect("http://127.0.0.1:4567/")
+    
+def neo4j(request):
+    if request.method == "GET": 
+        return render(request,"neo4jView.html")
+
+def neo4jInsert(request):
+    return render(request,"neo4jInsert.html")
+
+
+
+    

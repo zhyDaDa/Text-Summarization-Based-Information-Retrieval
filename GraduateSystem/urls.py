@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from app01 import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.login,name='login'),
@@ -39,5 +40,8 @@ urlpatterns = [
     path('chat/', views.chat, name='chat'),
     path('doctorlist/', views.doctorlist, name='doctorlist'),
     path('forum/', views.forum, name='forum'),
-    
+    path('neo4j/', views.neo4j, name='neo4j'),
+    path('neo4jInsert/', views.neo4jInsert, name='neo4jInsert'),
+
+
 ]

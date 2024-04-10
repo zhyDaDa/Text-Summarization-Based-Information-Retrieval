@@ -77,13 +77,10 @@
               </li>
 
               <li>
-                <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-user-3-fill"></i><span>论坛</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-user-3-fill"></i><span>交流</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                 <ul class="iq-submenu">
                   <li>
                     <a href="{% url 'forum' %}"><i class="ri-file-list-fill"></i>论坛</a>
-                  </li>
-                  <li>
-                    <a href="add-doctor.html"><i class="ri-user-add-fill"></i> Add Doctor</a>
                   </li>
                   <li>
                     <a href="{% url 'doctorlist' %}"><i class="ri-profile-fill"></i>医生好友</a>
@@ -97,7 +94,7 @@
                 <a href="{% url 'calendar' %}" class="iq-waves-effect"><i class="ri-calendar-event-fill"></i><span>日程</span></a>
               </li>
               <li>
-                <a href="{% url 'calendar' %}" class="iq-waves-effect"><i class="ri-calendar-event-fill"></i><span>数据分析</span></a>
+                <a href="{% url 'neo4j' %}" class="iq-waves-effect"><i class="ri-calendar-event-fill"></i><span>数据分析</span></a>
               </li>
               <li class="iq-menu-title">
                 <i class="ri-subtract-line"></i><span>其它</span>
@@ -346,7 +343,7 @@
                             </div>
                             <div class="media-body ml-3">
                               <h6 class="mb-0">锁定账户</h6>
-                              <p class="mb-0 font-size-12">暂时锁定您的账户，重新输入密码即可再次登录</p>
+                              <p class="mb-0 font-size-12">暂时锁定账户重新输入密码即可再次登录</p>
                             </div>
                           </div>
                         </a>
