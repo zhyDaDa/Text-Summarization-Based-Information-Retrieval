@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--7-q!t+qi^=))d*0j2d&e=qghy!3!74w8q+z5#n%5988sb0d9g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'GraduateSystem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'innovation_Project',
+        'NAME': 'innovation_project',
         'USER': 'root',
         # 'PASSWORD':'2814058178Lyh',
         'PASSWORD': '00000000',
@@ -127,6 +127,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
+# STATICFILES_DIRS= [os.path.join(BASE_DIR,'/static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
