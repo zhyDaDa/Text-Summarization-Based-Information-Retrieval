@@ -57,12 +57,12 @@
                 {% csrf_token %}
                 <div class="form-group">
                   <label for="exampleInputEmail1">用户名</label>
-                  <input type="text" name="username" class="form-control mb-0" id="exampleInputEmail1" placeholder="请输入您的邮箱" required />
+                  <input type="text" name="username" class="form-control mb-0" id="exampleInputEmail1" placeholder="请输入您的邮箱" value="1001" required />
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">密码</label>
                   <a href="{% url 'recoverpw' %}" class="float-right">忘记密码?</a>
-                  <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="请输入您的密码" required />
+                  <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="请输入您的密码" value="11111111" required />
                 </div>
                 <span style="color: red;">{{ error_msg }}</span>
                 <div class="d-inline-block w-100">

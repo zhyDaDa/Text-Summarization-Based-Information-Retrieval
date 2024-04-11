@@ -1,5 +1,5 @@
 /*
-Template: XRay - Responsive Bootstrap 4 Admin Dashboard Template
+Template: Hermes - Responsive Bootstrap 4 Admin Dashboard Template
 Author: iqonicthemes.in
 Design and Developed by: iqonicthemes.in
 NOTE: This file contains the styling for responsive Template.
@@ -1236,6 +1236,7 @@ body.sidebar-main .iq-sidebar:hover .iq-menu li.menu-open>a {
     0% {
         box-shadow: 0 0 0 0px rgba(230, 65, 65, 0.2);
     }
+
     100% {
         box-shadow: 0 0 0 15px rgba(230, 65, 65, 0);
     }
@@ -1245,6 +1246,7 @@ body.sidebar-main .iq-sidebar:hover .iq-menu li.menu-open>a {
     0% {
         box-shadow: 0 0 0 0px rgba(0, 132, 255, 0.2);
     }
+
     100% {
         box-shadow: 0 0 0 15px rgba(0, 132, 255, 0);
     }
@@ -1501,6 +1503,7 @@ body.sidebar-main .iq-menu-bt-sidebar .iq-menu-bt {
         transform: translateY(50px);
         opacity: 0;
     }
+
     100% {
         -webkit-transform: translateY(0);
         transform: translateY(0);
@@ -1514,6 +1517,7 @@ body.sidebar-main .iq-menu-bt-sidebar .iq-menu-bt {
         transform: translateY(50px);
         opacity: 0;
     }
+
     100% {
         -webkit-transform: translateY(0);
         transform: translateY(0);

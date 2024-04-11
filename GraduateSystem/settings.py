@@ -84,10 +84,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'innovation_project',
         'USER': 'root',
-        # 'PASSWORD':'2814058178Lyh',
         'PASSWORD': '00000000',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'HOST': 'localhost',
+        'PORT': 3306,
 
     }
 }

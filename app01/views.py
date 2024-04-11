@@ -104,15 +104,15 @@ def select(request):
         # data = json.loads(request.body.decode('utf-8'))
         conn = connection.cursor()
         # TODO: 信息提取后相似度搜索, 要按相似度高低输出
-        user_question = request.POST.get("user_question")
-        print("\033[0;36;47m SmartSearch\033[0m", user_question)
+        smartSearchQuestion = request.POST.get("smartSearchQuestion")
+        print("\033[0;36;47m SmartSearch\033[0m", smartSearchQuestion)
         conn.execute(
             "SELECT  id, question_content, answer_content, age, gender, patient_history, patient_allergy, patient_examination, patient_medical, notes, source, extra, bodyPart, symptom, illness, update_date_time, extraction  FROM  current_data  ORDER BY RAND(); "
         )
         column_names = [desc[0] for desc in conn.description]
         select = [dict(zip(column_names, row)) for row in conn.fetchall()]
         conn.close()
-        return render(request, "select.html", {"data": select, "user_question": user_question})
+        return render(request, "select.html", {"data": select})
         post_list = find_max_similarity_rows(searchText)
         # print(post_list)
         return render(
@@ -129,7 +129,7 @@ def select(request):
         # illness 为"_"的数据不显示
         select = [item for item in select if item["illness"] != "_" and item["illness"] != ""]
         conn.close()
-        return render(request, "select.html", {"data": select,"user_question": "/"})
+        return render(request, "select.html", {"data": select})
 
 
 @csrf_exempt
@@ -165,15 +165,15 @@ def scan(request):
 
 
 def user(request):
-    conn = connection.cursor()
-    conn.execute("SELECT  id ,question_content ,answer_content  FROM  test1")
-    scan = conn.fetchall()
-    conn.execute(
-        "SELECT  test1.id ,question_content ,answer_content  FROM  test1,collect where test1.id=collect.medical_id"
-    )
-    scan1 = conn.fetchall()
-    conn.close()
-    return render(request, "user.html", {"scan": scan, "scan1": scan1})
+    # conn = connection.cursor()
+    # conn.execute("SELECT  id ,question_content ,answer_content  FROM  test1")
+    # scan = conn.fetchall()
+    # conn.execute(
+    #     "SELECT  test1.id ,question_content ,answer_content  FROM  test1,collect where test1.id=collect.medical_id"
+    # )
+    # scan1 = conn.fetchall()
+    # conn.close()
+    return render(request, "user.html")
 
 
 def extract_byGLM4(text):
