@@ -128,8 +128,8 @@
             </div>
             <nav class="navbar navbar-expand-lg navbar-light p-0">
               <div class="iq-search-bar">
-                <form action="#" class="searchbox">
-                  <input type="text" class="text search-input" placeholder="Type here to search..." />
+                <form action="../select/" method="post" class="searchbox">
+                  <input name="user_question" type="text" class="text search-input" placeholder="Type here to search..." />
                   <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                 </form>
               </div>
@@ -448,13 +448,19 @@
               <div class="iq-card">
                 <div class="iq-card-body">
                   <div id="table" class="table-editable">
+                    <span class="table-add float-left mb-3 mr-2">
+                      <div class="btn mb-1 iq-bg-primary">
+                        <span class="badge border border-primary text-primary">搜索</span>
+                        {{ user_question }}
+                      </div>
+                    </span>
                     <span class="table-add float-right mb-3 mr-2"><a href="{% url 'upload' %}" class="btn btn-sm iq-bg-success"><i class="ri-add-fill"></i><span class="pl-1">新增</span></a></span>
                     <table class="table table-bordered table-responsive-md table-striped text-center">
                       <thead>
                         <tr>
                           <th>序号</th>
                           <th>年龄</th>
-                          <th>性别</th>
+                          <th Style="min-width: 54px;">性别</th>
                           <th>部位</th>
                           <th>症状</th>
                           <th>疾病</th>
