@@ -359,16 +359,16 @@
                   <div class="iq-edit-list">
                     <ul class="iq-edit-profile d-flex nav nav-pills">
                       <li class="col-md-3 p-0">
-                        <a class="nav-link active" data-toggle="pill" href="#personal-information">Personal Information</a>
+                        <a class="nav-link active" data-toggle="pill" href="#personal-information">个人信息</a>
                       </li>
                       <li class="col-md-3 p-0">
-                        <a class="nav-link" data-toggle="pill" href="#chang-pwd">Change Password</a>
+                        <a class="nav-link" data-toggle="pill" href="#chang-pwd">修改密码</a>
                       </li>
                       <li class="col-md-3 p-0">
-                        <a class="nav-link" data-toggle="pill" href="#emailandsms">Email and SMS</a>
+                        <a class="nav-link" data-toggle="pill" href="#emailandsms">邮箱地址</a>
                       </li>
                       <li class="col-md-3 p-0">
-                        <a class="nav-link" data-toggle="pill" href="#manage-contact">Manage Contact</a>
+                        <a class="nav-link" data-toggle="pill" href="#manage-contact">管理联系方式</a>
                       </li>
                     </ul>
                   </div>
@@ -382,7 +382,7 @@
                     <div class="iq-card">
                       <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                          <h4 class="card-title">Personal Information</h4>
+                          <h4 class="card-title">个人信息</h4>
                         </div>
                       </div>
                       <div class="iq-card-body">
@@ -400,48 +400,45 @@
                           </div>
                           <div class="row align-items-center">
                             <div class="form-group col-sm-6">
-                              <label for="fname">First Name:</label>
+                              <label for="fname">姓:</label>
                               <input type="text" class="form-control" id="fname" value="Bini" />
                             </div>
                             <div class="form-group col-sm-6">
-                              <label for="lname">Last Name:</label>
+                              <label for="lname">名:</label>
                               <input type="text" class="form-control" id="lname" value="Jets" />
                             </div>
                             <div class="form-group col-sm-6">
-                              <label for="uname">User Name:</label>
+                              <label for="uname">用户名:</label>
                               <input type="text" class="form-control" id="uname" value="Bini@01" />
                             </div>
                             <div class="form-group col-sm-6">
-                              <label for="cname">City:</label>
+                              <label for="cname">现居地:</label>
                               <input type="text" class="form-control" id="cname" value="Atlanta" />
                             </div>
                             <div class="form-group col-sm-6">
-                              <label class="d-block">Gender:</label>
+                              <label class="d-block">性别:</label>
                               <div class="custom-control custom-radio custom-control-inline">
                                 <input type="radio" id="customRadio6" name="customRadio1" class="custom-control-input" checked="" />
-                                <label class="custom-control-label" for="customRadio6">Male</label>
+                                <label class="custom-control-label" for="customRadio6">男性</label>
                               </div>
                               <div class="custom-control custom-radio custom-control-inline">
                                 <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input" />
-                                <label class="custom-control-label" for="customRadio7">Female</label>
+                                <label class="custom-control-label" for="customRadio7">女性</label>
                               </div>
                             </div>
                             <div class="form-group col-sm-6">
-                              <label for="dob">Date Of Birth:</label>
+                              <label for="dob">出生日期:</label>
                               <input class="form-control" id="dob" value="1984-01-24" />
                             </div>
                             <div class="form-group col-sm-6">
-                              <label>Marital Status:</label>
+                              <label>婚姻状况:</label>
                               <select class="form-control" id="exampleFormControlSelect1">
-                                <option selected="">Single</option>
-                                <option>Married</option>
-                                <option>Widowed</option>
-                                <option>Divorced</option>
-                                <option>Separated</option>
+                                <option selected="">单身</option>
+                                <option>已婚</option>
                               </select>
                             </div>
                             <div class="form-group col-sm-6">
-                              <label>Age:</label>
+                              <label>年龄:</label>
                               <select class="form-control" id="exampleFormControlSelect2">
                                 <option>12-18</option>
                                 <option>19-32</option>
@@ -451,9 +448,9 @@
                               </select>
                             </div>
                             <div class="form-group col-sm-6">
-                              <label>Country:</label>
+                              <label>国籍:</label>
                               <select class="form-control" id="exampleFormControlSelect3">
-                                <option>Caneda</option>
+                                <option>中国</option>
                                 <option>Noida</option>
                                 <option selected="">USA</option>
                                 <option>India</option>
@@ -461,22 +458,20 @@
                               </select>
                             </div>
                             <div class="form-group col-sm-6">
-                              <label>State:</label>
+                              <label>城市:</label>
                               <select class="form-control" id="exampleFormControlSelect4">
-                                <option>California</option>
-                                <option>Florida</option>
-                                <option selected="">Georgia</option>
-                                <option>Connecticut</option>
-                                <option>Louisiana</option>
+                                <option>北京</option>
+                                <option>深圳</option>
+                                <option selected="">上海</option>
                               </select>
                             </div>
                             <div class="form-group col-sm-12">
-                              <label>Address:</label>
-                              <textarea class="form-control" name="address" rows="5" style="line-height: 22px;">37 Cardinal Lane Petersburg, VA 23803 United States of America Zip Code: 85001</textarea>
+                              <label>住址:</label>
+                              <textarea class="form-control" name="address" rows="5" style="line-height: 22px;">上海市奉贤区海思路999号华东理工大学奉贤校区</textarea>
                             </div>
                           </div>
-                          <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                          <button type="reset" class="btn iq-bg-danger">cancel</button>
+                          <button type="submit" class="btn btn-primary mr-2">提交</button>
+                          <button type="reset" class="btn iq-bg-danger">取消</button>
                         </form>
                       </div>
                     </div>
@@ -485,26 +480,26 @@
                     <div class="iq-card">
                       <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                          <h4 class="card-title">Change Password</h4>
+                          <h4 class="card-title">修改密码</h4>
                         </div>
                       </div>
                       <div class="iq-card-body">
                         <form>
                           <div class="form-group">
-                            <label for="cpass">Current Password:</label>
-                            <a href="javascript:;" class="float-right">Forgot Password</a>
+                            <label for="cpass">当前密码:</label>
+                            <a href="javascript:;" class="float-right">忘记密码</a>
                             <input type="Password" class="form-control" id="cpass" value="" />
                           </div>
                           <div class="form-group">
-                            <label for="npass">New Password:</label>
+                            <label for="npass">新密码:</label>
                             <input type="Password" class="form-control" id="npass" value="" />
                           </div>
                           <div class="form-group">
-                            <label for="vpass">Verify Password:</label>
+                            <label for="vpass">确定新密码:</label>
                             <input type="Password" class="form-control" id="vpass" value="" />
                           </div>
-                          <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                          <button type="reset" class="btn iq-bg-danger">cancel</button>
+                          <button type="submit" class="btn btn-primary mr-2">提交</button>
+                          <button type="reset" class="btn iq-bg-danger">取消</button>
                         </form>
                       </div>
                     </div>
@@ -513,43 +508,43 @@
                     <div class="iq-card">
                       <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                          <h4 class="card-title">Email and SMS</h4>
+                          <h4 class="card-title">邮箱地址</h4>
                         </div>
                       </div>
                       <div class="iq-card-body">
                         <form>
                           <div class="form-group row align-items-center">
-                            <label class="col-md-3" for="emailnotification">Email Notification:</label>
+                            <label class="col-md-3" for="emailnotification">邮箱通知:</label>
                             <div class="col-md-9 custom-control custom-switch">
                               <input type="checkbox" class="custom-control-input" id="emailnotification" checked="" />
                               <label class="custom-control-label" for="emailnotification"></label>
                             </div>
                           </div>
-                          <div class="form-group row align-items-center">
+                          {% comment %} <div class="form-group row align-items-center">
                             <label class="col-md-3" for="smsnotification">SMS Notification:</label>
                             <div class="col-md-9 custom-control custom-switch">
                               <input type="checkbox" class="custom-control-input" id="smsnotification" checked="" />
                               <label class="custom-control-label" for="smsnotification"></label>
                             </div>
-                          </div>
+                          </div> {% endcomment %}
                           <div class="form-group row align-items-center">
-                            <label class="col-md-3" for="npass">When To Email</label>
+                            <label class="col-md-3" for="npass">何时提醒您</label>
                             <div class="col-md-9">
                               <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="email01" />
-                                <label class="custom-control-label" for="email01">You have new notifications.</label>
+                                <label class="custom-control-label" for="email01">有新邮件时</label>
                               </div>
                               <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="email02" />
-                                <label class="custom-control-label" for="email02">You're sent a direct message</label>
+                                <label class="custom-control-label" for="email02">有人给您发送消息时</label>
                               </div>
                               <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="email03" checked="" />
-                                <label class="custom-control-label" for="email03">Someone adds you as a connection</label>
+                                <label class="custom-control-label" for="email03">有人添加您为好友</label>
                               </div>
                             </div>
                           </div>
-                          <div class="form-group row align-items-center">
+                          {% comment %} <div class="form-group row align-items-center">
                             <label class="col-md-3" for="npass">When To Escalate Emails</label>
                             <div class="col-md-9">
                               <div class="custom-control custom-checkbox">
@@ -565,9 +560,9 @@
                                 <label class="custom-control-label" for="email06">Member registration</label>
                               </div>
                             </div>
-                          </div>
-                          <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                          <button type="reset" class="btn iq-bg-danger">cancel</button>
+                          </div> {% endcomment %}
+                          <button type="submit" class="btn btn-primary mr-2">提交</button>
+                          <button type="reset" class="btn iq-bg-danger">取消</button>
                         </form>
                       </div>
                     </div>
@@ -576,25 +571,25 @@
                     <div class="iq-card">
                       <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                          <h4 class="card-title">Manage Contact</h4>
+                          <h4 class="card-title">管理联系方式</h4>
                         </div>
                       </div>
                       <div class="iq-card-body">
                         <form>
                           <div class="form-group">
-                            <label for="cno">Contact Number:</label>
-                            <input type="text" class="form-control" id="cno" value="001 2536 123 458" />
+                            <label for="cno">电话号码:</label>
+                            <input type="text" class="form-control" id="cno" value="120" />
                           </div>
                           <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="text" class="form-control" id="email" value="Binijone@demo.com" />
+                            <label for="email">邮箱:</label>
+                            <input type="text" class="form-control" id="email" value="ECUST@ECUST.com" />
                           </div>
                           <div class="form-group">
-                            <label for="url">Url:</label>
-                            <input type="text" class="form-control" id="url" value="https://getbootstrap.com" />
+                            <label for="url">医院:</label>
+                            <input type="text" class="form-control" id="url" value="上海华东理工大学医院" />
                           </div>
-                          <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                          <button type="reset" class="btn iq-bg-danger">cancel</button>
+                          <button type="submit" class="btn btn-primary mr-2">提交</button>
+                          <button type="reset" class="btn iq-bg-danger">取消</button>
                         </form>
                       </div>
                     </div>
@@ -611,15 +606,15 @@
               <div class="col-lg-6">
                 <ul class="list-inline mb-0">
                   <li class="list-inline-item">
-                    <a href="javascript:;">Privacy Policy</a>
+                    <a href="javascript:;">隐私策略</a>
                   </li>
                   <li class="list-inline-item">
-                    <a href="javascript:;">Terms of Use</a>
+                    <a href="javascript:;">使用条款</a>
                   </li>
                 </ul>
               </div>
               <div class="col-lg-6 text-right">
-                Copyright 2020 <a href="#">Hermes</a> All Rights Reserved.
+                <a href="#">Hermes</a> Made By EcustZjGroup
               </div>
             </div>
           </div>
