@@ -104,15 +104,16 @@ def select(request):
         # data = json.loads(request.body.decode('utf-8'))
         conn = connection.cursor()
         # TODO: 信息提取后相似度搜索, 要按相似度高低输出
-        smartSearchQuestion = request.POST.get("smartSearchQuestion")
-        print("\033[0;36;47m SmartSearch\033[0m", smartSearchQuestion)
+        user_question = request.POST.get("user_question")
+        print("\033[0;36;47m user_question:\033[0m", user_question)
         conn.execute(
             "SELECT  id, question_content, answer_content, age, gender, patient_history, patient_allergy, patient_examination, patient_medical, notes, source, extra, bodyPart, symptom, illness, update_date_time, extraction  FROM  current_data  ORDER BY RAND(); "
         )
         column_names = [desc[0] for desc in conn.description]
         select = [dict(zip(column_names, row)) for row in conn.fetchall()]
         conn.close()
-        return render(request, "select.html", {"data": select})
+        sortTheSelectResult(select, user_question)
+        return render(request, "select.html", {"data": select, "user_question": user_question})
         post_list = find_max_similarity_rows(searchText)
         # print(post_list)
         return render(
@@ -129,7 +130,7 @@ def select(request):
         # illness 为"_"的数据不显示
         select = [item for item in select if item["illness"] != "_" and item["illness"] != ""]
         conn.close()
-        return render(request, "select.html", {"data": select})
+        return render(request, "select.html", {"data": select,"user_question": "/"})
 
 
 @csrf_exempt
@@ -175,6 +176,13 @@ def user(request):
     # conn.close()
     return render(request, "user.html")
 
+def sortTheSelectResult(select, user_question):
+    user_extraction = extract_byGLM4(user_question)
+    text = mergeGLM4Output(user_extraction)
+    for item in select:
+        item["similarity"] = calculate_cosine_similarity(text, item["extraction"])
+        
+    select.sort(key=lambda x: x["similarity"], reverse=True)
 
 def extract_byGLM4(text):
     """
@@ -188,20 +196,41 @@ def extract_byGLM4(text):
     )  # 填写您自己的APIKey
     # 设计prompt
     prompt = """
-        你是一个信息抽取模型，你需要从句子中抽取出['年龄', '性别', '身体部位', '症状', '疾病']这些信息。
-        特别注意! 如果没有明确信息, 请填写"_"。
-        
-        输入：四岁小孩的头感到十分疼痛，之前患过脑震荡
-        输出: 年龄：4岁；性别：_；身体部位；头，症状：疼痛；疾病：脑震荡
-        输入：伍拾柒岁患者抱怨左腿肿胀、红斑，伴有持续发热和剧烈疼痛。她之前曾被诊断为类风湿关节炎。
-        输出：年龄：57岁；性别：女；身体部位：左腿，症状：疼痛、红斑、肿胀、发热；疾病：类风湿关节炎
-        输入：儿子 ④岁检查出右脑室有脑积水
-        输出：年龄：4岁；性别：男；身体部位：右脑室，症状：_；疾病：脑积水
-        输入：
+    你是一个高级信息抽取助手，负责从文本中抽取关键信息，包括年龄、性别、身体部位、症状和疾病。请遵循以下步骤：
+
+    1 理解上下文：首先，阅读并理解给定的句子。
+
+    2. 年龄抽取：确定文本中提及的年龄。如果文本中没有明确提到，请填写"_"。
+
+    3. 性别推断：根据文本中的间接信息推断性别。例如，如果提到了“母亲”或“儿子”，性别分别推断为女性和男性。如果没有足够信息，请填写"_"。
+
+    4. 身体部位和症状识别：识别文本中提及的身体部位和症状。注意是否有多个症状或身体部位提及。如果没有提及，请分别填写"_"。
+
+    5. 疾病识别：识别文本中提到的任何疾病。如果没有提及疾病，请填写"_"。
+
+    6. 特殊提示：针对可能难以直接识别的信息（如性别和特定身体部位），使用以下额外提示：
+        - 对于性别：检查是否有关键词暗示性别，如“他的女儿”暗示女性，“父亲”暗示男性。
+        - 对于身体部位：注意文本是否提及特定的医学术语或常见症状关联的身体部位。
+
+    7.综合信息：根据上述步骤的分析，综合并输出所有抽取到的信息。
+
+    请注意，这是一个连续的过程，每一步的输出都作为下一步的输入。保持精确和详细，确保输出信息的完整性和准确性。
+
+    这里也详细的给出了抽取示例： 
+    输入：四岁小孩的头感到十分疼痛，之前患过脑震荡
+    输出: 年龄：4岁；性别：_；身体部位；头，症状：疼痛；疾病：脑震荡
+    输入：伍拾柒岁患者抱怨左腿肿胀、红斑，伴有持续发热和剧烈疼痛。她之前曾被诊断为类风湿关节炎。
+    输出：年龄：57岁；性别：女；身体部位：左腿，症状：疼痛、红斑、肿胀、发热；疾病：类风湿关节炎
+    输入：儿子 ④岁检查出右脑室有脑积水
+    输出：年龄：4岁；性别：男；身体部位：右脑室，症状：_；疾病：脑积水
+    输入：
     """
-    while True:
+    tryCount = 3
+    while (tryCount) > 0:
+        tryCount -= 1
+        print("第%d次尝试抽取摘要" % (3 - tryCount))
         # 调用模型
-        message = [{"role": "user", "content": prompt + text}]
+        message = [{"role": "user", "content": prompt + text+"\n输出："}]
         response = client.chat.completions.create(
             model="glm-4",  # 填写需要调用的模型名称
             messages=message,
