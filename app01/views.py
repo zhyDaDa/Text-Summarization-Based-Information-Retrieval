@@ -214,7 +214,7 @@ def extract_byGLM4(text):
 
     7.综合信息：根据上述步骤的分析，综合并输出所有抽取到的信息。
 
-    请注意，这是一个连续的过程，每一步的输出都作为下一步的输入。保持精确和详细，确保输出信息的完整性和准确性。
+    请注意，这是一个连续的过程，每一步的输出都作为下一步的输入。保持精确和详细，确保输出信息的完整性和准确性。且只输出如下示例中的信息：年龄、性别、身体部位、症状和疾病。切忌不要有其他多余文字
 
     这里也详细的给出了抽取示例： 
     输入：四岁小孩的头感到十分疼痛，之前患过脑震荡
@@ -228,7 +228,7 @@ def extract_byGLM4(text):
     tryCount = 3
     while (tryCount) > 0:
         tryCount -= 1
-        print("第%d次尝试抽取摘要" % (3 - tryCount))
+        print("第%d次尝试抽取摘要，结果：" % (3 - tryCount), end="")
         # 调用模型
         message = [{"role": "user", "content": prompt + text+"\n输出："}]
         response = client.chat.completions.create(
@@ -236,8 +236,9 @@ def extract_byGLM4(text):
             messages=message,
         )
         response = response.choices[0].message.content
+        print(response)
 
-        regex = r"年龄：(.+?)；性别：(.+?)；身体部位：(.+?)，症状：(.+?)；疾病：(.+)"
+        regex = r"年龄：(.+?)；性别：(.+?)；身体部位：(.+?)；症状：(.+?)；疾病：(.+)"
         response = re.findall(regex, response)
         info_names = ["年龄", "性别", "身体部位", "症状", "疾病"]
         if len(response) < 1:
@@ -245,7 +246,8 @@ def extract_byGLM4(text):
         ret = {}
         for i in range(len(info_names)):
             if response[0][i].strip() == "_":
-                continue
+                # continue
+                pass
             ret[info_names[i]] = response[0][i].strip()
         break
     return ret
