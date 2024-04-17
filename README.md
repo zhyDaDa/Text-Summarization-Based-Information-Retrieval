@@ -182,3 +182,36 @@ FLUSH PRIVILEGES;
 |  重启uwsgi服务   | `uwsgi --reload uwsgi.pid` |
 |      杀端口      |  `sudo fuser -k 8002/tcp`  |
 | 重启nginx服务端  | `sudo systemctl restart nginx` |
+
+## nodeBB
+
+配置参考 [官方文档](https://docs.nodebb.org/installing/os/ubuntu/)
+
+## MongoDB
+
+### 指令
+
+| 作用 | 指令 |
+|:=:|:=:|
+|启动|`sudo systemctl start mongod`|
+|查看运行状态| `sudo systemctl status mongod` |
+
+### trouble-shoot 
+
+> Process: 23613 ExecStart=/usr/bin/mongod --config /etc/mongod.conf (code=exited, status=14)这句话搜到了解决方法
+
+```
+sudo chown -R mongodb:mongodb /var/lib/mongodb
+sudo chown mongodb:mongodb /tmp/mongodb-27017.sock    
+sudo service mongod restart
+```
+
+### mongosh内配置
+
+```
+use admin
+db.createUser( { user: "admin", pwd: "00000000", roles: [ { role: "root", db: "admin" } ] } )
+use nodebb
+db.createUser( { user: "nodebb", pwd: "00000000", roles: [ { role: "readWrite", db: "nodebb" }, { role: "clusterMonitor", db: "admin" } ] } )
+quit()
+```

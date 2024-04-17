@@ -11,3 +11,6 @@ progress.txt
 .htaccess
 static/*
 9990775155c3518a0d7917f7780b24aa_venv/*
+logs/*
+requirements0.txt
+*.sql
