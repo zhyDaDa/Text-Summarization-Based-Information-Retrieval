@@ -13,6 +13,11 @@
     - [删除并更新mySQL](#删除并更新mysql)
   - [uwsgi](#uwsgi)
     - [指令大全](#指令大全)
+  - [nodeBB](#nodebb)
+  - [MongoDB](#mongodb)
+    - [指令](#指令)
+    - [trouble-shoot](#trouble-shoot)
+    - [mongosh内配置](#mongosh内配置)
 
 ## windows环境
 
@@ -174,13 +179,13 @@ FLUSH PRIVILEGES;
 
 ### 指令大全
 
-|       作用       |            指令            |
-| :--------------: | :------------------------: |
-| 启动指定配置文件 |  `uwsgi --ini uwsgi.ini`   |
-|     查看进程     |   `ps aux \| grep uwsgi`   |
-|     结束进程     |       `kill -9 PID`        |
-|  重启uwsgi服务   | `uwsgi --reload uwsgi.pid` |
-|      杀端口      |  `sudo fuser -k 8002/tcp`  |
+|       作用       |              指令              |
+| :--------------: | :----------------------------: |
+| 启动指定配置文件 |    `uwsgi --ini uwsgi.ini`     |
+|     查看进程     |     `ps aux \| grep uwsgi`     |
+|     结束进程     |         `kill -9 PID`          |
+|  重启uwsgi服务   |   `uwsgi --reload uwsgi.pid`   |
+|      杀端口      |    `sudo fuser -k 8002/tcp`    |
 | 重启nginx服务端  | `sudo systemctl restart nginx` |
 
 ## nodeBB
@@ -191,16 +196,16 @@ FLUSH PRIVILEGES;
 
 ### 指令
 
-| 作用 | 指令 |
-|:=:|:=:|
-|启动|`sudo systemctl start mongod`|
-|查看运行状态| `sudo systemctl status mongod` |
+|     作用     |              指令              |
+| :----------: | :----------------------------: |
+|     启动     | `sudo systemctl start mongod`  |
+| 查看运行状态 | `sudo systemctl status mongod` |
 
-### trouble-shoot 
+### trouble-shoot
 
 > Process: 23613 ExecStart=/usr/bin/mongod --config /etc/mongod.conf (code=exited, status=14)这句话搜到了解决方法
 
-```
+```bash
 sudo chown -R mongodb:mongodb /var/lib/mongodb
 sudo chown mongodb:mongodb /tmp/mongodb-27017.sock    
 sudo service mongod restart
@@ -208,7 +213,7 @@ sudo service mongod restart
 
 ### mongosh内配置
 
-```
+```bash
 use admin
 db.createUser( { user: "admin", pwd: "00000000", roles: [ { role: "root", db: "admin" } ] } )
 use nodebb
