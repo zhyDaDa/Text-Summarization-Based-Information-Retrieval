@@ -6322,7 +6322,7 @@ if (jQuery('#high-area-chart').length) {
             text: 'US and USSR nuclear stockpiles'
         },
         subtitle: {
-            text: 'Sources: <a href="https://thebulletin.org/2006/july/global-nuclear-stockpiles-1945-2006">' +
+            text: 'Sources: <a href="https://thebulletin.org/2006/七月/global-nuclear-stockpiles-1945-2006">' +
                 'thebulletin.org</a> &amp; <a href="https://www.armscontrol.org/factsheets/Nuclearweaponswhohaswhat">' +
                 'armscontrol.org</a>'
         },
@@ -6471,7 +6471,7 @@ if (jQuery('#high-pie-chart').length) {
         },
         colorAxis: {},
         title: {
-            text: 'Browser market shares in January, 2018'
+            text: 'Browser market shares in 一月, 2018'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

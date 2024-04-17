@@ -19,6 +19,7 @@ from django.views.static import serve
 from django.conf import settings
 from app01 import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.login,name='login'),
@@ -41,5 +42,8 @@ urlpatterns = [
     path('chat/', views.chat, name='chat'),
     path('doctorlist/', views.doctorlist, name='doctorlist'),
     path('forum/', views.forum, name='forum'),
+    path('neo4j/', views.neo4j, name='neo4j'),
+    path('neo4jInsert/', views.neo4jInsert, name='neo4jInsert'),
     re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}, name='static'),
+
 ]

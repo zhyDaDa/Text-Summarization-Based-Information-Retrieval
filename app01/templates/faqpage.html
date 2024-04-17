@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>XRay - Responsive Bootstrap 4 Admin Dashboard Template</title>
+    <title>Hermes - Responsive Bootstrap 4 Admin Dashboard Template</title>
     {% load static %}
     <!-- Favicon -->
     <link rel="shortcut icon" href="https://www.17sucai.com/2020/2/26/97bcda32f1510d5e85144545bf56b9a1/images/favicon.ico" />
@@ -29,8 +29,8 @@
       <div class="iq-sidebar">
         <div class="iq-sidebar-logo d-flex justify-content-between">
           <a href="">
-            <img src="{% static 'picture/logo.png' %}" class="img-fluid" alt="" />
-            <span>XRay</span>
+            <img src="{% static 'picture/HCN.png' %}" class="img-fluid" alt="" />
+            <span>Hermes</span>
           </a>
           <div class="iq-menu-bt-sidebar">
             <div class="iq-menu-bt align-self-center">
@@ -70,13 +70,10 @@
               </li>
 
               <li>
-                <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-user-3-fill"></i><span>论坛</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-user-3-fill"></i><span>交流</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                 <ul class="iq-submenu">
                   <li>
                     <a href="{% url 'forum' %}"><i class="ri-file-list-fill"></i>论坛</a>
-                  </li>
-                  <li>
-                    <a href="add-doctor.html"><i class="ri-user-add-fill"></i> Add Doctor</a>
                   </li>
                   <li>
                     <a href="{% url 'doctorlist' %}"><i class="ri-profile-fill"></i>医生好友</a>
@@ -90,7 +87,7 @@
                 <a href="{% url 'calendar' %}" class="iq-waves-effect"><i class="ri-calendar-event-fill"></i><span>日程</span></a>
               </li>
               <li>
-                <a href="{% url 'calendar' %}" class="iq-waves-effect"><i class="ri-calendar-event-fill"></i><span>数据分析</span></a>
+                <a href="{% url 'neo4j' %}" class="iq-waves-effect"><i class="ri-calendar-event-fill"></i><span>数据分析</span></a>
               </li>
               <li class="iq-menu-title">
                 <i class="ri-subtract-line"></i><span>其它</span>
@@ -122,15 +119,15 @@
             <div class="iq-sidebar-logo">
               <div class="top-logo">
                 <a href="index.html" class="logo">
-                  <img src="{% static 'picture/logo.png' %}" class="img-fluid" alt="" />
-                  <span>XRay</span>
+                  <img src="{% static 'picture/HCN.png' %}" class="img-fluid" alt="" />
+                  <span>Hermes</span>
                 </a>
               </div>
             </div>
             <nav class="navbar navbar-expand-lg navbar-light p-0">
               <div class="iq-search-bar">
-                <form action="#" class="searchbox">
-                  <input type="text" class="text search-input" placeholder="Type here to search..." />
+                <form action="../select/" method="post" class="searchbox">
+                  <input name="user_question" type="text" class="text search-input" placeholder="点击这里进行病历检索..." />
                   <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                 </form>
               </div>
@@ -148,13 +145,9 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto navbar-list">
                   <li class="nav-item">
-                    <a class="search-toggle iq-waves-effect language-title" href="#"><img src="{% static 'picture/flag-01.png' %}" alt="img-flaf" class="img-fluid mr-1" style="height: 16px; width: 16px;" /> English <i class="ri-arrow-down-s-line"></i></a>
+                    <a class="search-toggle iq-waves-effect language-title" href="#"><img src="{% static 'picture/flag-02.png' %}" alt="img-flaf" class="img-fluid mr-1" style="height: 16px; width: 16px;" /> 中文 <i class="ri-arrow-down-s-line"></i></a>
                     <div class="iq-sub-dropdown">
-                      <a class="iq-sub-card" href="#"><img src="{% static 'picture/flag-02.png' %}" alt="img-flaf" class="img-fluid mr-2" />French</a>
-                      <a class="iq-sub-card" href="#"><img src="{% static 'picture/flag-03.png' %}" alt="img-flaf" class="img-fluid mr-2" />Spanish</a>
-                      <a class="iq-sub-card" href="#"><img src="{% static 'picture/flag-04.png' %}" alt="img-flaf" class="img-fluid mr-2" />Italian</a>
-                      <a class="iq-sub-card" href="#"><img src="{% static 'picture/flag-05.png' %}" alt="img-flaf" class="img-fluid mr-2" />German</a>
-                      <a class="iq-sub-card" href="#"><img src="{% static 'picture/flag-06.png' %}" alt="img-flaf" class="img-fluid mr-2" />Japanese</a>
+                      <a class="iq-sub-card" href="#"><img src="{% static 'picture/flag-01.png' %}" alt="img-flaf" class="img-fluid mr-2" />English</a>
                     </div>
                   </li>
                   <li class="nav-item iq-full-screen">
@@ -169,7 +162,7 @@
                       <div class="iq-card shadow-none m-0">
                         <div class="iq-card-body p-0">
                           <div class="bg-primary p-3">
-                            <h5 class="mb-0 text-white">All Notifications<small class="badge badge-light float-right pt-1">4</small></h5>
+                            <h5 class="mb-0 text-white">所有通知<small class="badge badge-light float-right pt-1">4</small></h5>
                           </div>
                           <a href="#" class="iq-sub-card">
                             <div class="media align-items-center">
@@ -232,7 +225,7 @@
                       <div class="iq-card shadow-none m-0">
                         <div class="iq-card-body p-0">
                           <div class="bg-primary p-3">
-                            <h5 class="mb-0 text-white">All Messages<small class="badge badge-light float-right pt-1">5</small></h5>
+                            <h5 class="mb-0 text-white">所有消息<small class="badge badge-light float-right pt-1">5</small></h5>
                           </div>
                           <a href="#" class="iq-sub-card">
                             <div class="media align-items-center">
@@ -366,13 +359,13 @@
                     <div class="container">
                       <div class="row">
                         <div class="col-sm-12">
-                          <a class="accordion-title"><span>It is a long established fact that a reader will be?</span></a>
+                          <a class="accordion-title"><span>如何重置我的密码？</span></a>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="accordion-details">
-                    <p class="mb-0">Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
+                    <p class="mb-0">如果您忘记了密码，可以在登录页面点击“忘记密码”链接。之后，请输入您的电子邮箱地址，我们将发送一个重置密码的链接到您的邮箱。点击该链接后，您可以设置一个新密码。</p>
                   </div>
                 </div>
                 <div class="iq-card iq-accordion-block">
@@ -380,13 +373,13 @@
                     <div class="container">
                       <div class="row">
                         <div class="col-sm-12">
-                          <a class="accordion-title"><span>Distracted by the readable content of a page whent?</span></a>
+                          <a class="accordion-title"><span>为什么我无法登录？</span></a>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="accordion-details">
-                    <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.</p>
+                    <p class="mb-0">如果您遇到登录问题，请首先检查您的用户名和密码是否输入正确。请注意密码区分大小写。如果您仍然无法登录，请尝试重置密码，或联系我们的技术支持团队获取帮助。</p>
                   </div>
                 </div>
                 <div class="iq-card iq-accordion-block">
@@ -394,13 +387,13 @@
                     <div class="container">
                       <div class="row">
                         <div class="col-sm-12">
-                          <a class="accordion-title"><span>What is user interface kit?</span></a>
+                          <a class="accordion-title"><span>如何添加新的病历信息？</span></a>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="accordion-details">
-                    <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.</p>
+                    <p class="mb-0">登录软件后，点击主界面上的“添加新病历”按钮。在打开的页面中，填写患者的个人信息、病史、诊断结果等相关信息，完成后点击“保存”即可。</p>
                   </div>
                 </div>
                 <div class="iq-card iq-accordion-block">
@@ -408,13 +401,13 @@
                     <div class="container">
                       <div class="row">
                         <div class="col-sm-12">
-                          <a class="accordion-title"><span>The readable content of a page when looking at its layout?</span></a>
+                          <a class="accordion-title"><span>如何导出病历报告？</span></a>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="accordion-details">
-                    <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.</p>
+                    <p class="mb-0">在患者的病历页面，找到需要导出的报告，点击“导出”按钮。您可以选择导出为 PDF 或 Word 格式。选择好格式后，报告将自动下载到您的设备上。</p>
                   </div>
                 </div>
                 <div class="iq-card iq-accordion-block">
@@ -422,27 +415,13 @@
                     <div class="container">
                       <div class="row">
                         <div class="col-sm-12">
-                          <a class="accordion-title"><span>The readable content of a page when looking at its layout?</span></a>
+                          <a class="accordion-title"><span>数据安全如何保证？</span></a>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="accordion-details">
-                    <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.</p>
-                  </div>
-                </div>
-                <div class="iq-card iq-accordion-block">
-                  <div class="active-faq clearfix">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <a class="accordion-title"><span>What is user interface kit?</span></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-details">
-                    <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.</p>
+                    <p class="mb-0">我们严格遵守数据保护法规，使用最新的加密技术来保护您的数据安全。此外，我们还提供定期的数据备份服务，以防数据丢失。</p>
                   </div>
                 </div>
               </div>
@@ -454,13 +433,13 @@
                     <div class="container">
                       <div class="row">
                         <div class="col-sm-12">
-                          <a class="accordion-title"><span>It is a long established fact that a reader will be?</span></a>
+                          <a class="accordion-title"><span>怎样设置和修改用户权限？</span></a>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="accordion-details">
-                    <p class="mb-0">Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
+                    <p class="mb-0">系统管理员可以通过“用户管理”界面来设置和修改用户权限。在此界面中，选择需要修改权限的用户账户，然后点击“编辑权限”。您可以根据需要为用户分配不同的角色和访问权限，确保数据安全。</p>
                   </div>
                 </div>
                 <div class="iq-card iq-accordion-block">
@@ -468,13 +447,13 @@
                     <div class="container">
                       <div class="row">
                         <div class="col-sm-12">
-                          <a class="accordion-title"><span>Distracted by the readable content of a page whent?</span></a>
+                          <a class="accordion-title"><span>如何进行系统备份和数据恢复？</span></a>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="accordion-details">
-                    <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.</p>
+                    <p class="mb-0">在“系统设置”菜单中，选择“数据备份与恢复”选项。为了保证数据安全，建议定期进行数据备份。在此界面，您可以设置自动备份的时间间隔。如果需要恢复数据，可以选择之前的备份文件，点击“数据恢复”按键即可。</p>
                   </div>
                 </div>
                 <div class="iq-card iq-accordion-block">
@@ -482,69 +461,13 @@
                     <div class="container">
                       <div class="row">
                         <div class="col-sm-12">
-                          <a class="accordion-title"><span>What is user interface kit?</span></a>
+                          <a class="accordion-title"><span>如何联系技术支持？</span></a>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="accordion-details">
-                    <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.</p>
-                  </div>
-                </div>
-                <div class="iq-card iq-accordion-block">
-                  <div class="active-faq clearfix">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <a class="accordion-title"><span>The readable content of a page when looking at its layout?</span></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-details">
-                    <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.</p>
-                  </div>
-                </div>
-                <div class="iq-card iq-accordion-block">
-                  <div class="active-faq clearfix">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <a class="accordion-title"><span>The readable content of a page when looking at its layout?</span></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-details">
-                    <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.</p>
-                  </div>
-                </div>
-                <div class="iq-card iq-accordion-block">
-                  <div class="active-faq clearfix">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <a class="accordion-title"><span>What is user interface kit?</span></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-details">
-                    <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.</p>
-                  </div>
-                </div>
-                <div class="iq-card iq-accordion-block">
-                  <div class="active-faq clearfix">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <a class="accordion-title"><span>The readable content of a page when looking at its layout?</span></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-details">
-                    <p class="mb-0">It has survived not only five centuries, but also the leap into electronic typesetting. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.</p>
+                    <p class="mb-0">如果您遇到任何使用上的问题，可以通过以下方式联系我们的技术支持团队： 电子邮件：support@example.com 电话：123-456-7890</p>
                   </div>
                 </div>
               </div>
@@ -558,15 +481,15 @@
               <div class="col-lg-6">
                 <ul class="list-inline mb-0">
                   <li class="list-inline-item">
-                    <a href="javascript:;">Privacy Policy</a>
+                    <a href="javascript:;">隐私策略</a>
                   </li>
                   <li class="list-inline-item">
-                    <a href="javascript:;">Terms of Use</a>
+                    <a href="javascript:;">使用条款</a>
                   </li>
                 </ul>
               </div>
               <div class="col-lg-6 text-right">
-                Copyright 2020 <a href="#">XRay</a> All Rights Reserved.
+                <a href="#">Hermes</a> Made By EcustZjGroup
               </div>
             </div>
           </div>
