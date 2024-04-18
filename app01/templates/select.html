@@ -467,20 +467,20 @@
                       <tbody>
                         {% comment %} div: 逐个数据 {% endcomment %}
                         {% for item in data %}
-                        <tr>
-                          <td contenteditable="true">{{ item.id }}</td>
-                          <td contenteditable="true">{{ item.age }}</td>
-                          <td contenteditable="true">{{ item.gender }}</td>
-                          <td contenteditable="true">{{ item.bodyPart }}</td>
-                          <td contenteditable="true">{{ item.symptom }}</td>
-                          <td contenteditable="true">{{ item.illness }}</td>
-                          <td contenteditable="true">{{ item.question_content }}</td>
+                          <tr>
+                            <td contenteditable="true">{{ item.id }}</td>
+                            <td contenteditable="true">{{ item.age }}</td>
+                            <td contenteditable="true">{{ item.gender }}</td>
+                            <td contenteditable="true">{{ item.bodyPart }}</td>
+                            <td contenteditable="true">{{ item.symptom }}</td>
+                            <td contenteditable="true">{{ item.illness }}</td>
+                            <td contenteditable="true">{{ item.question_content }}</td>
                           <td>
                             <button type="button" class="btn btn-primary mb-0" onclick="(e)=>{}"><i class="ri-radio-button-fill pr-0"></i></button>
                             <button type="button" class="btn btn-secondary mb-0" onclick="alert_success('已收藏{{ item.id }}号病历');"}><i class="ri-star-fill pr-0" onclick="alert_success('已收藏{{ item.id }}号病历');"></i></button>
                             <button type="button" class="btn btn-warning mb-0"><i class="ri-delete-bin-2-fill pr-0"></i></button>
                           </td>
-                        </tr>
+                          </tr>
                         {% endfor %}
                       </tbody>
                     </table>
