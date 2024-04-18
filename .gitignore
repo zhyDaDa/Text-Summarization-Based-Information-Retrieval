@@ -10,3 +10,5 @@ test/*
 progress.txt
 .htaccess
 static/*
+nodebb
+nodebb/*
