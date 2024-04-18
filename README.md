@@ -184,7 +184,7 @@ FLUSH PRIVILEGES;
 |       作用       |              指令              |
 | :--------------: | :----------------------------: |
 | 启动指定配置文件 |    `uwsgi --ini uwsgi.ini`     |
-|     查看进程     |     `ps aux \| grep uwsgi`     |
+|     查看进程     |     `ps aux\|grep uwsgi`     |
 |     结束进程     |         `kill -9 PID`          |
 |  重启uwsgi服务   |   `uwsgi --reload uwsgi.pid`   |
 |      杀端口      |    `sudo fuser -k 8002/tcp`    |
