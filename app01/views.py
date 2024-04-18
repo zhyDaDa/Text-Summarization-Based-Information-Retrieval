@@ -418,7 +418,7 @@ def doctorlist(request):
 
 def forum(request):
     if request.method == "GET": 
-        return HttpResponseRedirect("http://127.0.0.1:4567/")
+        return HttpResponseRedirect("http://8.134.250.72/nodebb")
     
 def neo4j(request):
     if request.method == "GET": 
