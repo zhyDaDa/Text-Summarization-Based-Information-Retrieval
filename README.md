@@ -222,3 +222,17 @@ use nodebb
 db.createUser( { user: "nodebb", pwd: "00000000", roles: [ { role: "readWrite", db: "nodebb" }, { role: "clusterMonitor", db: "admin" } ] } )
 quit()
 ```
+
+## 运行启动服务
+
+```bash
+. venv/bin/activate
+sudo fuser -k 8002/tcp
+sudo fuser -k 8002/tcp
+uwsgi --ini uwsgi.ini
+```
+
+```bash
+cd nodebb
+./nodebb start
+```
