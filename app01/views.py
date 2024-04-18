@@ -10,7 +10,6 @@ from django.http import JsonResponse
 import json
 import re
 from zhipuai import ZhipuAI
-from langchain_community.llms import Ollama
 
 print("\033[1;33;40mDone!\033[0m\n")
 
@@ -266,6 +265,10 @@ def calculate_cosine_similarity(text1, text2):
         "views.py | \033[0;36;47m calculate_cosine_similarity\033[0m >>> Fetch text1: %s, text2: %s"
         % (text1, text2)
     )
+    
+    if (not text1) or (not text2):
+        print("text1 和 text2 有 NONE")
+        return 0
     # 加载预训练的BERT模型和tokenizer
     global model, tokenizer
     # 对文本进行tokenize和编码
