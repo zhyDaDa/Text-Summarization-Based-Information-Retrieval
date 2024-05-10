@@ -9,6 +9,21 @@ from transformers import BertTokenizer, BertModel
 from django.http import JsonResponse
 import json
 import re
+#neo4j依赖
+from neo4j import GraphDatabase
+driver = GraphDatabase.driver("neo4j://localhost:7687", auth=("neo4j", "Aabc909090897")) #认证连接数据库
+#llama依赖
+from langchain_community.llms import Ollama
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+#异步
+import asyncio
+from asgiref.sync import sync_to_async
+
+output_parser = StrOutputParser()
+llm = Ollama(model="llama2")
+
+
 from zhipuai import ZhipuAI
 
 print("\033[1;33;40mDone!\033[0m\n")
@@ -190,9 +205,9 @@ def extract_byGLM4(text):
     :param text: 输入的文本
     :return: 抽取出的信息(字典形式)
     """
-    client = ZhipuAI(
-        api_key="e380b61b65e101c22d2f89e7ab8cde34.jlpqhJVQyYIkHtzH"
-    )  # 填写您自己的APIKey
+    # client = ZhipuAI(
+    #     api_key="e380b61b65e101c22d2f89e7ab8cde34.jlpqhJVQyYIkHtzH"
+    # )  # 填写您自己的APIKey
     # 设计prompt
     prompt = """
     你是一个高级信息抽取助手，负责从文本中抽取关键信息，包括年龄、性别、身体部位、症状和疾病。请遵循以下步骤：
@@ -229,12 +244,19 @@ def extract_byGLM4(text):
         tryCount -= 1
         print("第%d次尝试抽取摘要，结果：" % (3 - tryCount), end="")
         # 调用模型
-        message = [{"role": "user", "content": prompt + text+"\n输出："}]
-        response = client.chat.completions.create(
-            model="glm-4",  # 填写需要调用的模型名称
-            messages=message,
-        )
-        response = response.choices[0].message.content
+        # message = [{"role": "user", "content": prompt + text+"\n输出："}]
+        # response = client.chat.completions.create(
+        #     model="glm-4",  # 填写需要调用的模型名称
+        #     messages=message,
+        # )
+        # response = response.choices[0].message.content
+        # print(response)
+        prompt = ChatPromptTemplate.from_messages([
+        ("system", prompt),
+        ("user", "{input}")
+        ])
+        chain = prompt|llm|output_parser
+        response=chain.invoke({"input": text})
         print(response)
 
         regex = r"年龄：(.+?)；性别：(.+?)；身体部位：(.+?)；症状：(.+?)；疾病：(.+)"
@@ -418,15 +440,103 @@ def doctorlist(request):
 
 def forum(request):
     if request.method == "GET": 
-        return HttpResponseRedirect("http://8.134.250.72/nodebb")
+        return HttpResponseRedirect("http://127.0.0.1:4567")
     
-def neo4j(request):
+@csrf_exempt   
+async def neo4j(request):
     if request.method == "GET": 
         return render(request,"neo4jView.html")
-
-def neo4jInsert(request):
-    return render(request,"neo4jInsert.html")
-
-
-
+    data = request.POST.get('neo4jSearch')
+    response=await neo4jQuery(data)
+    return response
     
+
+# def neo4jInsert(request):
+#     if request.method=="GET":
+#         return render(request,"neo4jInsert.html")
+   
+# def neo4jView(request):
+#     if request.method=="post":
+#         data = json.loads(request.body)
+#         neo4jQuery(data)
+#     return JsonResponse({"message": "查询成功"})
+
+async def neo4j_extract_byGLM4(text):
+    print(text)
+    prompt = ChatPromptTemplate.from_messages([
+    ("system",  """
+    请你提取这段文字想要查询的疾病名称，只输出疾病名称即可。
+    特别注意！！！输出不包含任何其它字符，包括'疾病名称：'，只输出内容就行
+    例如：
+    输入：四岁小孩的头感到十分疼痛，之前患过脑震荡
+    输出:脑震荡
+    输入：伍拾柒岁患者抱怨左腿肿胀、红斑，伴有持续发热和剧烈疼痛。她之前曾被诊断为类风湿关节炎。
+    输出:类风湿关节炎
+    输入：
+    """),
+    ("user", "{input}")
+    ])
+    chain = prompt|llm|output_parser
+    response=chain.invoke({"input": text})
+    print(response)
+    response=response.strip()
+    #tryCount=3
+    # while tryCount>0:
+    #     tryCount-=1
+    #     print(f"第{3-tryCount}次尝试",end="")
+    #     #调用模型
+    #     message=[{"role":"user","content":prompt+text+"\n"}]
+    #     response=response.choices[0].message.content
+    return response
+
+def buildNodes(nodeRecord): #构建web显示节点
+    print("#"*30)
+    print(nodeRecord)
+    print("#"*30)
+    data = {"id": nodeRecord._id, "label": list(nodeRecord._labels)[0]} #将集合元素变为list，然后取出值
+    data.update(dict(nodeRecord._properties))
+    return {"data": data}
+
+
+
+def buildEdges(relationRecord): #构建web显示边
+    data = {"source": relationRecord.start_node._id,
+            "target":relationRecord.end_node._id,
+            "relationship": relationRecord.type}
+
+    return {"data": data}
+
+async def neo4jQuery(text):
+    disease_name=await neo4j_extract_byGLM4(text)
+    with driver.session() as session:
+        query=f'MATCH (d:Disease{{name: "{disease_name}"}})-[r]-(re) RETURN d,re,r'
+        print(query)
+    #try:
+        results = session.run(query).values()
+    # except Exception as e:
+    #     print("在执行查询时出现错误：", e)
+        nodeList = []
+        edgeList = []
+        for result in results:
+            print("当前结果：", result)  # 打印当前的结果
+            nodeList.extend(result[:2])  # 假设前两个结果是节点
+            print("当前节点列表：", nodeList)  # 打印目前的节点列表
+            edgeList.append(result[2])  # 假设第三个结果是边
+            print("当前边列表：", edgeList)  # 打印目前的边列表
+
+        nodeList = list(set(nodeList))  # 移除重复的节点
+
+        nodes = list(map(buildNodes, nodeList))
+        edges = list(map(buildEdges, edgeList))
+
+    return JsonResponse({
+        'data':{
+            'nodes':nodes,
+            'edges':edges
+        }
+    })
+        
+        
+
+
+   

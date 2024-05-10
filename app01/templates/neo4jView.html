@@ -132,8 +132,9 @@
             </div>
             <nav class="navbar navbar-expand-lg navbar-light p-0">
               <div class="iq-search-bar">
-                <form action="../select/" method="post" class="searchbox">
-                  <input name="user_question" type="text" class="text search-input" placeholder="点击这里进行病历检索..." />
+                {% csrf_token %}
+                <form action="" method="post" class="searchbox">
+                  <input name="neo4jSearch" type="text" class="text search-input" placeholder="点击这里进行病历检索..." />
                   <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                 </form>
               </div>
@@ -357,7 +358,8 @@
         </div>
         <!-- TOP Nav Bar END -->
         <div class="container">
-          <iframe src="{% url 'neo4jInsert' %}" frameborder="0" style="width: 100%;height: 85vh;"></iframe>
+          <div id="neo4jAmchart" style="width: 100%;height: 85vh;"></div>
+          {% comment %} <iframe src="{% url 'neo4jInsert' %}" frameborder="0" style="width: 100%;height: 85vh;"></iframe> {% endcomment %}
         </div>
       </div>
     </div>
