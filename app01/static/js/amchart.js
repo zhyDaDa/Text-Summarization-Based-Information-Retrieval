@@ -15,7 +15,7 @@ $(function () {
           return buildGraph(item);
         });
         data = { value: 0, children: data }
-        data = [{
+        data = {
           value: 0,
           children: [
             // 症状
@@ -337,7 +337,7 @@ $(function () {
               ]
             },
           ]
-        }];
+        };
 
         console.log(data);
         data = JSON.stringify(data);
@@ -420,7 +420,7 @@ $(function () {
     }
 
     // 更新数据
-    myChart.data.setAll(data[0]);
+    myChart.data.setAll(data);
     myChart.set("selectedDataItem", myChart.dataItems[0]);
 
     // 动画
