@@ -452,7 +452,7 @@ async def neo4j(request):
     response=[]
     for disease_name in disease_name:
         response.append(await neo4jQuery(disease_name))
-    print(response[1])
+    #print(response[1])
     return JsonResponse(response,safe=False)
     
 
