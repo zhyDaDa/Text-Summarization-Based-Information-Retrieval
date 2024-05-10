@@ -25,6 +25,9 @@ llm = Ollama(model="llama2")
 
 
 from zhipuai import ZhipuAI
+client = ZhipuAI(
+   api_key="e380b61b65e101c22d2f89e7ab8cde34.jlpqhJVQyYIkHtzH"
+)  # 填写您自己的APIKey
 
 print("\033[1;33;40mDone!\033[0m\n")
 
@@ -205,9 +208,7 @@ def extract_byGLM4(text):
     :param text: 输入的文本
     :return: 抽取出的信息(字典形式)
     """
-    # client = ZhipuAI(
-    #     api_key="e380b61b65e101c22d2f89e7ab8cde34.jlpqhJVQyYIkHtzH"
-    # )  # 填写您自己的APIKey
+   
     # 设计prompt
     prompt = """
     你是一个高级信息抽取助手，负责从文本中抽取关键信息，包括年龄、性别、身体部位、症状和疾病。请遵循以下步骤：
@@ -244,20 +245,20 @@ def extract_byGLM4(text):
         tryCount -= 1
         print("第%d次尝试抽取摘要，结果：" % (3 - tryCount), end="")
         # 调用模型
-        # message = [{"role": "user", "content": prompt + text+"\n输出："}]
-        # response = client.chat.completions.create(
-        #     model="glm-4",  # 填写需要调用的模型名称
-        #     messages=message,
-        # )
-        # response = response.choices[0].message.content
-        # print(response)
-        prompt = ChatPromptTemplate.from_messages([
-        ("system", prompt),
-        ("user", "{input}")
-        ])
-        chain = prompt|llm|output_parser
-        response=chain.invoke({"input": text})
+        message = [{"role": "user", "content": prompt + text+"\n输出："}]
+        response = client.chat.completions.create(
+            model="glm-4",  # 填写需要调用的模型名称
+            messages=message,
+        )
+        response = response.choices[0].message.content
         print(response)
+        # prompt = ChatPromptTemplate.from_messages([
+        # ("system", prompt),
+        # ("user", "{input}")
+        # ])
+        # chain = prompt|llm|output_parser
+        # response=chain.invoke({"input": text})
+        # print(response)
 
         regex = r"年龄：(.+?)；性别：(.+?)；身体部位：(.+?)；症状：(.+?)；疾病：(.+)"
         response = re.findall(regex, response)
@@ -463,8 +464,7 @@ async def neo4j(request):
 
 async def neo4j_extract_byGLM4(text):
     print(text)
-    prompt = ChatPromptTemplate.from_messages([
-    ("system",  """
+    prompt = """
     请你提取这段文字想要查询的疾病名称，只输出疾病名称即可。
     特别注意！！！输出不包含任何其它字符，包括'疾病名称：'，只输出内容就行
     例如：
@@ -473,12 +473,17 @@ async def neo4j_extract_byGLM4(text):
     输入：伍拾柒岁患者抱怨左腿肿胀、红斑，伴有持续发热和剧烈疼痛。她之前曾被诊断为类风湿关节炎。
     输出:类风湿关节炎
     输入：
-    """),
-    ("user", "{input}")
-    ])
-    chain = prompt|llm|output_parser
-    response=chain.invoke({"input": text})
+    """
+    message = [{"role": "user", "content": prompt + text+"\n输出："}]
+    response = client.chat.completions.create(
+        model="glm-4",  # 填写需要调用的模型名称
+        messages=message,
+    )
+    response = response.choices[0].message.content
     print(response)
+    # chain = prompt|llm|output_parser
+    # response=chain.invoke({"input": text})
+    # print(response)
     response=response.strip()
     #tryCount=3
     # while tryCount>0:
@@ -518,11 +523,11 @@ async def neo4jQuery(text):
         nodeList = []
         edgeList = []
         for result in results:
-            print("当前结果：", result)  # 打印当前的结果
+            #print("当前结果：", result)  # 打印当前的结果
             nodeList.extend(result[:2])  # 假设前两个结果是节点
-            print("当前节点列表：", nodeList)  # 打印目前的节点列表
+            #print("当前节点列表：", nodeList)  # 打印目前的节点列表
             edgeList.append(result[2])  # 假设第三个结果是边
-            print("当前边列表：", edgeList)  # 打印目前的边列表
+            #print("当前边列表：", edgeList)  # 打印目前的边列表
 
         nodeList = list(set(nodeList))  # 移除重复的节点
 
