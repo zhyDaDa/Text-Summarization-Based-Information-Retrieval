@@ -9,13 +9,15 @@ $(function () {
       type: 'POST',
       data: { neo4jSearch: searchTerm }, // Data to send
       success: function (response) {
-        // Handle the response here
-
-        data = buildGraph(response);
-
-        updateGraph(data);
+        // 假设 response 是一个包含多个对象的数组，每个对象都有 nodes 和 edges
+        var data = response.map(function (item) {
+          // 直接返回新的结构
+          return buildGraph(item);
+        });
+        data = JSON.stringify(data);
+        updateGraph(data);  // 更新图表的函数调用，假设它接受整理好的数据
         console.log(data);
-        //$('#results').html(JSON.stringify(response));
+        //$('#results').html(JSON.stringify(data)); // 如果你想在页面上显示结果
       },
       // error: function (xhr, status, error) {
       //   // Handle errors here
@@ -26,9 +28,9 @@ $(function () {
   })
   function buildGraph(response) {
     var nodes = response.data.nodes;
-    console.log(nodes);
+    //console.log(nodes);
     var edges = response.data.edges;
-    console.log(edges);
+    //console.log(edges);
     //let nodeName = nodes.map(node => node.name);
     let disease_name = nodes.filter(node => node.data.label === 'Disease')[0].data.name;
     nodes = nodes.filter(node => node.data.label !== 'Disease');
@@ -40,7 +42,7 @@ $(function () {
       }))
     }
 
-    console.log(nodes);
+    //console.log(nodes);
     let results = {
       value: 0,
       children: [],
