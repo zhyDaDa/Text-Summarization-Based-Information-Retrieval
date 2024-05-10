@@ -448,8 +448,12 @@ async def neo4j(request):
     if request.method == "GET": 
         return render(request,"neo4jView.html")
     data = request.POST.get('neo4jSearch')
-    response=await neo4jQuery(data)
-    return response
+    disease_name=await neo4j_extract_byGLM4(data)
+    response=[]
+    for disease_name in disease_name:
+        response.append(await neo4jQuery(disease_name))
+    #print(response[1])
+    return JsonResponse(response,safe=False)
     
 
 # def neo4jInsert(request):
@@ -481,23 +485,17 @@ async def neo4j_extract_byGLM4(text):
     )
     response = response.choices[0].message.content
     print(response)
-    # chain = prompt|llm|output_parser
-    # response=chain.invoke({"input": text})
-    # print(response)
-    response=response.strip()
-    #tryCount=3
-    # while tryCount>0:
-    #     tryCount-=1
-    #     print(f"第{3-tryCount}次尝试",end="")
-    #     #调用模型
-    #     message=[{"role":"user","content":prompt+text+"\n"}]
-    #     response=response.choices[0].message.content
-    return response
+    disease_list=[]
+    lines = response.splitlines()
+    for line in lines:
+      disease_list.append(line.strip())
+    print(disease_list)  
+    return disease_list
 
 def buildNodes(nodeRecord): #构建web显示节点
-    print("#"*30)
-    print(nodeRecord)
-    print("#"*30)
+    # print("#"*30)
+    # print(nodeRecord)
+    # print("#"*30)
     data = {"id": nodeRecord._id, "label": list(nodeRecord._labels)[0]} #将集合元素变为list，然后取出值
     data.update(dict(nodeRecord._properties))
     return {"data": data}
@@ -512,9 +510,8 @@ def buildEdges(relationRecord): #构建web显示边
     return {"data": data}
 
 async def neo4jQuery(text):
-    disease_name=await neo4j_extract_byGLM4(text)
     with driver.session() as session:
-        query=f'MATCH (d:Disease{{name: "{disease_name}"}})-[r]-(re) RETURN d,re,r'
+        query=f'MATCH (d:Disease{{name: "{text}"}})-[r]-(re) RETURN d,re,r'
         print(query)
     #try:
         results = session.run(query).values()
@@ -534,12 +531,12 @@ async def neo4jQuery(text):
         nodes = list(map(buildNodes, nodeList))
         edges = list(map(buildEdges, edgeList))
 
-    return JsonResponse({
+    return {
         'data':{
             'nodes':nodes,
             'edges':edges
         }
-    })
+    }
         
         
 
