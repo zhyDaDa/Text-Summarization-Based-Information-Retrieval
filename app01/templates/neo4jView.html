@@ -358,6 +358,25 @@
           </div>
         </div>
         <!-- TOP Nav Bar END -->
+        <div id="theTip" style="
+        padding: 0;
+        position: fixed;
+        left: auto;
+        right: 0;
+        width: calc(100% - 320px);
+        display: inline-block;
+        z-index: 99;
+        margin: 20px 30px;
+        transition: all 0.45s ease 0s;
+        border-radius: 25px;
+        text-align: center;
+        ">
+          <div id="tipContent">
+            请在上方搜索框内输入检索内容<br>
+            将通过neo4j数据库进行检索<br>
+            检索的结果将会以知识图谱的形式展示在此处<br>
+          </div>
+        </div>
         <div class="container" style="width: 100%;">
           <div id="neo4jAmchart" style="width: 100%;height: 85vh;"></div>
           {% comment %} <iframe src="{% url 'neo4jInsert' %}" frameborder="0" style="width: 100%;height: 85vh;"></iframe> {% endcomment %}
