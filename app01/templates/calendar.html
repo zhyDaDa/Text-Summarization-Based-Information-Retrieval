@@ -378,7 +378,7 @@
                 <div class="iq-card-body">
                   <ul class="m-0 p-0 job-classification">
                     <li class="">
-                      <i class="ri-check-line bg-danger"></i>开户
+                      <i class="ri-check-line bg-danger"></i>紧急
                     </li>
                     <li class="">
                       <i class="ri-check-line bg-success"></i>出差
@@ -428,7 +428,7 @@
                   <div class="iq-header-title">
                     <h4 class="card-title">计划表</h4>
                   </div>
-                  <div class="iq-card-header-toolbar d-flex align-items-center">
+                  <div id="addEvent" class="iq-card-header-toolbar d-flex align-items-center">
                     <a href="#" class="btn btn-primary"><i class="ri-add-line mr-2"></i>计划表</a>
                   </div>
                 </div>
@@ -503,4 +503,30 @@
     <!-- Custom JavaScript -->
     <script src="{% static 'js/custom.js' %}"></script>
   </body>
+
+  <script>
+    window.onload = ()=>{
+      window.iii = setInterval(()=>{
+        console.log("啊?")
+        if(document.getElementsByClassName("fc-today fc-widget-content").length > 0){
+          document.getElementsByClassName("fc-mon fc-widget-content")[1].innerHTML = `<i class="ri-check-line bg-success"></i> 去中心医院交流`;
+          document.getElementsByClassName("fc-mon fc-widget-content")[1].style = "font-size: 1rem;";
+          document.getElementsByClassName("fc-wed fc-widget-content")[2].innerHTML = `<i class="ri-check-line bg-info"></i> 组会研讨`;
+          document.getElementsByClassName("fc-wed fc-widget-content")[2].style = "font-size: 1rem;";
+          document.getElementsByClassName("fc-thu fc-widget-content")[4].innerHTML = `<i class="ri-check-line bg-warning "></i> 论文撰写`;
+          document.getElementsByClassName("fc-thu fc-widget-content")[4].style = "font-size: 1rem;";
+          {% comment %} clearInterval(window.iii); {% endcomment %}
+        }
+      }, 300);
+    }
+
+    document.getElementById("addEvent").addEventListener("click", ()=>{
+      let date = prompt("请输入日期(默认今天)");
+      let event = prompt("请输入事件");
+      if(event){
+        document.getElementsByClassName("fc-today fc-widget-content")[0].innerHTML = `<i class="ri-check-line bg-danger"></i> ${event}`;
+        document.getElementsByClassName("fc-today fc-widget-content")[0].style = "font-size: 1rem;";
+      }
+    });
+  </script>
 </html>

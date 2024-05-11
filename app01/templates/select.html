@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
     <!-- hsycmsAlert -->
     <link rel="stylesheet" href="{% static 'css/hsycmsAlert.min.css' %}" />
+     {% comment %} <script async src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script async src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script async src="https://cdn.amcharts.com/lib/5/hierarchy.js"></script>
+    <script async src="http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.0/jquery.qtip.js"></script> {% endcomment %}
   </head>
   <body>
     <!-- loader Start -->
@@ -454,7 +458,7 @@
                     <span class="table-add float-right mb-3 mr-2"><a href="{% url 'upload' %}" class="btn btn-sm iq-bg-success"><i class="ri-add-fill"></i><span class="pl-1">新增</span></a></span>
                     <table class="table table-bordered table-responsive-md table-striped text-center" style="font-size: 20px; font-weight: 500;">
                       <thead>
-                        <tr>
+                        <tr>                          
                           <th>序号</th>
                           <th>年龄</th>
                           <th Style="min-width: 85px;">性别</th>
@@ -477,9 +481,9 @@
                             <td contenteditable="true">{{ item.illness }}</td>
                             <td contenteditable="true">{{ item.question_content }}</td>
                           <td>
-                            <button type="button" class="btn btn-primary mb-0" onclick="showDetail({{forloop.counter}})"><i class="ri-radio-button-fill pr-0" onclick="(e)=>{alert({{forloop.counter}})}"></i></button>
-                            <button type="button" class="btn btn-secondary mb-0" onclick="alert_success('已收藏{{ item.id }}号病历');"}><i class="ri-star-fill pr-0" onclick="alert_success('已收藏{{ item.id }}号病历');"></i></button>
-                            <button type="button" class="btn btn-warning mb-0"><i class="ri-delete-bin-2-fill pr-0"></i></button>
+                            <button type="button" class="btn btn-primary mb-0" onclick="(e)=>{}"><i class="ri-radio-button-fill pr-0"></i></button>
+                            <button type="button" class="btn btn-secondary mb-0" onclick="alert_success('已收藏{{ item.id }}号病历');"><i class="ri-star-fill pr-0" onclick="alert_success('已收藏{{ item.id }}号病历');"></i></button>
+                            <button type="button" class="btn btn-warning mb-0" onclick="searchNeo4j('{{ item.illness }}')" id="neo4jContentSearch"><i class="ion-search" onclick="searchNeo4j('{{ item.illness }}')"></i></button>
                           </td>
                           </tr>
                           
@@ -542,9 +546,10 @@
       </div>
       <!-- Wrapper END -->
       <!-- Footer END -->
-      <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="{% static 'js/jquery.min.js' %} "></script>
+    <!-- Optional JavaScript -->
+    <script src="{% static 'js/jquery.min.js' %} "></script>
+    <script src="{% static 'js/amchart.js' %}"></script>
       <script src="{% static 'js/popper.min.js' %}"></script>
       <script src="{% static 'js/bootstrap.min.js' %}"></script>
       <!-- Appear JavaScript -->
