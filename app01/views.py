@@ -284,7 +284,7 @@ def mergeGLM4Output(outputObj):
     return mergeString[:-1]
 
 
-def calculate_cosine_similarity(text1, text2):
+def calculate_cosine_similarity_old(text1, text2):
     print(
         "views.py | \033[0;36;47m calculate_cosine_similarity\033[0m >>> Fetch text1: %s, text2: %s"
         % (text1, text2)
@@ -313,6 +313,42 @@ def calculate_cosine_similarity(text1, text2):
         torch.norm(vector1) * torch.norm(vector2)
     )
     return cosine_similarity.item()
+def calculate_cosine_similarity(text1, text2):
+    print(
+        "views.py | \033[0;36;47m calculate_cosine_similarity\033[0m >>> Fetch text1: %s, text2: %s"
+        % (text1, text2)
+    )
+    
+    if (not text1) or (not text2):
+        print("text1 和 text2 有 NONE")
+        return 0
+
+    prompt = """
+       请评估以下两段文本的相似度。第一段文本是：'%s'。第二段文本是：'%s'。
+   根据它们的内容，请描述这两段文本的相似度，
+   并在0到10的范围内评分，其中0表示完全不同，10表示完全相同。只输出数字答案，值取小数点后四位
+   不要包含其它文字内容
+    """
+    
+    tryCount = 3
+    while (tryCount) > 0:
+        tryCount -= 1
+        print("第%d次尝试抽取摘要，结果：" % (3 - tryCount), end="")
+        # 调用模型
+        message = [{"role": "user", "content": prompt%(text1,text2)+"\n输出："}]
+        response = client.chat.completions.create(
+            model="glm-4",  # 填写需要调用的模型名称
+            messages=message,
+        )
+        response = response.choices[0].message.content
+        print(response)
+        # 检查是否是数字或者浮点数
+        try:
+            cosine_similarity = float(response)
+            break
+        except ValueError:
+            continue
+    return cosine_similarity
 
 
 def find_max_similarity_rows(text):
