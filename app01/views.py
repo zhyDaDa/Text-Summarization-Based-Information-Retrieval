@@ -86,13 +86,15 @@ def upload(request):
         mediacal = request.POST.get("mediacal")
         notes = request.POST.get("notes")
         gender = request.POST.get("gender")
-        # extract=extract_byGLM4(content)
+        # extract=mergeGLM4Output(extract_byGLM4(content))
         username = 1001
         print(id, date, content, result, extract)
         # request.POST.get返回的值是字符串，所以下面if中的判断是成立的。
         conn = connection.cursor()
         conn.execute(
-            "INSERT INTO test3 (id,question_content,patient_history,patient_allergy,patient_examination,patient_medical,patient_gender,notes,answer_content,question_extraction,date,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+            """
+            INSERT IGNORE INTO user_upload (id,question_content,patient_history,patient_allergy,patient_examination,patient_medical,gender,notes,answer_content,extraction,update_date_time,source) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            """,
             (
                 id,
                 content,
@@ -103,13 +105,12 @@ def upload(request):
                 gender,
                 notes,
                 result,
-                extract,
+                "", # extract,
                 date,
                 username,
             ),
         )
         conn.close()
-        return render(request, "upload.html")
         return render(request, "upload.html")
 
 

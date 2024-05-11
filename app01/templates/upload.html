@@ -405,7 +405,7 @@
                 </div>
                 <div class="iq-card-body">
                   <div class="new-user-info">
-                    <form method="post">
+                    <form id="theForm" method="post"  onsubmit="return false;">
                       {% csrf_token %}
                       <div class="row">
                         <div class="form-group col-md-6">
@@ -521,5 +521,20 @@
     <script src="{% static 'js/chart-custom.js' %}"></script>
     <!-- Custom JavaScript -->
     <script src="{% static 'js/custom.js' %}"></script>
+
   </body>
+  <!-- hsycmsAlert -->
+  <link rel="stylesheet" href="{% static 'css/hsycmsAlert.min.css' %}" />
+  <!-- hsycmsAlert -->
+  <script src="{% static 'js/hsycmsAlert.min.js' %}"></script>
+  <script>
+    let theform =  document.getElementById("theForm");
+    theForm.onsubmit = function(e) {
+      e.preventDefault();
+      hsycms.success("病历上传成功!",()=>{  
+        theForm.submit();
+       },3200)
+      
+    }
+  </script>
 </html>
