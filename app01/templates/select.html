@@ -446,7 +446,7 @@
                 <div class="iq-card-body">
                   <div id="table" class="table-editable">
                     <span class="table-add float-left mb-3 mr-2">
-                      <div class="btn mb-1 iq-bg-primary">
+                      <div class="btn mb-1 iq-bg-primary" style="font-size: 24px;">
                         <span class="badge border border-primary text-primary">搜索</span>
                         {{ user_question }}
                       </div>
@@ -495,28 +495,28 @@
                                                     <h4 class="m-0"><i class="ri-arrow-left-line"></i></h4>
                                                  </a>
                                               </li>
-                                              <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Mail" class="show"><a href="#"><i class="ri-mail-open-line"></i></a></li>
-                                              <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Info"><a href="#"><i class="ri-information-line"></i></a></li>
-                                              <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><a href="#"><i class="ri-delete-bin-line"></i></a></li>
-                                              <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Unread"><a href="#"><i class="ri-mail-unread-line"></i></a></li>
-                                              <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Transfer"><a href="#"><i class="ri-folder-transfer-line"></i></a></li>
-                                              <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Bookmark"><a href="#"><i class="ri-bookmark-line"></i></a></li>
+                                              <li data-toggle="tooltip" data-placement="top" title="" class="show"></li>
+                                              <li data-toggle="tooltip" data-placement="top" title="" ></li>
+                                              <li data-toggle="tooltip" data-placement="top" title="" ></li>
+                                              <li data-toggle="tooltip" data-placement="top" title="" ></li>
+                                              <li data-toggle="tooltip" data-placement="top" title="" ></li>
+                                              <li data-toggle="tooltip" data-placement="top" title="" ></li>
                                            </ul>
                                         </div>
                                      </div>
                                      <hr class="mt-0">
                                      <div class="iq-inbox-subject p-3">
-                                        <h5 class="mt-0">第{{item.id}}号病例详情</h5>
+                                        <h5 class="mt-0">第 <b>{{item.id}}</b> 号病例详情</h5>
                                         <hr>
                                         <div class="iq-inbox-subject-info mt-2">
-                                          <div class="iq-inbox-body mt-3">
+                                          <div class="iq-inbox-body mt-3 btn mb-1 iq-bg-primary" style="font-size: 22px;">
                                             病例主述
                                           </div>
                                           <h4 class="iq-inbox-body mt-4">
                                             <p>{{ item.question_content }}</p>
                                           </h4>
                                           <hr>
-                                          <div class="iq-inbox-body mt-3">
+                                          <div class="iq-inbox-body mt-3 btn mb-1 iq-bg-primary" style="font-size: 22px;">
                                             医生诊断
                                           </div>
                                           <h4 class="iq-inbox-body mt-4">
@@ -524,6 +524,7 @@
                                           </h4>
                                         </div>
                                      </div>
+                                     <hr>
                                   </div>
                                </div>
                             </div>
