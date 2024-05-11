@@ -448,7 +448,7 @@ def forum(request):
 async def neo4j(request):
     if request.method == "GET": 
         return render(request,"neo4jView.html")
-    data = request.POST.get('neo4jSearch')
+    data = request.POST.get('neo4jSearch') or request.POST.get('illness')
     disease_name=await neo4j_extract_byGLM4(data)
     response=[]
     for disease_name in disease_name:
@@ -471,7 +471,8 @@ async def neo4j_extract_byGLM4(text):
     print(text)
     prompt = """
     请你提取这段文字想要查询的疾病名称，只输出疾病名称即可。
-    特别注意！！！输出不包含任何其它字符，包括'疾病名称：'，只输出内容就行
+    特别注意！！！输出不包含任何其它字符，只输出内容就行,如果输入中没有提及具体疾病名称，
+    则推断其疾病名称并严格按照要求输出。若有多个疾病，则每一行输出一个疾病名称。不要输出其它信息！！！
     例如：
     输入：四岁小孩的头感到十分疼痛，之前患过脑震荡
     输出:脑震荡
